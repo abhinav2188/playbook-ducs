@@ -1,0 +1,102 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Lato:ital,wght@0,300;0,400;0,900;1,300;1,400;1,900&display=swap');
+
+$font-logo : 'Fredericka the Great', cursive;
+$font-content : 'Lato', sans-serif;
+
+$color-orange : #FF6542;
+$color-blue : #3D3B8E;
+$color-content-light: #fff;
+$color-content-dark: #1B1F3B;
+
+$mobile : '767px';
+$tablet : '1023px';
+$desktop : '1024px';
+$tv : '1440px';
+
+%trans{
+  transition: all 0.5s ease-in-out;
+}
+
+
+.base{
+  color: $color-content-dark;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: $font-content;
+  font-size: medium;
+}
+a{
+  color: $color-content-dark;
+  text-decoration: none;
+}
+h1{
+  font-size: 4rem;
+  margin:0.5rem 0rem;
+}
+h2{
+  font-size: 2.5rem;
+  margin:1rem 0rem;
+}
+h3{
+  font-size: 1.5rem;
+  margin:1rem 0rem;
+}
+p{
+  margin:0.5rem 0rem;
+}
+
+.action-button{
+    align-self: center;
+    padding: 1rem 4rem;
+    background-color: $color-orange;
+    border-radius: 0.25rem;
+    margin: 2rem 0rem;
+    text-transform: uppercase;
+    font-weight: 900;
+}
+
+.container{
+  width:80%;
+}
+
+
+@media (max-width:$tablet){
+  .base{
+    font-size: medium;
+  }
+  h1{
+    font-size: 3rem;
+  }
+  h2{
+    font-size: 2rem;
+  }
+  h3{
+    font-size: 1.25rem;
+  }
+  .container{
+    width: 80%;
+  }
+}
+
+@media (max-width:$mobile){
+  .base{
+    font-size: small;
+  }
+  h1{
+    font-size: 2rem;
+  }
+  h2{
+    font-size: 1.5rem;
+  }  
+  h3{
+    font-size: 1rem;
+  }
+  .container{
+    width: 90%;
+  }
+}
