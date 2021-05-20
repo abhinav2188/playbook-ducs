@@ -1,0 +1,67 @@
+.slider-container{
+    display: flex;
+    overflow: hidden;
+    flex-direction: column;
+    .slider{
+        display: flex;
+    }
+    .slide{
+        animation-name: slide-animation;
+        animation-duration: 2s;
+        
+    }
+}
+
+
+// @keyframes slide-animation {
+//     from {
+//         background-color: red;
+//     }
+//     to{
+//         background-color: green;
+//     }
+// }
+
+  .item-enter-active {
+    opacity: 0;
+  }
+  .item-enter-done {
+    opacity: 1;
+    transition: opacity 500ms ease-in;
+    transition-delay: 500ms;
+  }
+  
+  .item-exit{
+    opacity: 1;
+    transition: opacity 500ms ease-in;
+  }
+  .item-exit-active {
+    opacity: 1;
+    transition: opacity 500ms ease-in;
+  }
+  .item-exit-done {
+    opacity: 0;
+    transition: opacity 500ms ease-in;
+  }
+
+.fade-enter{
+    opacity: 0;
+    transform : translateX(100%);
+ }
+ .fade-exit{
+    opacity: 1;
+    transform : translateX(0);
+ }
+ .fade-enter-active{
+    opacity: 1;
+    transform : translateX(0);    
+ }
+ .fade-exit-active{
+    opacity: 0;
+    transform : translateX(-100%);    
+ }
+ .fade-enter-active,
+ .fade-exit-active{
+    transition: all 500ms;
+    transition-timing-function: linear;
+ }
