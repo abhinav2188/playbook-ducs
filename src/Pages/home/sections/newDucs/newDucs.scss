@@ -1,0 +1,58 @@
+@import '../../../../base';
+
+.section-container{
+    width: 100%;
+    background-color: #FFF4EC;
+    display: flex;
+    justify-content: center;
+    .newducs{
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .ndcs-content{
+            padding:6rem 0;
+            width:50%;
+            display: flex;
+            flex-direction: column;
+            .action-button{
+                align-self: flex-start;
+            }
+        }
+    }
+    .feature-img{
+        width: 40%;
+        position: relative;
+        transform: translateY(20%) scale(1.2);
+    }
+}
+
+
+@media (max-width:$tablet){
+    .section-container{
+        .newducs{
+            flex-direction: column;
+            .ndcs-content{
+                width: 100%;
+                padding-top :4rem ;
+            }
+            .feature-img{
+                align-self: flex-end;
+                width:50%;
+                transform: translate(-20%,20%) scale(1.5);
+            }
+        }
+    }
+}
+
+@media (max-width:$mobile){
+    .section-container{
+        .newducs{
+            .feature-img{
+                align-self: flex-end;
+                width:50%;
+                transform: translate(-20%,20%) scale(1.5);
+            }
+        }
+    }
+}

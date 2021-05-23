@@ -1,10 +1,11 @@
 import React from 'react'
+import './layout.scss'
 
 const footer = () => {
     return (
-        <div style={{display:'flex',justifyContent:'center',alignItems:'center', padding:'2rem', marginTop:'6rem'}}>
+        <footer >
             <p>©2021 DUCS Playbook</p>
-        </div>
+        </footer>
     );
 }
 

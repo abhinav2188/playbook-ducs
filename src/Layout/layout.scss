@@ -1,0 +1,105 @@
+@import './../base';
+
+.layout{
+    color: $color-content-dark;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: $font-content;
+    font-size: medium;
+    .main{
+        width: 100%;
+        flex-grow: 1;
+    }
+    footer{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem 0;
+        background-color: $color-orange;
+    }
+    
+    header{
+        background-color: $color-blue;
+        display: flex;
+        justify-items: center;
+        justify-content: center;
+        width: 100%;
+        overflow-x: hidden;
+        height: 100px;
+        .header-content{
+            width: 80%;
+            display: flex;
+            justify-items: center;
+            align-items: center;
+            justify-content: space-between;
+            .nav-link{
+                color: $color-content-light;
+                padding: 0.5rem 1.5rem;
+                margin: 0rem 0.5rem;
+            }
+            .sign-up{
+                border:$color-content-light 0.05rem solid;
+                border-radius: 0.25rem;
+            }    
+        }
+    }
+    #logo{
+        width:100px;
+        font-family: $font-logo;
+        margin: 0rem 0.5rem;
+        color: $color-content-light;
+        // text-align: center;
+    }
+        
+}
+
+
+
+
+@media (min-width:768px) and (max-width:$tablet) {
+    .layout{
+        header{
+            .header-content{
+                width: 90%;
+                .nav-link{
+                    padding: 0.5rem 1rem;
+                    margin: 0rem 0.25rem;
+                }
+            }    
+        }
+        #logo{
+            width:100px;
+            font-family: $font-logo;
+            margin: 0rem 0.25rem;
+            // text-align: center;
+        }
+    
+    }
+}
+
+@media (max-width:$mobile) {
+    .layout{
+        header{
+            font-size: small;
+            height: 80px;
+            .header-content{
+                width: 90%;
+                .nav-link{
+                    padding: 0.25rem 0.5rem;
+                    margin: 0rem 0.25rem;
+                }
+            }    
+        }
+        #logo{
+            width:80px;
+            margin: 0rem 0.25rem;
+            // text-align: center;
+        }
+    }
+}

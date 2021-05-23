@@ -18,18 +18,10 @@ $tv : '1440px';
   transition: all 0.5s ease-in-out;
 }
 
-
-.base{
-  color: $color-content-dark;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  align-content: center;
-  align-items: center;
-  flex-direction: column;
-  font-family: $font-content;
-  font-size: medium;
+.sectional-margin{
+  margin: 6rem 0;
 }
+
 a{
   color: $color-content-dark;
   text-decoration: none;
@@ -81,6 +73,9 @@ p{
   .container{
     width: 80%;
   }
+  .sectional-margin{
+    margin: 4rem 0;
+  }
 }
 
 @media (max-width:$mobile){
@@ -98,5 +93,8 @@ p{
   }
   .container{
     width: 90%;
+  }
+  .sectional-margin{
+    margin: 3rem 0;
   }
 }
