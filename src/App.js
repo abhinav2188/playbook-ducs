@@ -6,6 +6,7 @@ import NewToDucs from "./sections/newDucs/newDucs";
 // import Marquee from "./UI/marquee";
 import MTT from "./sections/meetTheTeam/meetTheTeam";
 import Marquee from "./UI/marquee2"
+import Footer from "./Layout/Footer"
 
 var slides = [
   <p>slide 1</p>,
@@ -26,9 +27,10 @@ function App() {
       <Hero/>
       <NavBlocks/>
       <NewToDucs/>
-      <Marquee itemsArray={slides} activeItemsCount={3}/>
-      <Marquee itemsArray={slides} activeItemsCount={5}/>
-      {/* <MTT /> */}
+      {/* <Marquee itemsArray={slides} activeItemsCount={3}/>
+      <Marquee itemsArray={slides} activeItemsCount={5}/> */}
+      <MTT />
+      <Footer/>
     </div>
   );
 }

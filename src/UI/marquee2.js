@@ -31,7 +31,7 @@ const Marquee = (props) =>{
         // });
         // // marqAnim.current.play();
         // console.log(marqEl);
-    },[] );
+    },[props.activeItemsCount] );
 
     
 

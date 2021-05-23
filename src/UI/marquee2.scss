@@ -9,7 +9,6 @@
         height: 100%;
         display: flex;
         .marquee-element{
-            border: 1px red solid;
             display:flex;
             padding:1rem;
             flex-shrink: 0;
@@ -20,23 +19,3 @@
         }
     }
 }
-
-@media (max-width:$tablet){
-    // :root{
-    //     --container-width : 90%;
-    //     --elements-displayed: 2;
-    // }
-}
-@media (max-width:$mobile){
-    // :root{
-    //     --container-width : 90%;
-    //     --elements-displayed: 1;
-    // }    
-}
-
-
-// @keyframes scroll {
-//     0% {transform: translateX(0);}
-//     100% {transform: translateX(calc(-1*var(--elements-width)*var(--elements-count)));}   
-// }
-
