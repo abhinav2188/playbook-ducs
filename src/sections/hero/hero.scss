@@ -8,8 +8,9 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
+    padding: 4rem 0;
     color: $color-content-light;
-    .content{
+    .hero-content{
         width: 60%;
         padding : 2rem 0;
         display: flex;
@@ -54,7 +55,7 @@
 
 @media (min-width:$desktop){
     #hero-section{
-        margin-bottom : 16rem;
+        margin-bottom : 6rem;
         h1{
             margin:0.5rem 0rem;
         }
@@ -63,7 +64,7 @@
 
 @media (max-width:$tablet) {
     #hero-section{
-        .content{
+        .hero-content{
             width: 80%;
         }
         img{
@@ -80,7 +81,7 @@
     #hero-section{
         padding-top: 4rem;
         height: calc(100vh - 200px);
-        .content{
+        .hero-content{
             width: 80%;
         }
         img{

@@ -1,11 +1,11 @@
-import logo from './logo.svg';
 import './_base.scss';
 import Header from "./Layout/Header/Header";
 import Hero from "./sections/hero/hero";
 import NavBlocks from "./sections/navBlocks/navBlocks";
 import NewToDucs from "./sections/newDucs/newDucs";
-import Slider from "./UI/slider";
-import Marquee from "./UI/marquee";
+// import Marquee from "./UI/marquee";
+import MTT from "./sections/meetTheTeam/meetTheTeam";
+import Marquee from "./UI/marquee2"
 
 var slides = [
   <p>slide 1</p>,
@@ -14,9 +14,9 @@ var slides = [
   <p>slide 4</p>,
   <p>slide 5</p>,
   <p>slide 6</p>,
-  <p>slide 7</p>,
-  <p>slide 8</p>,
-  <p>slide 9</p>,
+  // <p>slide 7</p>,
+  // <p>slide 8</p>,
+  // <p>slide 9</p>,
 ];
 
 function App() {
@@ -26,7 +26,9 @@ function App() {
       <Hero/>
       <NavBlocks/>
       <NewToDucs/>
-      <Marquee itemsArray={slides}/>
+      <Marquee itemsArray={slides} activeItemsCount={3}/>
+      <Marquee itemsArray={slides} activeItemsCount={5}/>
+      {/* <MTT /> */}
     </div>
   );
 }
