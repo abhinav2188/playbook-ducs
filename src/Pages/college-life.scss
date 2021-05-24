@@ -1,0 +1,320 @@
+@import url("https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Homemade+Apple&display=swap");
+
+@font-face {
+  font-family: "Lato-Regular";
+  src: url("../fonts/Lato-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Lato-Bold";
+  src: url("../fonts/Lato-Bold.ttf");
+}
+
+@font-face {
+  font-family: "Work-Sans-Semibold";
+  src: url("../fonts/WorkSans-SemiBold.ttf");
+}
+
+:root {
+  --primary-font: Work-Sans-Semibold;
+  --secondary-font: Lato-Regular;
+  --tertiary-font: Lato-Bold;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  height: 100%;
+}
+
+/* page 1 start */
+.container-1 {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10rem;
+  padding: 2rem 5rem 0 5rem;
+  height: 105vh;
+}
+
+/* header nav bar */
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  z-index: 1;
+}
+
+.logo {
+  text-decoration: none;
+  color: #1b1f3b;
+  font: 1.5rem "Fredericka the Great", cursive;
+  text-indent: 15px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 3.5rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #1b1f3b;
+  font: 0.8rem var(--secondary-font);
+}
+
+.middle {
+  position: relative;
+}
+
+a.middle::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 1.5px;
+  bottom: -6px;
+  left: 0;
+  background-color: #ff6542;
+  visibility: hidden;
+  transform: scaleX(0);
+  transition: all 0.3s ease-in-out;
+}
+
+a.middle:hover:before {
+  visibility: visible;
+  transform: scaleX(1);
+}
+
+.nav-links button {
+  cursor: pointer;
+  padding: 0.5rem 1.7rem;
+  color: white;
+  font: 0.8rem var(--secondary-font);
+  background-color: #ff6542;
+  border: none;
+  border-radius: 6px;
+  transition: box-shadow 0.3s ease-out;
+}
+
+.nav-links button:hover {
+  box-shadow: 0 4px 8px #ffdfd8;
+}
+
+/* header nav bar end */
+
+.container-1 h2 {
+  text-align: center;
+  font: 3rem "Homemade Apple", cursive;
+  color: #fd8901;
+}
+
+.page1-bg {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  max-width: 100%;
+  z-index: 0;
+}
+/* page 1 end */
+
+/* page 4 start */
+.container-2,
+.container-3,
+.container-4,
+.container-5,
+.container-6 {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 7rem;
+  padding: 7rem 5rem;
+  background-color: #e7e8ff;
+  color: #1b1f3b;
+}
+
+/* styling 2 images */
+
+.container-2 img:nth-child(1),
+.container-3 img:nth-child(1),
+.container-4 img:nth-child(1),
+.container-5 img:nth-child(1),
+.container-6 img:nth-child(1) {
+  position: absolute;
+  top: 4rem;
+  left: 0;
+  width: 40rem;
+}
+
+.container-4 img:nth-child(1) {
+  left: -50px;
+}
+
+.container-2 .page2-bg,
+.container-3 .page3-bg2,
+.container-4 .man,
+.container-5 .graduation-img,
+.container-6 .polaroid {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 36rem;
+  z-index: 0;
+}
+
+/* main content */
+.main-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2.2rem;
+  margin-top: 5rem;
+}
+
+.main-content h3 {
+  font: 3rem var(--primary-font);
+}
+
+.main-content p {
+  font: 0.9rem var(--secondary-font);
+  width: 37rem;
+  letter-spacing: 0.27px;
+  line-height: 22px;
+}
+
+/* cards */
+.slider {
+  display: flex;
+  gap: 2rem;
+  z-index: 1;
+}
+
+.cards {
+  background-color: white;
+  padding: 1.8rem 1.8rem 3.8rem 1.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  border-radius: 6px;
+}
+
+.cards-page4 {
+  box-shadow: 0 4px 16px #1b1f3b21;
+}
+
+.card-title {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.dp2,
+.dp3,
+.dp4,
+.dp5,
+.dp6 {
+  border-radius: 50%;
+  background-color: #a3a3ff;
+  width: 30px;
+  height: 30px;
+}
+
+.display-name {
+  font: 0.8rem var(--tertiary-font);
+  letter-spacing: 0.45px;
+  color: #1b1f3b;
+}
+
+.review-text {
+  font: 0.68rem var(--secondary-font);
+  line-height: 18px;
+  letter-spacing: 0.2px;
+}
+
+/* page 4 end */
+
+/* page 5 start */
+
+.container-5 {
+  background-color: #fffcd6;
+  padding: 7rem 5rem;
+}
+
+.dp5 {
+  background-color: #ffda56;
+}
+
+.container-5 .graduation-img {
+  width: 33rem;
+}
+
+.cards-page5 {
+  box-shadow: 0 4px 16px #a89a642a;
+}
+
+/* page 5 end */
+
+/* page 6 start */
+.container-6 {
+  background-color: #ffedf0;
+  padding: 7rem 5rem 4rem 5rem;
+}
+
+.dp6 {
+  background-color: #ff6da2;
+}
+
+.container-6 .polaroid {
+  width: 33rem;
+}
+
+.cards-page6 {
+  box-shadow: 0 4px 16px #6836481e;
+}
+/* page 6 end */
+
+/* page 2 start */
+.container-2 {
+  background-color: #efffff;
+}
+
+.dp2 {
+  background-color: #98f3f3;
+}
+/* page 2 end */
+
+/* page 3 start */
+.container-3 {
+  background-color: #fff8ef;
+}
+
+.dp3 {
+  background-color: #ff9d4c;
+}
+
+.container-3 .page3-bg1 {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 17rem;
+}
+
+.container-3 .page3-bg2 {
+  width: 17rem;
+}
+/* page 3 end */
+
+/* footer */
+footer {
+  background-color: #ffedf0;
+  padding: 1.2rem;
+  text-align: center;
+  font: 0.9rem var(--secondary-font);
+  color: #1b1f3b80;
+  letter-spacing: 0.3px;
+}
