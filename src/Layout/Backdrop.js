@@ -1,4 +1,5 @@
 import React from 'react'
+import {useTransition,animated} from 'react-spring'
 
 const styles = {
     backdrop : {
@@ -12,11 +13,21 @@ const styles = {
     }
 }
 
-const backdrop = (props) => {
-    return(
-        <div style={styles.backdrop} onClick={props.onClose}>
-        </div>
-    );
+const Backdrop = (props) => {
+    const transitions = useTransition(props.in, {
+        from: { opacity:0 },
+        enter: { opacity: 1 },
+        leave: { opacity:0 },
+        delay: 200,
+    })
+
+    return transitions( (style,item) => item &&
+    <animated.div style={style}>
+    <div style={styles.backdrop} onClick={props.onClose}>
+    </div>
+    </animated.div>
+    )
+    
 }
 
-export default backdrop;
+export default Backdrop;

@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 import "./college-life.scss";
 
 import page1Bg from "../assets/college-life-page1-bg.svg";
@@ -14,7 +14,113 @@ import cloudsPage4 from "../assets/clouds-page4.svg";
 import cloudsPage5 from "../assets/clouds-page5.svg";
 import cloudsPage6 from "../assets/clouds-page6.svg";
 
-const page = () => {
+import Marquee from "./../UI/marquee2";
+
+const cardsP2 = [
+    <div class="cards cards-page4">
+    <div class="card-title">
+        <div class="dp2"></div>
+        <span class="display-name">Abraham</span>
+    </div>
+    <span class="review-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla odit dolorem
+        quia id. Autem laborum ipsa
+    </span>
+</div>,
+<div class="cards cards-page4">
+    <div class="card-title">
+        <div class="dp2"></div>
+        <span class="display-name">Desmond</span>
+    </div>
+    <span class="review-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis qui saepe
+        nisi expedita inventore facere quae dicta?
+    </span>
+</div>,
+<div class="cards cards-page4">
+    <div class="card-title">
+        <div class="dp2"></div>
+        <span class="display-name">Alan Fresco</span>
+    </div>
+    <span class="review-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla odit dolorem
+        quia id. Autem laborum ipsa
+    </span>
+</div>,
+<div class="cards cards-page4">
+    <div class="card-title">
+        <div class="dp2"></div>
+        <span class="display-name">Hans Down</span>
+    </div>
+    <span class="review-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla odit dolorem
+        quia id. Autem laborum ipsa
+    </span>
+</div>,
+<div class="cards cards-page4">
+    <div class="card-title">
+        <div class="dp2"></div>
+        <span class="display-name">Indigo Violet</span>
+    </div>
+    <span class="review-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla odit dolorem
+        quia id. Autem laborum ipsa
+    </span>
+</div>
+]
+const cardsP3 = [
+    <div class="cards cards-page4">
+    <div class="card-title">
+        <div class="dp3"></div>
+        <span class="display-name">Abraham</span>
+    </div>
+    <span class="review-text">Lorem ipsum dolor sit amet cnponsectetur adipisicing elit. Nulla odit dolorem
+        quia id. Autem laborum ipsa
+    </span>
+</div>,
+<div class="cards cards-page4">
+    <div class="card-title">
+        <div class="dp3"></div>
+        <span class="display-name">Desmond</span>
+    </div>
+    <span class="review-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis qui saepe
+        nisi expedita inventore facere quae dicta?
+    </span>
+</div>,
+<div class="cards cards-page4">
+    <div class="card-title">
+        <div class="dp3"></div>
+        <span class="display-name">Alan Fresco</span>
+    </div>
+    <span class="review-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla odit dolorem
+        quia id. Autem laborum ipsa
+    </span>
+</div>,
+<div class="cards cards-page4">
+    <div class="card-title">
+        <div class="dp3"></div>
+        <span class="display-name">Hans Down</span>
+    </div>
+    <span class="review-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla odit dolorem
+        quia id. Autem laborum ipsa
+    </span>
+</div>,
+<div class="cards cards-page4">
+    <div class="card-title">
+        <div class="dp3"></div>
+        <span class="display-name">Indigo Violet</span>
+    </div>
+    <span class="review-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla odit dolorem
+        quia id. Autem laborum ipsa
+    </span>
+</div>
+
+]
+
+const Page = () => {
+    const [count,setCount] = useState(4);
+    useEffect(()=>{
+        if(window.innerWidth >= 1024) setCount(4);
+        else if(window.innerWidth >= 768) setCount(2);
+        else setCount(1);
+        console.log(window.innerWidth,count);
+    },[])
+
     return(
         <div id="clg-life">
         {/* page 1 start */}
@@ -42,53 +148,7 @@ const page = () => {
                     dolorum suscipit perspiciatis architecto ipsum nobis tempora minus odit, voluptatum odio nam! Nihil
                     maiores pariatur hic error.</p>
             </div>
-            <div class="slider">
-                <div class="cards cards-page4">
-                    <div class="card-title">
-                        <div class="dp2"></div>
-                        <span class="display-name">Abraham</span>
-                    </div>
-                    <span class="review-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla odit dolorem
-                        quia id. Autem laborum ipsa
-                    </span>
-                </div>
-                <div class="cards cards-page4">
-                    <div class="card-title">
-                        <div class="dp2"></div>
-                        <span class="display-name">Desmond</span>
-                    </div>
-                    <span class="review-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis qui saepe
-                        nisi expedita inventore facere quae dicta?
-                    </span>
-                </div>
-                <div class="cards cards-page4">
-                    <div class="card-title">
-                        <div class="dp2"></div>
-                        <span class="display-name">Alan Fresco</span>
-                    </div>
-                    <span class="review-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla odit dolorem
-                        quia id. Autem laborum ipsa
-                    </span>
-                </div>
-                <div class="cards cards-page4">
-                    <div class="card-title">
-                        <div class="dp2"></div>
-                        <span class="display-name">Hans Down</span>
-                    </div>
-                    <span class="review-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla odit dolorem
-                        quia id. Autem laborum ipsa
-                    </span>
-                </div>
-                <div class="cards cards-page4">
-                    <div class="card-title">
-                        <div class="dp2"></div>
-                        <span class="display-name">Indigo Violet</span>
-                    </div>
-                    <span class="review-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla odit dolorem
-                        quia id. Autem laborum ipsa
-                    </span>
-                </div>
-            </div>
+            <Marquee itemsArray={cardsP2} activeItemsCount={count}/>
             <img class="page2-bg" src={page2Bg}/>
         </div>
         {/* page 2 end */}
@@ -102,53 +162,7 @@ const page = () => {
                     dolorum suscipit perspiciatis architecto ipsum nobis tempora minus odit, voluptatum odio nam! Nihil
                     maiores pariatur hic error.</p>
             </div>
-            <div class="slider">
-                <div class="cards cards-page4">
-                    <div class="card-title">
-                        <div class="dp3"></div>
-                        <span class="display-name">Abraham</span>
-                    </div>
-                    <span class="review-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla odit dolorem
-                        quia id. Autem laborum ipsa
-                    </span>
-                </div>
-                <div class="cards cards-page4">
-                    <div class="card-title">
-                        <div class="dp3"></div>
-                        <span class="display-name">Desmond</span>
-                    </div>
-                    <span class="review-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis qui saepe
-                        nisi expedita inventore facere quae dicta?
-                    </span>
-                </div>
-                <div class="cards cards-page4">
-                    <div class="card-title">
-                        <div class="dp3"></div>
-                        <span class="display-name">Alan Fresco</span>
-                    </div>
-                    <span class="review-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla odit dolorem
-                        quia id. Autem laborum ipsa
-                    </span>
-                </div>
-                <div class="cards cards-page4">
-                    <div class="card-title">
-                        <div class="dp3"></div>
-                        <span class="display-name">Hans Down</span>
-                    </div>
-                    <span class="review-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla odit dolorem
-                        quia id. Autem laborum ipsa
-                    </span>
-                </div>
-                <div class="cards cards-page4">
-                    <div class="card-title">
-                        <div class="dp3"></div>
-                        <span class="display-name">Indigo Violet</span>
-                    </div>
-                    <span class="review-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla odit dolorem
-                        quia id. Autem laborum ipsa
-                    </span>
-                </div>
-            </div>
+            <Marquee itemsArray={cardsP2} activeItemsCount={count}/>
             <img class="page3-bg1" src={page3Bg1}/>
             <img class="page3-bg2" src={page3Bg2}/>
         </div>
@@ -339,4 +353,4 @@ const page = () => {
     );
 };
 
-export default page;
+export default Page;

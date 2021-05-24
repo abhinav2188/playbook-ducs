@@ -3,7 +3,6 @@ import './layout.scss'
 import {Link} from 'react-router-dom'
 import SignUpForm  from "./signUpForm"
 
-
 const Header = (props) =>{
 
     const [showForm , setShowForm ] = useState(false);
@@ -24,9 +23,10 @@ const Header = (props) =>{
                 </div>    
             </div>
         </header>
-            {
-                showForm ? <SignUpForm onClose={() => setShowForm(false)}/> : ""
-            }
+        <SignUpForm in={showForm} onClose={() => setShowForm(false)}/> 
+            {/* {
+                showForm ? <SignUpForm in={showForm} onClose={() => setShowForm(false)}/> : ""
+            } */}
         </>
     );
 }

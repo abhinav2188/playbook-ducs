@@ -1,12 +1,28 @@
 import React from 'react'
 import './signUpFrom.scss'
 import Backdrop from './Backdrop';
+import {useSpring,config, animated,useTransition} from 'react-spring'
 
 const Form = (props) => {
+    // const styles = useSpring({
+    //     from:{opacity:0,y:'0%',x:'-50%'}, 
+    //     to:{opacity: props.in ? 1 : 0 , y:'-50%',x:'-50%'}
+    // });
+    const transitions = useTransition(props.in, {
+        from: { opacity:0,y:'-100%',x:'-50%' },
+        enter: { opacity: 1, y:'-50%',x:'-50%' },
+        leave: { opacity:0,y:'0%',x:'-50%' },
+        // reverse: props.in,
+        delay: 200,
+        // config: config.molasses,
+        // onRest: () => set(!show),
+    })
     return (
         <>
-        <Backdrop onClose={props.onClose} />
-        <div className = "signup-container">
+        <Backdrop onClose={props.onClose} in={props.in}/>
+        {
+            transitions( (styles,item ) => item &&
+            <animated.div style={styles} className = "signup-container">
             <div className="signup-form">
                 <button className="close-button" onClick={props.onClose}>X</button>
                 <h2>Sign In</h2>
@@ -23,7 +39,10 @@ const Form = (props) => {
                 </form>
                 <h4 class="signText">Don't have an account? <a href="#" className="sign-up">Sign up</a></h4>
             </div>
-        </div>
+        </animated.div>
+            )
+
+        }
         </>
     );    
 }
