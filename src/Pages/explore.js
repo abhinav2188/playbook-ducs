@@ -136,12 +136,12 @@ const Page = () => {
           <div class="card" style={{ width: "18rem", height: "18rem" }}>
             <img
               class="card-img-top"
-              src="./../assets/Rectangle.svg"
+              src={cardImg1}
               alt="Card image cap"
               style={{ padding: "15px" }}
             />
             <img
-              src="./../assets/library.svg"
+              src={cardImg2}
               alt=""
               style={{ marginTop: "-11.2em", padding: "0 15px 0 15px" }}
             />
@@ -155,12 +155,12 @@ const Page = () => {
           <div class="card" style={{ width: "18rem", height: "18rem" }}>
             <img
               class="card-img-top"
-              src="./../assets/Rectangle2.svg"
+              src={cardImg3}
               alt="Card image cap"
               style={{ padding: "15px" }}
             />
             <img
-              src="./../assets/blue.svg"
+              src={cardImg4}
               alt=""
               style={{ marginTop: "-13.2em", padding: "0 15px 0 15px" }}
             />
@@ -174,12 +174,12 @@ const Page = () => {
           <div class="card" style={{ width: "18rem", height: "18rem" }}>
             <img
               class="card-img-top"
-              src="./../assets/Rectangle4.svg"
+              src={cardImg5}
               alt="Card image cap"
               style={{ padding: "15px" }}
             />
             <img
-              src="./../assets/flame.svg"
+              src={cardImg6}
               alt=""
               style={{
                 marginTop: "-14.5em",

@@ -61,7 +61,7 @@ p{
 
 
 @media (max-width:$tablet){
-  .base{
+  body{
     font-size: medium;
   }
   h1{
@@ -82,7 +82,7 @@ p{
 }
 
 @media (max-width:$mobile){
-  .base{
+  body{
     font-size: small;
   }
   h1{

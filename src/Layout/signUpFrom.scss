@@ -1,0 +1,58 @@
+@import './../base';
+
+.signup-container{
+    display: flex;
+    padding: 2rem 2rem;
+    position: absolute;
+    max-width: 320px;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    background-color: #fff;
+    border-radius: 1rem;
+    z-index: 3;
+    .signup-form{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        h2{
+            border-bottom: 1px $color-content-dark solid;
+        }
+        .close-button{
+            position: absolute;
+            align-self: flex-end;
+            padding:0.25rem;
+            border-radius: 0.25rem;
+            background-color: #eee;
+            border: 0;
+        }
+        form{
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            label{
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                margin: 0.5rem 0;
+            }
+            input{
+                padding: 0.5rem;
+                border-radius: 0.25rem;
+                background-color: #eee;
+                outline: none;
+                border: none;
+            }
+            input:focus{
+                outline: none;
+                box-shadow: 1px 1px 10px rgba(0,0,0,0.5);
+            }
+        }
+        .sign-up{
+            color: $color-orange;
+        }
+        .sign-up:hover{
+            text-shadow: 1px 1px 10px $color-orange;
+        }
+    }
+}
