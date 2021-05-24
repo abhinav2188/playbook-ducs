@@ -1,0 +1,205 @@
+@import url("https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap");
+
+@font-face {
+  font-family: "Lato-Regular";
+  src: url("./phases_of_college_life/fonts/Lato-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Lato-Bold";
+  src: url("./phases_of_college_life/fonts/Lato-Bold.ttf");
+}
+
+@font-face {
+  font-family: "Work-Sans-Semibold";
+  src: url("./phases_of_college_life/fonts/WorkSans-SemiBold.ttf");
+}
+
+:root {
+  --primary-font: Work-Sans-Semibold;
+  --secondary-font: Lato-Regular;
+  --tertiary-font: Lato-Bold;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html{
+    height: 100%;
+}
+
+.container{
+  background-color: #fff5e2;
+  height: max-content;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8rem;
+  padding: 2rem 5rem;
+}
+
+
+/* header nav bar */
+.nav-bar{
+  display: flex;
+  justify-content: space-between;
+  z-index: 1;
+}
+
+.logo{
+text-decoration: none;
+color: #1B1F3B;
+  font: 1.5rem 'Fredericka the Great', cursive;
+  text-indent: 15px;
+}
+
+.nav-links{
+  display: flex;
+  align-items: center;
+  gap: 3.5rem;
+}
+
+.nav-links a{
+text-decoration: none;
+color: #1B1F3B;
+font: 0.8rem var(--secondary-font);
+}
+
+.middle {
+  position: relative;
+}
+
+a.middle::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 1.5px;
+  bottom: -6px;
+  left: 0;
+  background-color: #FF6542;
+  visibility: hidden;
+  transform: scaleX(0);
+  transition: all 0.3s ease-in-out;
+}
+
+a.middle:hover:before {
+  visibility: visible;
+  transform: scaleX(1);
+}
+
+.nav-links button{
+cursor: pointer;
+padding: 0.5rem 1.7rem;
+color: white;
+font: 0.8rem var(--secondary-font);
+background-color: #FF6542;
+border: none;
+border-radius: 6px;
+transition: box-shadow 0.3s ease-out;
+}
+
+.nav-links button:hover{
+  box-shadow: 0 4px 8px #ffdfd8;
+}
+
+/* header nav bar end */
+
+/* main content start*/
+.main-content{
+  display: flex;
+  gap: 10rem;
+}
+
+.left-content{
+  display: flex;
+  flex-direction: column;
+  gap: 2.8rem;
+}
+
+.left-content span:nth-child(1){
+  font: 3rem var(--primary-font);
+  color: #1B1F3B;
+  line-height: 58px;
+}
+
+.left-content span:nth-child(2){
+  font: 1.1rem var(--secondary-font);
+  letter-spacing: 0.7px;
+  color: #1B1F3B;
+}
+
+.left-content img{
+  position: absolute;
+  left: -0.8rem;
+  bottom: 0;
+  width: 44rem;
+}
+
+.right-content{
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+}
+
+.contact-form{
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  background-color: white;
+  box-shadow: 0 4px 16px #bba98546;
+  width: 26rem;
+  padding: 3rem 3rem 2rem 3rem;
+}
+
+::placeholder{
+  font: 0.75rem var(--secondary-font);
+  color: #1b1f3b81;
+}
+
+.contact-form input, textarea{
+  border: 1.9px solid #3c4e9c57;
+  border-radius: 8px;
+  padding: 0.8rem 1.1rem;
+}
+
+.contact-form input:focus, textarea:focus{
+  outline: none;
+  background-color: #eaeeff;
+}
+
+.contact-form button{
+  cursor: pointer;
+  padding: 0.6rem;
+  width: 7rem;
+  margin: 0.5rem auto 0 auto;
+  border: none;
+  border-radius: 6px;
+  background-color: #3C4E9C;
+  color: white;
+  font: 0.8rem var(--tertiary-font);
+}
+
+.contact-form button:hover{
+  background-color: rgb(31, 45, 109)
+}
+
+.social-media-links{
+  display: flex;
+  flex-direction: column;
+  gap: 1.7rem;
+  align-items: center;
+}
+
+.social-media-links span{
+  font: 1.1rem var(--secondary-font);
+  color: #1B1F3B;
+}
+
+.social-media-links .icons{
+  display: flex;
+  gap: 1rem;
+}
+/* main content end */
