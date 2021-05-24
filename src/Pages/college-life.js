@@ -16,10 +16,10 @@ import cloudsPage6 from "../assets/clouds-page6.svg";
 
 const page = () => {
     return(
-        <>
+        <div id="clg-life">
         {/* page 1 start */}
         <div class="container-1">
-            <div class="nav-bar">
+            {/* <div class="nav-bar">
                 <a href="#" class="logo">DUCS<br/>Playbook</a>
                 <nav class="nav-links">
                     <a class="middle" href="#">Home</a>
@@ -27,7 +27,7 @@ const page = () => {
                     <a class="middle" href="../contact.html">Contact</a>
                     <button class="sign-in-button">Sign in</button>
                 </nav>
-            </div>
+            </div> */}
             <h2>Phases of <br/>College Life</h2>
             <img class="page1-bg" src={page1Bg}/>
         </div>
@@ -335,10 +335,7 @@ const page = () => {
         </div>
         {/* page 6 end */}
 
-        {/* footer */}
-        <footer>DUCS Playbook 2021</footer>
-        {/* footer */}
-        </>
+        </div>
     );
 };
 

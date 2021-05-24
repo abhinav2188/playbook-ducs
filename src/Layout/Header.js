@@ -17,7 +17,7 @@ const Header = (props) =>{
                     <Link to="/" className="nav-link">Home</Link>
                     <Link to="/explore" className="nav-link">Explore</Link>
                     <Link to="/contact" className="nav-link">Contact</Link>
-                    <Link to="/" className="nav-link sign-up"  onClick={(e)=>{
+                    <Link to="/" className="sign-up-button"  onClick={(e)=>{
                         e.preventDefault();
                         setShowForm(k => !k);
                     }}>Sign Up</Link>
