@@ -1,25 +1,40 @@
 import React from "react";
 import "./explore.scss";
-import {Helmet} from "react-helmet";
+import { Helmet } from "react-helmet";
 
-import space from "../assets/space-outline-illustration.svg"
-
+import space from "../assets/space-outline-illustration.svg";
+import cardImg1 from "../assets/Rectangle.svg";
+import cardImg2 from "../assets/library.svg";
+import cardImg3 from "../assets/Rectangle2.svg";
+import cardImg4 from "../assets/blue.svg";
+import cardImg5 from "../assets/Rectangle4.svg";
+import cardImg6 from "../assets/flame.svg";
 const Page = () => {
   return (
     <>
       <Helmet>
         {/* bootstrap */}
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-            crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-            crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-            crossorigin="anonymous"></script>
+        <link
+          rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+          integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+          crossorigin="anonymous"
+        ></script>
+        <script
+          src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+          integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+          crossorigin="anonymous"
+        ></script>
+        <script
+          src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+          integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+          crossorigin="anonymous"
+        ></script>
       </Helmet>
       <section class="explore">
         <img src={space} alt="" class="space" />
@@ -117,17 +132,17 @@ const Page = () => {
 
       <div class="row">
         <div class="column">
-          <div class="card" style={{width: '18rem',height: '18rem'}}>
+          <div class="card" style={{ width: "18rem", height: "18rem" }}>
             <img
               class="card-img-top"
               src="./../assets/Rectangle.svg"
               alt="Card image cap"
-              style={{padding: '15px'}}
+              style={{ padding: "15px" }}
             />
             <img
               src="./../assets/library.svg"
               alt=""
-              style={{marginTop: '-11.2em', padding: '0 15px 0 15px'}}
+              style={{ marginTop: "-11.2em", padding: "0 15px 0 15px" }}
             />
             <div class="card-body">
               <p class="card-text1">Study Material</p>
@@ -136,17 +151,17 @@ const Page = () => {
         </div>
 
         <div class="column">
-          <div class="card" style={{width: '18rem',height: '18rem'}}>
+          <div class="card" style={{ width: "18rem", height: "18rem" }}>
             <img
               class="card-img-top"
               src="./../assets/Rectangle2.svg"
               alt="Card image cap"
-              style={{padding: '15px'}}
+              style={{ padding: "15px" }}
             />
             <img
               src="./../assets/blue.svg"
               alt=""
-              style={{marginTop: '-13.2em', padding: '0 15px 0 15px'}}
+              style={{ marginTop: "-13.2em", padding: "0 15px 0 15px" }}
             />
             <div class="card-body">
               <p class="card-text2">Recreation</p>
@@ -155,17 +170,20 @@ const Page = () => {
         </div>
 
         <div class="column">
-        <div class="card" style={{width: '18rem',height: '18rem'}}>
+          <div class="card" style={{ width: "18rem", height: "18rem" }}>
             <img
               class="card-img-top"
               src="./../assets/Rectangle4.svg"
               alt="Card image cap"
-              style={{padding: '15px'}}
+              style={{ padding: "15px" }}
             />
             <img
               src="./../assets/flame.svg"
               alt=""
-              style={{marginTop: '-14.5em', padding: '0 15px 0 15px; width: 17em'}}
+              style={{
+                marginTop: "-14.5em",
+                padding: "0 15px 0 15px; width: 17em",
+              }}
             />
             <div class="card-body">
               <p class="card-text3">Productivity</p>
