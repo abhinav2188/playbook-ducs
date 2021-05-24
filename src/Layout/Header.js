@@ -7,7 +7,7 @@ const Header = (props) =>{
         <header>
             <div className="header-content">
                 <h3 id="logo">DUCS Playbook</h3>
-                <div>
+                <div className="nav-links">
                     <Link to="/" className="nav-link">Home</Link>
                     <Link to="/explore" className="nav-link">Explore</Link>
                     <Link to="/contact" className="nav-link">Contact</Link>

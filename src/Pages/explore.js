@@ -1,6 +1,8 @@
 import React from "react";
-// import "./explore.scss";
+import "./explore.scss";
 import {Helmet} from "react-helmet";
+
+import space from "../assets/space-outline-illustration.svg"
 
 const Page = () => {
   return (
@@ -20,8 +22,8 @@ const Page = () => {
             crossorigin="anonymous"></script>
       </Helmet>
       <section class="explore">
-        <img src="./../assets/illustration.svg" alt="" class="space" />
-        <div id="header">
+        <img src={space} alt="" class="space" />
+        {/* <div id="header">
           <h4>
             <span class="ducs">DUCS</span> <br />
             PlayBook
@@ -53,7 +55,7 @@ const Page = () => {
               </button>
             </li>
           </ul>
-        </div>
+        </div> */}
         {/* <!--MODAL FORM--> */}
         {/* <!-- Modal --> */}
         <div class="modal fade" id="myModal" role="dialog">

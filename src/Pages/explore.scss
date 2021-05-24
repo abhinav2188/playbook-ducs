@@ -1,0 +1,243 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,700,800");
+@import url("https://fonts.googleapis.com/css?family=Lobster");
+@import url("https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@100&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Work+Sans:wght@100;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Work+Sans:wght@100&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Work+Sans:wght@100&display=swap");
+
+/*Nav Link Animation*/
+
+.explore {
+  .middle {
+    position: relative;
+  }
+
+  .nav-links a:hover {
+    text-decoration: none;
+  }
+
+  a.middle::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1.2px;
+    bottom: -8px;
+    left: 0;
+    background-color: #000;
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: all 0.3s ease-in-out;
+  }
+
+  a.middle:hover:before {
+    visibility: visible;
+    transform: scaleX(1);
+  }
+  /*NAv Link Animation Ends*/
+  section {
+    position: relative;
+    margin-top: 100px;
+    width: 100%;
+    min-height: 100vh;
+    padding: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #efefef;
+    /* transition: 0.5s; */
+  }
+  #header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    font-family: "Lato", sans-serif;
+    padding: 20px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  #header h4 {
+    color: #fff;
+    margin-top: 10px;
+    text-indent: 15px;
+    font-family: "Fredericka the Great", cursive;
+  }
+
+  #header ul {
+    position: relative;
+    display: flex;
+  }
+  #header ul li {
+    list-style: none;
+  }
+  #header ul li a {
+    display: inline-block;
+    color: #291f1e;
+    margin-left: 60px;
+    font-size: 1em;
+    margin-top: 20px;
+    text-decoration: none;
+  }
+  #home {
+    color: #fff;
+  }
+  .btn-outline-primary {
+    margin-left: 40px;
+    position: relative;
+    margin-top: 12px;
+  }
+  .btn-outline-primary2 {
+    margin-left: 40px;
+    position: relative;
+    margin-top: 12px;
+    width: 10em;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .content {
+    position: absolute;
+    width: 377px;
+    height: 132px;
+    left: 848px;
+    top: 150px;
+    font-family: Work Sans;
+    font-style: normal;
+    font-weight: 600;
+
+    line-height: 66px;
+  }
+  .content .textBox {
+    position: relative;
+    max-width: 600px;
+    margin-bottom: 100px;
+    margin-top: 70px;
+    float: right;
+  }
+  .content .textBox h3 {
+    color: #fff;
+    font-size: 3.5em;
+    line-height: 1.2em;
+    color: #481f85;
+    font-family: "Work Sans", sans-serif;
+    font-weight: bolder;
+    margin-top: 50px;
+  }
+  .content .textBox p {
+    color: #291f1e;
+    margin-top: 30px;
+    width: 25em;
+    padding: 0 !important;
+    font-weight: 400;
+    line-height: 38px !important;
+    font-family: "Lato", sans-serif;
+  }
+  .content .textBox a {
+    display: inline-block;
+    padding: 10px 30px;
+    background: #fff;
+    color: #068cfa;
+    margin-top: 10px;
+    border-radius: 7px;
+    font-weight: 600;
+    font-size: 1em;
+    text-decoration: none;
+    font-family: "Lato", sans-serif;
+    margin-bottom: 50px;
+  }
+
+  .space {
+    position: relative;
+    width: 50%;
+    height: auto;
+    // left: -100px;
+    // top: -36px;
+  }
+
+  /* Styling Card*/
+  /* Float four columns side by side */
+  .column {
+    float: left;
+    width: 25%;
+    padding: 0 10px;
+    margin-left: 30px;
+  }
+
+  /* Remove extra left and right margins, due to padding */
+  .row {
+    margin: 0 -5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  @media screen and (max-width: 600px) {
+    .column {
+      width: 100%;
+      display: block;
+      margin-bottom: 20px;
+    }
+  }
+
+  .card-text1 {
+    color: #da4d86;
+    text-align: center;
+    margin: auto;
+    padding: 10px;
+    margin-top: 5px;
+    font-size: larger;
+  }
+  .card-text2 {
+    text-align: center;
+    color: #0567dc;
+    font-size: larger;
+  }
+  .card-text3 {
+    text-align: center;
+    color: #0094be;
+    font-size: larger;
+    margin-top: -25px;
+  }
+
+  /* Modal Styling*/
+  .modal-content {
+    height: 25em;
+  }
+  .modal-title,
+  .modal-body p {
+    color: black;
+  }
+  .modal-title {
+    font-weight: 700;
+    font-size: x-large;
+  }
+  #email {
+    margin-top: 35px;
+    width: 70%;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: #f3f3ff;
+  }
+  #password {
+    margin-top: 28px;
+    width: 70%;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: #f3f3ff;
+  }
+  .signText {
+    margin-top: 30px;
+  }
+}

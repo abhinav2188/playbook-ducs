@@ -38,14 +38,41 @@
             justify-items: center;
             align-items: center;
             justify-content: space-between;
+            .nav-links{
+                display: flex;
+                justify-items: flex-end;
+                align-items: center;    
+            }
             .nav-link{
                 color: $color-content-light;
-                padding: 0.5rem 1.5rem;
-                margin: 0rem 0.5rem;
+                padding: 0.5rem 1rem;
+                margin: 0rem 1rem;
+                position: relative;
+            }
+            .nav-link::before{
+                content: "";
+                position: absolute;
+                width: 100%;
+                height: 1px;
+                left: 0;
+                background-color: $color-content-light;
+                visibility: hidden;
+                transform: scaleX(0) translateY(-0.5rem);
+                transition: all 0.3s ease-in-out;
+                transform-origin: 0%;
+            }
+            .nav-link:hover:before {
+                visibility: visible;
+                transform: scaleX(1) translateY(-0.5rem);
             }
             .sign-up{
                 border:$color-content-light 0.05rem solid;
                 border-radius: 0.25rem;
+                transition: all 0.3s ease-in-out;
+            }
+            .sign-up:hover{
+                color: $color-blue;
+                background-color: $color-content-light;
             }    
         }
     }
@@ -59,7 +86,35 @@
         
 }
 
+/*Nav Link Animation*/
+// .middle {
+//     position: relative;
+//   }
+  
+//   .nav-links a:hover {
+//     text-decoration: none;
+//   }
+  
+//   a.middle::before {
+//     content: "";
+//     position: absolute;
+//     width: 100%;
+//     height: 1.2px;
+//     bottom: -8px;
+//     left: 0;
+//     background-color: #000;
+//     visibility: hidden;
+//     transform: scaleX(0);
+//     transition: all 0.3s ease-in-out;
+//   }
+  
+//   a.middle:hover:before {
+//     visibility: visible;
+//     transform: scaleX(1);
+//   }
+  /*NAv Link Animation Ends*/
 
+  
 
 
 @media (min-width:768px) and (max-width:$tablet) {
