@@ -2,13 +2,14 @@ import React from "react";
 import "./explore.scss";
 import { Helmet } from "react-helmet";
 
-import space from "../assets/space-outline-illustration.svg";
+import space from "../assets/illustration.svg";
 import cardImg1 from "../assets/Rectangle.svg";
 import cardImg2 from "../assets/library.svg";
 import cardImg3 from "../assets/Rectangle2.svg";
 import cardImg4 from "../assets/blue.svg";
 import cardImg5 from "../assets/Rectangle4.svg";
 import cardImg6 from "../assets/flame.svg";
+
 const Page = () => {
   return (
     <>

@@ -2,8 +2,8 @@ import React from 'react'
 
 const form = () => {
     return (
-        <div>
-            <p>Sign Up form</p>
+        <div className="sign-up-container">
+
         </div>
     );    
 }
