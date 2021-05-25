@@ -3,7 +3,6 @@
 
 #hero-section{
     @extend %trans;
-    height: calc(100vh - 100px);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -23,7 +22,6 @@
     }
     .hero-img{
         width: 50%;
-        margin-bottom: 6rem;
     }
 }
 
@@ -67,7 +65,7 @@
     #hero-section{
         margin-bottom : 3rem;
         padding-top: 4rem;
-        height: calc(100vh - 200px);
+        height: calc(100vh - 100px);
         .hero-content{
             width: 80%;
         }

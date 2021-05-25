@@ -7,7 +7,7 @@ const Card = (props) => {
         <div className='card-container'>
             <div className="card">
                 <div>
-                    <div className="card-svg" style={{backgroundColor:props.color}}>{props.imageSvg}</div>
+                    <div className="card-svg" style={{backgroundColor:props.color}}> {props.imageSvg} </div>
                     <h2 class="card-title">{props.title}</h2>
                 </div>
                 <p>{props.excerpt}</p>
