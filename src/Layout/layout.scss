@@ -11,9 +11,12 @@
   flex-direction: column;
   font-family: $font-content;
   font-size: medium;
+  min-height: 100vh;
   .main {
     width: 100%;
     flex-grow: 1;
+    display: flex;
+    justify-content: center;
   }
   footer {
     width: 100%;
@@ -31,6 +34,7 @@
     width: 100%;
     overflow-x: hidden;
     height: 100px;
+    z-index:2;
     .header-content {
       width: 80%;
       color: $color-orange;
