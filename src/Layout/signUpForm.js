@@ -12,7 +12,6 @@ const Form = (props) => {
         from: { opacity:0,y:'-100%',x:'-50%' },
         enter: { opacity: 1, y:'-50%',x:'-50%' },
         leave: { opacity:0,y:'0%',x:'-50%' },
-        // reverse: props.in,
         delay: 200,
         // config: config.molasses,
         // onRest: () => set(!show),

@@ -1,169 +1,79 @@
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,700,800");
-@import url("https://fonts.googleapis.com/css?family=Lobster");
-@import url("https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@100&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Work+Sans:wght@100;500&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Work+Sans:wght@100&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Work+Sans:wght@100&display=swap");
+@import "../base";
 
-/*Nav Link Animation*/
-
-.space {
+.explore-bg {
   position: absolute;
-  width: 70%;
   top: 0;
   left: 0;
   z-index: -1;
-  // left: -100px;
-  // top: -36px;
+  max-height: 100vh;
+  max-width: 70%;
 }
 
-.explore {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  .content {
-    align-self: flex-end;
-    width: 50%;
-    height: auto;
-    font-family: Work Sans;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 66px;
-    .textBox {
-      position: relative;
-      max-width: 600px;
-      margin-bottom: 100px;
-      margin-top: 70px;
-      float: right;
-    }
-  }
-  .content .textBox h3 {
-    color: #fff;
-    font-size: 3.5em;
-    line-height: 1.2em;
-    color: #481f85;
-    font-family: "Work Sans", sans-serif;
-    font-weight: bolder;
-    margin-top: 50px;
-  }
-  .content .textBox p {
-    color: #291f1e;
-    margin-top: 30px;
-    width: 25em;
-    padding: 0 !important;
-    font-weight: 400;
-    line-height: 38px !important;
-    font-family: "Lato", sans-serif;
-  }
-  .content .textBox a {
-    display: inline-block;
-    padding: 10px 30px;
-    background: #fff;
-    color: #068cfa;
-    margin-top: 10px;
-    border-radius: 7px;
-    font-weight: 600;
-    font-size: 1em;
-    text-decoration: none;
-    font-family: "Lato", sans-serif;
-    margin-bottom: 50px;
-  }
-
-  /* Styling Card*/
-  /* Float four columns side by side */
-  /* Float four columns side by side */
-  .column {
-    width: 25%;
-    padding: 10px 20px 25px 20px;
-  }
-
-  /* Remove extra left and right margins, due to padding */
-  .row {
-    width: 100%;
+#explore{
     display: flex;
+    padding: 8rem 0;
     justify-content: center;
-    gap: 3rem;
-    margin-bottom: 5rem;
-  }
-
-  /* Clear floats after the columns */
-  .row:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-
-  /* Responsive columns */
-  @media screen and (max-width: 600px) {
-    .column {
-      width: 100%;
-      display: block;
-      margin-bottom: 20px;
+    .explore-content{
+        width: 100%;
+        display: flex;
+        gap:10rem;
+        flex-direction: column;
+        .top{
+            width:60%;
+            align-self: flex-end;
+        }
+        .explore-cards{
+            display: flex;
+            gap:4rem;
+            align-self: center;
+        }
     }
-  }
+}
 
-  /* Style the counter cards */
-  .row {
-    .column #card1 {
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-      padding: 16px;
-      text-align: center;
-      background-color: #f1f1f1;
+.explore-card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 16rem;
+    height: 16rem;
+    border-radius: 1rem;
+    box-shadow: 1px 1px 10px rgba(0,0,0,0.1);
+    padding: 1rem;
+    transition: transform 0.2s ease-out;
+    .card-img{
+        width: 100%;
+        height: 80%;
+        img{
+            width: 100%;
+            height: 100%;
+        }
     }
-  }
+    .card-title{
+        text-transform: uppercase;
+    }
+}
 
-  //   .card-text1 {
-  //     color: #da4d86;
-  //     text-align: center;
-  //     margin: auto;
-  //     padding: 10px;
-  //     margin-top: 5px;
-  //     font-size: larger;
-  //   }
-  //   .card-text2 {
-  //     text-align: center;
-  //     color: #0567dc;
-  //     font-size: larger;
-  //   }
-  //   .card-text3 {
-  //     text-align: center;
-  //     color: #0094be;
-  //     font-size: larger;
-  //     margin-top: -25px;
-  //   }
+.explore-card:hover{
+    transform: scale(1.1);
+}
 
-  //   /* Modal Styling*/
-  //   .modal-content {
-  //     height: 25em;
-  //   }
-  //   .modal-title,
-  //   .modal-body p {
-  //     color: black;
-  //   }
-  //   .modal-title {
-  //     font-weight: 700;
-  //     font-size: x-large;
-  //   }
-  //   #email {
-  //     margin-top: 35px;
-  //     width: 70%;
-  //     display: block;
-  //     margin-right: auto;
-  //     margin-left: auto;
-  //     background-color: #f3f3ff;
-  //   }
-  //   #password {
-  //     margin-top: 28px;
-  //     width: 70%;
-  //     display: block;
-  //     margin-right: auto;
-  //     margin-left: auto;
-  //     background-color: #f3f3ff;
-  //   }
-  //   .signText {
-  //     margin-top: 30px;
-  //   }
-  // }
+@media screen and (max-width : $tablet) {
+    #explore{
+        .explore-content{
+            gap:6rem;
+            .top{
+                text-align: center;
+                width:100%;
+            }
+            .explore-cards{
+                width:80%;
+                flex-direction: column;
+                gap:2rem;
+            }
+        }
+    }
+    .explore-card{
+        width: 100%;
+        height: 10rem;
+    }    
 }
