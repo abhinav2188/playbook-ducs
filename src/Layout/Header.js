@@ -24,13 +24,11 @@ const Header = (props) =>{
                     <Link to="/" className="nav-link">Home</Link>
                     <Link to="/explore" className="nav-link">Explore</Link>
                     <Link to="/contact" className="nav-link">Contact</Link>
-
-    
-                        <Link to="/" className="sign-up-button"  onClick={(e)=>{
-                            e.preventDefault();
-                            //setShowForm(k => !k);
-                            signInWithGoogle();
-                        }}>Sign Up</Link> 
+                    <Link to="/" className="sign-up-button"  onClick={(e)=>{
+                        e.preventDefault();
+                        //setShowForm(k => !k);
+                        signInWithGoogle();
+                    }}>Sign Up</Link> 
                 </div>    
             </div>
         </header>
