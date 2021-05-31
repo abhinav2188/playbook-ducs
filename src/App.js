@@ -9,6 +9,7 @@ import Explore from './Pages/explore'
 import CollegeLife from './Pages/college-life'
 import Contact from './Pages/contact'
 import Test from "./Pages/test"
+import Notes from "./Pages/notes"
 
 const App = () => {
 
@@ -20,6 +21,7 @@ const App = () => {
         <Route path='/explore' component={Explore} />
         <Route path='/contact' component={Contact} />
         <Route path='/test' component={Test} />
+        <Route path='/notes' component={Notes} />
         <Route path='/' component={Home} />
         </Switch>
       </Layout>
