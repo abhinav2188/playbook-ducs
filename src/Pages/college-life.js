@@ -135,13 +135,13 @@ const Page = () => {
                 </nav>
             </div> */}
             <h2>Phases of <br/>College Life</h2>
-            <img class="page1-bg" src={page1Bg}/>
+            <img class="page1-bg" src={page1Bg} alt="bg1"/>
         </div>
         {/* page 1 end */}
 
         {/* page 2 start */}
         <div class="container-2">
-            <img src={cloudsPage2} />
+            <img src={cloudsPage2} alt="clouds"/>
             <div class="main-content">
                 <h3>Baby Steps</h3>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque distinctio temporibus quo incidunt
@@ -149,13 +149,13 @@ const Page = () => {
                     maiores pariatur hic error.</p>
             </div>
             <Marquee itemsArray={cardsP2} activeItemsCount={count}/>
-            <img class="page2-bg" src={page2Bg}/>
+            <img class="page2-bg" src={page2Bg} alt="bg2"/>
         </div>
         {/* page 2 end */}
 
         {/* page 3 start */}
         <div class="container-3">
-            <img src={cloudsPage3}/>
+            <img src={cloudsPage3} alt="clouds"/>
             <div class="main-content">
                 <h3>Exploring</h3>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque distinctio temporibus quo incidunt
@@ -163,8 +163,8 @@ const Page = () => {
                     maiores pariatur hic error.</p>
             </div>
             <Marquee itemsArray={cardsP2} activeItemsCount={count}/>
-            <img class="page3-bg1" src={page3Bg1}/>
-            <img class="page3-bg2" src={page3Bg2}/>
+            <img class="page3-bg1" src={page3Bg1} alt="bg3"/>
+            <img class="page3-bg2" src={page3Bg2} alt="bg3"/>
         </div>
         {/* page 3 end */}
 
@@ -230,7 +230,7 @@ const Page = () => {
 
         {/* page 5 start */}
         <div class="container-5">
-            <img src={cloudsPage5}/>
+            <img src={cloudsPage5} alt="clouds"/>
             <div class="main-content">
                 <h3>Graduation</h3>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque distinctio temporibus quo incidunt
@@ -284,13 +284,13 @@ const Page = () => {
                     </span>
                 </div>
             </div>
-            <img class="graduation-img" src={page5Bg}/>
+            <img class="graduation-img" src={page5Bg} alt="bg5"/>
         </div>
         {/* page 5 end */}
 
         {/* page 6 start */}
         <div class="container-6">
-            <img src={cloudsPage6} />
+            <img src={cloudsPage6} alt="clouds"/>
             <div class="main-content">
                 <h3>Nostalgia</h3>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque distinctio temporibus quo incidunt
@@ -345,7 +345,7 @@ const Page = () => {
                     </span>
                 </div>
             </div>
-            <img class="polaroid" src={page6Bg}/>
+            <img class="polaroid" src={page6Bg} alt="bg6"/>
         </div>
         {/* page 6 end */}
 

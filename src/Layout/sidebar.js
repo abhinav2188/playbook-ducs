@@ -5,7 +5,7 @@ import { IoMdClose } from "react-icons/io";
 import "./sidebar.scss";
 import { IconContext } from "react-icons";
 
-function sidebar() {
+function Sidebar() {
   const [sidebar, setSidebar] = useState(false);
 
   const showSidebar = () => setSidebar(!sidebar);
@@ -34,4 +34,4 @@ function sidebar() {
   );
 }
 
-export default sidebar;
+export default Sidebar;
