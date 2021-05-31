@@ -10,10 +10,8 @@ import { signInWithGoogle } from '../services/firebase';
 const Header = (props) =>{
 
     const [showForm , setShowForm ] = useState(false);
-
-
     const user = useContext(UserContext);
-
+    const [showSideBar, setShowSideBar] = useState(false);
 
     return (
         <>
@@ -24,13 +22,10 @@ const Header = (props) =>{
                     <Link to="/" className="nav-link">Home</Link>
                     <Link to="/explore" className="nav-link">Explore</Link>
                     <Link to="/contact" className="nav-link">Contact</Link>
-
-    
-                        <Link to="/" className="sign-up-button"  onClick={(e)=>{
-                            e.preventDefault();
-                            //setShowForm(k => !k);
+                    <button className="sign-up-button"  onClick={()=>{
+                            // setShowForm(true);
                             signInWithGoogle();
-                        }}>Sign Up</Link> 
+                    }}>Sign Up</button>                   
                 </div>    
             </div>
         </header>
