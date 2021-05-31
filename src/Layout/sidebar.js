@@ -18,17 +18,17 @@ function sidebar() {
           </Link>
         </div>
         <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
-          <Link to="#" className="menu navbar-toggle">
+          <Link to="#" className="menu">
             <IoMdClose />
           </Link>
+          <Link to="/" className="nav-link">Home</Link>
+          <Link to="/explore" className="nav-link">Explore</Link>
+          <Link to="/contact" className="nav-link">Contact</Link>
+          <Link to="/" className="nav-link">Notes</Link>
+          <Link to="/" className="sign-up-btn">
+            Sign up
+          </Link>
         </nav>
-        <Link to="/">Home</Link>
-        <Link to="/explore">Explore</Link>
-        <Link to="/contact">Contact</Link>
-        <Link to="/">Notes</Link>
-        <Link to="/" className="sign-up-btn">
-          Sign up
-        </Link>
       </IconContext.Provider>
     </>
   );
