@@ -10,8 +10,15 @@ import { signInWithGoogle } from '../services/firebase';
 const Header = (props) =>{
 
     const [showForm , setShowForm ] = useState(false);
-    const user = useContext(UserContext);
     const [showSideBar, setShowSideBar] = useState(false);
+    
+    const user = useContext(UserContext);
+    const [authState,setAuthState] = useState(user?true:false);
+
+   useEffect( ()=>{
+        setAuthState(user ? true:false);
+   },[user])
+
 
     return (
         <>
@@ -22,15 +29,31 @@ const Header = (props) =>{
                     <Link to="/" className="nav-link">Home</Link>
                     <Link to="/explore" className="nav-link">Explore</Link>
                     <Link to="/contact" className="nav-link">Contact</Link>
-                    <Link to="/" className="sign-up-button"  onClick={(e)=>{
+                    {
+                        authState ?
+                        <div>
+                            <span>{user?.displayName}</span>
+                        <Link to="/" className="logout-button"  onClick={(e)=>{
                         e.preventDefault();
-                        //setShowForm(k => !k);
-                        signInWithGoogle();
-                    }}>Sign Up</Link> 
-                    <button className="sign-up-button"  onClick={()=>{
-                            // setShowForm(true);
+                            logOut();
+                            setAuthState(false);
+                         }}>Logout</Link> 
+
+
+                         </div>
+
+                         :
+
+                         <Link to="/" className="sign-up-button"  onClick={(e)=>{
+                            e.preventDefault();
+                            //setShowForm(k => !k);
                             signInWithGoogle();
-                    }}>Sign Up</button>                   
+                        }}>Sign Up</Link> 
+
+                    }
+
+                  
+                              
                 </div>    
             </div>
         </header>
