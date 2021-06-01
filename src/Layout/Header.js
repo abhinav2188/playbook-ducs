@@ -9,8 +9,8 @@ import { signInWithGoogle } from '../services/firebase';
 
 const Header = (props) =>{
 
-    // const [showForm , setShowForm ] = useState(false);
-    // const [showSideBar, setShowSideBar] = useState(false);
+    const [showForm , setShowForm ] = useState(false);
+    const [showSideBar, setShowSideBar] = useState(false);
     
     const user = useContext(UserContext);
     const [authState,setAuthState] = useState(user?true:false);
@@ -19,10 +19,6 @@ const Header = (props) =>{
         setAuthState(user ? true:false);
    },[user])
 
-   function handleLogout(){
-       logOut();
-       setAuthState(false);
-   }
 
     return (
         <>
@@ -33,17 +29,31 @@ const Header = (props) =>{
                     <Link to="/" className="nav-link">Home</Link>
                     <Link to="/explore" className="nav-link">Explore</Link>
                     <Link to="/contact" className="nav-link">Contact</Link>
+                    {
+                        authState ?
+                        <div>
+                            <span>{user?.displayName}</span>
+                        <Link to="/" className="logout-button"  onClick={(e)=>{
+                        e.preventDefault();
+                            logOut();
+                            setAuthState(false);
+                         }}>Logout</Link> 
 
-                   { authState ?
-                    <div>
-                        <span>{user?.displayName}</span>
-                        <button className="logout-button"  onClick={handleLogout}>LogOut</button>
-                    </div>
-                    :
-                    <button className="sign-up-button"  onClick={()=>{
-                            // setShowForm(true);
+
+                         </div>
+
+                         :
+
+                         <Link to="/" className="sign-up-button"  onClick={(e)=>{
+                            e.preventDefault();
+                            //setShowForm(k => !k);
                             signInWithGoogle();
-                    }}>Sign Up</button>  }                 
+                        }}>Sign Up</Link> 
+
+                    }
+
+                  
+                              
                 </div>    
             </div>
         </header>
