@@ -9,9 +9,20 @@ import { signInWithGoogle } from '../services/firebase';
 
 const Header = (props) =>{
 
-    const [showForm , setShowForm ] = useState(false);
+    // const [showForm , setShowForm ] = useState(false);
+    // const [showSideBar, setShowSideBar] = useState(false);
+    
     const user = useContext(UserContext);
-    const [showSideBar, setShowSideBar] = useState(false);
+    const [authState,setAuthState] = useState(user?true:false);
+
+   useEffect( ()=>{
+        setAuthState(user ? true:false);
+   },[user])
+
+   function handleLogout(){
+       logOut();
+       setAuthState(false);
+   }
 
     return (
         <>
@@ -22,10 +33,17 @@ const Header = (props) =>{
                     <Link to="/" className="nav-link">Home</Link>
                     <Link to="/explore" className="nav-link">Explore</Link>
                     <Link to="/contact" className="nav-link">Contact</Link>
+
+                   { authState ?
+                    <div>
+                        <span>{user?.displayName}</span>
+                        <button className="logout-button"  onClick={handleLogout}>LogOut</button>
+                    </div>
+                    :
                     <button className="sign-up-button"  onClick={()=>{
                             // setShowForm(true);
                             signInWithGoogle();
-                    }}>Sign Up</button>                   
+                    }}>Sign Up</button>  }                 
                 </div>    
             </div>
         </header>

@@ -9,21 +9,25 @@ import Explore from './Pages/explore'
 import CollegeLife from './Pages/college-life'
 import Contact from './Pages/contact'
 import Test from "./Pages/test"
+import UserProvider from './providers/UserProvider'
 
 const App = () => {
 
   return (
     <BrowserRouter>
-      <Layout>
-        <Switch>
-        <Route path='/phases-of-college-life' component={CollegeLife} />
-        <Route path='/explore' component={Explore} />
-        <Route path='/contact' component={Contact} />
-        <Route path='/test' component={Test} />
-        <Route path='/' component={Home} />
-        </Switch>
-      </Layout>
+      <UserProvider>
+        <Layout>
+          <Switch>
+          <Route path='/phases-of-college-life' component={CollegeLife} />
+          <Route path='/explore' component={Explore} />
+          <Route path='/contact' component={Contact} />
+          <Route path='/test' component={Test} />
+          <Route path='/' component={Home} />
+          </Switch>
+        </Layout>
+      </UserProvider>
     </BrowserRouter>
+    
   );
 }
 
