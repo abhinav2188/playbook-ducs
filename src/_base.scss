@@ -29,6 +29,9 @@ a{
   color: $color-content-dark;
   text-decoration: none;
 }
+p{
+  margin: 0;
+}
 h1{
   font-size: 4rem;
   margin:0.5rem 0rem;
@@ -40,9 +43,6 @@ h2{
 h3{
   font-size: 1.5rem;
   margin:1rem 0rem;
-}
-p{
-  margin:0.5rem 0rem;
 }
 
 .action-button{
