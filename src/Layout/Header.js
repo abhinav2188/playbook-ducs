@@ -1,6 +1,6 @@
 import React,{useState, useEffect, useContext} from 'react'
 import './layout.scss'
-import {Link} from 'react-router-dom'
+import {Link,NavLink} from 'react-router-dom'
 import SignUpForm  from "./signUpForm"
 import { UserContext } from "../providers/UserProvider";
 import { logOut } from "../services/firebase";
@@ -10,7 +10,7 @@ import {menuIcon} from "../svgs/navBarIcons"
 
 const Header = (props) =>{
 
-    const [showForm , setShowForm ] = useState(false);
+    // const [showForm , setShowForm ] = useState(false);
     const [showSideBar, setShowSideBar] = useState(false);
     
     const user = useContext(UserContext);
@@ -20,10 +20,16 @@ const Header = (props) =>{
         setAuthState(user ? true:false);
    },[user])
 
+   const active = {
+       borderBottom : '1px black solid',
+       color:'#0f0'
+   }
    const staticLinks = [
-    <Link to="/" className="nav-link">Home</Link>,
-    <Link to="/explore" className="nav-link">Explore</Link>,
-    <Link to="/contact" className="nav-link">Contact</Link>
+    <NavLink exact to="/" className="nav-link" activeClassName="nav-link-active">Home</NavLink>,
+    <NavLink exact to="/notes" className="nav-link" activeClassName="nav-link-active">Study-Material</NavLink>,
+    <NavLink exact to="/college-life" className="nav-link" activeClassName="nav-link-active">College-Life</NavLink>,
+    <NavLink exact to="/explore" className="nav-link" activeClassName="nav-link-active">Explore</NavLink>,
+    <NavLink exact to="/contact" className="nav-link" activeClassName="nav-link-active">Contact</NavLink>,
     ];
 
     const signUpLogout = authState?
@@ -44,7 +50,9 @@ const Header = (props) =>{
         <>
         <header>
             <div className="header-content">
-                <h3 id="logo">DUCS Playbook</h3>
+                <Link to="/">
+                    <h3 id="logo">DUCS<br/>Playbook</h3>
+                </Link>
                 <div className="nav-links">
                     {[
                         ...staticLinks,
@@ -62,7 +70,7 @@ const Header = (props) =>{
                 ]}
             </div> 
         </SideBar>
-            </>
+        </>
     );
 }
 

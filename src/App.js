@@ -19,7 +19,7 @@ const App = () => {
     <UserProvider>
       <Layout>
         <Switch>
-        <Route path='/phases-of-college-life' component={CollegeLife} />
+        <Route path='/college-life' component={CollegeLife} />
         <Route path='/explore' component={Explore} />
         <Route path='/contact' component={Contact} />
         <Route path='/test' component={Test} />
