@@ -18,7 +18,6 @@ const Backdrop = (props) => {
         from: { opacity:0 },
         enter: { opacity: 1 },
         leave: { opacity:0 },
-        delay: 200,
     })
 
     return transitions( (style,item) => item &&

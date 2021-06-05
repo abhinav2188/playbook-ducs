@@ -3,10 +3,10 @@ import './layout.scss'
 import {Link} from 'react-router-dom'
 import SignUpForm  from "./signUpForm"
 import { UserContext } from "../providers/UserProvider";
-import { Redirect } from "react-router-dom";
 import { logOut } from "../services/firebase";
 import { signInWithGoogle } from '../services/firebase';
-
+import SideBar from "./sideNavBar";
+import {menuIcon} from "../svgs/navBarIcons"
 
 const Header = (props) =>{
 
@@ -36,7 +36,9 @@ const Header = (props) =>{
     </div>:
     <button className="sign-up-button"  onClick={()=>{
         signInWithGoogle();
+        // setShowForm(s=>!s);
     }}>Sign Up</button>;
+
 
     return (
         <>
@@ -48,15 +50,19 @@ const Header = (props) =>{
                         ...staticLinks,
                         signUpLogout
                     ]}
-                </div>    
+                </div> 
+                <button onClick={()=> setShowSideBar(s=>!s)} className="menu-button">{menuIcon}</button>
             </div>
         </header>
-
-        {/*<SignUpForm in={showForm} onClose={() => setShowForm(false)}/> */}
-            {/* {
-                showForm ? <SignUpForm in={showForm} onClose={() => setShowForm(false)}/> : ""
-            } */}
-        </>
+        {/* <SignUpForm in={showForm} onClose={() => setShowForm(false)}/> */}
+        <SideBar show={showSideBar} close={()=>setShowSideBar(false)} className="sidebar">
+            <div className="nav-links">
+                {[
+                    ...staticLinks,
+                ]}
+            </div> 
+        </SideBar>
+            </>
     );
 }
 
