@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "./college-life.scss";
-import { Helmet } from "react-helmet";
 import page1Bg from "../assets/college-life-page1-bg.svg";
 import page2Bg from "../assets/space-outline-illustration.svg";
 import page3Bg1 from "../assets/explorePlant.svg";
@@ -13,6 +12,8 @@ import cloudsPage3 from "../assets/orangeCloud.svg";
 import cloudsPage4 from "../assets/clouds-page4.svg";
 import cloudsPage5 from "../assets/clouds-page5.svg";
 import cloudsPage6 from "../assets/clouds-page6.svg";
+import { Helmet } from "react-helmet";
+import "./fullpage.min.css";
 
 import Marquee from "./../UI/marquee2";
 
@@ -133,10 +134,7 @@ const Page = () => {
   return (
     <div id="clg-life">
       {/* page 1 start */}
-      <Helmet>
-        <script src="../src/Pages/resource.js" type="text/javascript" />
-      </Helmet>
-      ;
+
       <div class="container-1 vertical-scrolling">
         {/* <div class="nav-bar">
                 <a href="#" class="logo">DUCS<br/>Playbook</a>
@@ -396,6 +394,7 @@ const Page = () => {
         <img class="polaroid" src={page6Bg} alt="bg6" />
         <Marquee itemsArray={cardsP2} activeItemsCount={count} />
       </div>
+
       {/* page 6 end */}
     </div>
   );

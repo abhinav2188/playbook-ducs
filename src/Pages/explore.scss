@@ -9,71 +9,74 @@
   max-width: 70%;
 }
 
-#explore{
+#explore {
+  display: flex;
+  padding: 8rem 0;
+  justify-content: center;
+  .explore-content {
+    width: 100%;
     display: flex;
-    padding: 8rem 0;
-    justify-content: center;
-    .explore-content{
-        width: 100%;
-        display: flex;
-        gap:10rem;
-        flex-direction: column;
-        .top{
-            width:60%;
-            align-self: flex-end;
-        }
-        .explore-cards{
-            display: flex;
-            gap:4rem;
-            align-self: center;
-        }
-    }
-}
-
-.explore-card{
-    display: flex;
+    gap: 10rem;
     flex-direction: column;
-    align-items: center;
-    width: 16rem;
-    height: 16rem;
-    border-radius: 1rem;
-    box-shadow: 1px 1px 10px rgba(0,0,0,0.1);
-    padding: 1rem;
-    transition: transform 0.2s ease-out;
-    .card-img{
-        width: 100%;
-        height: 80%;
-        img{
-            width: 100%;
-            height: 100%;
-        }
+    .top {
+      width: 60%;
+      align-self: flex-end;
     }
-    .card-title{
-        text-transform: uppercase;
+    .explore-cards {
+      display: flex;
+      gap: 4rem;
+      align-self: center;
     }
+  }
 }
 
-.explore-card:hover{
-    transform: scale(1.1);
+.explore-card {
+  display: inline-block;
+  max-width: 208.333px;
+  min-width: 208.333px;
+  background: linear-gradient(45deg, #2fb8ff, #95e8dc);
+  max-height: 250px;
+  border-radius: 10px;
+  transition: transform 0.2s ease-out;
+  .card-img {
+    width: 100%;
+    height: 80%;
+    img {
+      width: 90%;
+      height: 85%;
+      margin: 10px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+  }
+  .card-title {
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+  }
 }
 
-@media screen and (max-width : $tablet) {
-    #explore{
-        .explore-content{
-            gap:6rem;
-            .top{
-                text-align: center;
-                width:100%;
-            }
-            .explore-cards{
-                width:80%;
-                flex-direction: column;
-                gap:2rem;
-            }
-        }
-    }
-    .explore-card{
+.explore-card:hover {
+  transform: scale(1.1);
+}
+
+@media screen and (max-width: $tablet) {
+  #explore {
+    .explore-content {
+      gap: 6rem;
+      .top {
+        text-align: center;
         width: 100%;
-        height: 10rem;
-    }    
+      }
+      .explore-cards {
+        width: 80%;
+        flex-direction: column;
+        gap: 2rem;
+      }
+    }
+  }
+  .explore-card {
+    width: 100%;
+    height: 10rem;
+  }
 }
