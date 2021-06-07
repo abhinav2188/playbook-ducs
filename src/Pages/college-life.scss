@@ -132,9 +132,12 @@ html {
   .container-6 {
     position: relative;
     display: flex;
+    width: 100vw;
+    justify-content: center;
     flex-direction: column;
     gap: 7rem;
-    padding: 7rem 5rem;
+
+    padding: 7rem;
     background-color: #e7e8ff;
     color: #1b1f3b;
   }
@@ -311,8 +314,6 @@ html {
     letter-spacing: 0.3px;
   }
 
-  
-
   /* media queries */
 
   @media (min-width: 1440px) {
@@ -397,6 +398,17 @@ html {
       overflow-x: scroll;
     }
   }
+}
+
+//Slider CSS
+/* SLIDENAV STYLES - fullPage.js 
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+#clg-life {
+  scroll-snap-type: y mandatory;
+}
+.vertical-scrolling {
+  scroll-snap-align: start;
 }
 
 /*
