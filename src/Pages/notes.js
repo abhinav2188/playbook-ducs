@@ -1,15 +1,133 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect, useContext } from 'react'
 import TreeMenu from "../UI/TreeMenu"
 import notesImg from "../svgs/notes-img.svg"
 import "./notes.scss"
-
+import {UserContext} from "../providers/UserProvider";
+import {firebaseStorage} from  "../services/firebase";
+import PdfRender from "./pdfRender";
+import Modal from 'react-modal';
 
 const NotesPage = () => {       
 
     const [showIndex,setShowIndex] = useState(false);
+    
+    const [notes,setNotes] = useState([]);
+   
+
+    const [semester,setSemester] = useState('sem1');
+    const [subject,setSubect] = useState('');
+
+    const [loading,setLoading] = useState(true);
+
+    const [modal,setModal] = useState(false);
+    Modal.setAppElement('#root');
+
+    const [pdfURL,setpdfURL] = useState('');
+
+    const user = useContext(UserContext);
+
+
+    const customStyles = {
+        content : {
+          top                   : '50%',
+          left                  : '50%',
+          right                 : 'auto',
+          bottom                : 'auto',
+          marginRight           : '-50%',
+          width                 : 'fit-content',
+          height                : '80%',
+          minWidth              : '50%',
+          transform             : 'translate(-50%, -50%)'
+        }
+      };
+
+    useEffect(()=>{
+        if(user){
+            fetchNotes();
+            setLoading(false);   
+        }
+        setModal(false);
+    },[]);
+
+    function openModal() {
+        setModal(true);
+      }
+    
+    
+    
+      function closeModal(){
+        setModal(false);
+      }
+
+    async function fetchNotes(sem){
+
+        let notesUrl = [];  
+       await firebaseStorage.child('notes/').listAll().then(function(res) {
+            res.items.forEach(function(folderRef) {
+            let gsReference = folderRef.toString();
+            let fileName = (gsReference.split(['/'])[4]);
+            notesUrl.push(fileName);
+
+            });
+            setNotes(notesUrl);
+        }).catch(function(error) {
+
+        });
+    }
+
+    async function fetchPdf(fileName){
+       // Create a reference to the file we want to download
+        let starsRef = firebaseStorage.child(`notes/${fileName}`);
+
+        // Get the download URL
+        let fileURL = '';
+      await  starsRef.getDownloadURL()
+        .then((url) => {
+            console.log("url",url);
+             fileURL= url;
+        })
+        .catch((error) => {
+            fileURL = null;
+        switch (error.code) {
+            case 'storage/object-not-found':
+                alert("Error: Files doesn't exist");
+            break;
+            case 'storage/unauthorized':
+                alert("Error: You are not authorized to view this file");
+            break;
+            case 'storage/canceled':
+            // User canceled the upload
+            break;
+
+            case 'storage/unknown':
+                alert("Error:Something bad happend");
+                
+            break;
+            default:
+                break;
+        }
+        });
+        return fileURL;
+    }
+
+  async function handleClick(fileName){
+       const url = await fetchPdf(fileName);
+
+        if(url !== '' || url !== undefined || url !== null){
+            setpdfURL(url);
+            setModal(true);
+        }else{
+            alert("Something went wrong");
+        }
+        
+    }
+
 
     const notesIndexContent = [
-        <TreeMenu toggleHead="Semester 1">
+        <TreeMenu toggleHead="Semester 1" onClick={(e)=>{
+            e.preventDefault();
+            setSemester('semester 1');
+        }}> 
         {[
             <p>DBMS</p>,
             <p>OOPs</p>,
@@ -17,7 +135,10 @@ const NotesPage = () => {
             <p>Operating Systems</p>
         ]}
         </TreeMenu>,
-        <TreeMenu toggleHead="Semester 2">
+        <TreeMenu toggleHead="Semester 2" onClick={(e)=>{
+            e.preventDefault();
+            setSemester('semester 2');
+        }}>
         {[
             <p>DBMS</p>,
             <p>OOPs</p>,
@@ -25,7 +146,10 @@ const NotesPage = () => {
             <p>Operating Systems</p>
         ]}
         </TreeMenu>,
-        <TreeMenu toggleHead="Semester 3">
+        <TreeMenu toggleHead="Semester 3" onClick={(e)=>{
+            e.preventDefault();
+            setSemester('semeseter 3');
+        }}>
         {[
             <p>DBMS</p>,
             <p>OOPs</p>,
@@ -74,16 +198,44 @@ const NotesPage = () => {
                 </div>
                 }
                 {/* PDF Container */}
-                <div className="notes-pdf-container">
-                    <div className="notes-pdf"></div>
-                    <div className="notes-pdf"></div>
-                    <div className="notes-pdf"></div>
-                    <div className="notes-pdf"></div>
-                    <div className="notes-pdf"></div>
-                    <div className="notes-pdf"></div>
-                    <div className="notes-pdf"></div>
-                    <div className="notes-pdf"></div>
-                </div>
+
+                {
+                   loading? (
+                    <div className="notes-pdf-container">
+                        <div className="notes-pdf"></div>
+                        <div className="notes-pdf"></div>
+                        <div className="notes-pdf"></div>
+                    </div>
+
+                   ) :(
+
+                    <div className="notes-pdf-container">
+                      {
+                          notes.map((note, index) => (
+                              <div className="notes-pdf" key= {index} onClick = {(e)=>{
+                                e.preventDefault();
+                                handleClick(note);
+                              }} >
+                                {note.replace(".pdf","")}
+                              </div>
+                          ))
+                      }
+                      <Modal 
+                         isOpen={modal}
+                         onRequestClose={closeModal}
+                         style={customStyles}
+                         contentLabel="Notes Modal"
+                      >
+                            <PdfRender pdf={pdfURL}></PdfRender>
+                            
+                    </Modal>
+                    </div>
+                    
+                   )
+                }
+
+                
+              
 
             </div>
 
