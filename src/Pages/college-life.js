@@ -158,10 +158,9 @@ const Page = () => {
         <div class="main-content">
           <h3>Baby Steps</h3>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque
-            distinctio temporibus quo incidunt dolorum suscipit perspiciatis
-            architecto ipsum nobis tempora minus odit, voluptatum odio nam!
-            Nihil maiores pariatur hic error.
+            You've got all the time in your first year. Use it to gain more and
+            more skills, Try to use your skills to solve real life problems, Do
+            Internships, Explore Campus and make new Friends.
           </p>
         </div>
         <img class="page2-bg" src={page2Bg} alt="bg2" />
@@ -174,10 +173,11 @@ const Page = () => {
         <div class="main-content">
           <h3>Exploring</h3>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque
-            distinctio temporibus quo incidunt dolorum suscipit perspiciatis
-            architecto ipsum nobis tempora minus odit, voluptatum odio nam!
-            Nihil maiores pariatur hic error.
+            Learn and Explore as much as you can in your college life, Try new
+            fields so that you can know more about what you are passionate
+            about. Read more books, watch more resourceful videos, and meet like
+            minded individuals so that you grow in your college life and make
+            the best out of it.
           </p>
         </div>
 
@@ -192,10 +192,11 @@ const Page = () => {
         <div class="main-content">
           <h3>Defining Point</h3>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque
-            distinctio temporibus quo incidunt dolorum suscipit perspiciatis
-            architecto ipsum nobis tempora minus odit, voluptatum odio nam!
-            Nihil maiores pariatur hic error.
+            Do not restrict yourself to specific path to follow your dreams,
+            explore your domain, make new ways its the best age to experiment
+            with your ideas. Colleg Life is all about experimenting and doing
+            mistakes. Follow your own path, find your purpose, find your own
+            ambition and aspiration and don't forget to live in the present.
           </p>
         </div>
         <Marquee itemsArray={cardsP2} activeItemsCount={count} />
@@ -263,10 +264,11 @@ const Page = () => {
         <div class="main-content">
           <h3>Graduation</h3>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque
-            distinctio temporibus quo incidunt dolorum suscipit perspiciatis
-            architecto ipsum nobis tempora minus odit, voluptatum odio nam!
-            Nihil maiores pariatur hic error.
+            You might be leaving DUCS, but DUCS would never leave you. Students
+            graduating from here never say GOODByes as how high they fly they
+            never ever forget their roots. All the lessons you've learnt,
+            adventures you've embarked, all the chit chats with your friends,
+            all the hangouts and bunk memories will be with you FOREVER...
           </p>
         </div>
         {/*         
@@ -333,10 +335,10 @@ const Page = () => {
         <div class="main-content">
           <h3>Nostalgia</h3>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque
-            distinctio temporibus quo incidunt dolorum suscipit perspiciatis
-            architecto ipsum nobis tempora minus odit, voluptatum odio nam!
-            Nihil maiores pariatur hic error.
+            From Internals to Lengthy Major Exams, From strict morning classes
+            to bunking lectures, long placement sessions, sudama ki chai, tom
+            uncle maggi point to DCAC canteens. Lets take a trip down the memory
+            lane and relive some of our most favourite moments.
           </p>
         </div>
         {/* <div class="slider">

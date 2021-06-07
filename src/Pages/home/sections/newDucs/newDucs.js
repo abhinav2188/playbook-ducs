@@ -8,7 +8,7 @@ const sec = (props) => {
             <div className="container newducs">
                 <div className="ndcs-content">
                     <h1>New to DUCS?</h1>
-                    <h3>Look around to explore places of interest, hot street food, hang out addas and much more</h3>
+                    <h3>Click here to explore places of interest, Amazing street food, Chai ki Taprees and lot more</h3>
                     <a href="#" className="action-button">Explore</a>
                 </div>
                 <img className="feature-img" src={fimg} alt=""/>
