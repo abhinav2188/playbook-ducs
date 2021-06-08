@@ -1,18 +1,13 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from "prop-types";
 import './marquee2.scss';
-import Anime from 'react-anime';
-import anime from 'animejs';
-
+import {animated, useSpring} from 'react-spring'
 
 const Marquee = (props) =>{
 
     const [extras,setExtras]  = useState([]);
     const [elementWidth , setElementWidth]  = useState(0);
-
-    // const [marqueeAnimation, setMarqueeAnimation] = useState();
-    // const marqEl = useRef(null);
-    // const marqAnim = useRef(null);
+    const [stopAnim , setStopAnim] = useState(false);
 
     useEffect( ()=>{
         for(let i=0;i<props.activeItemsCount;i++)
@@ -21,24 +16,28 @@ const Marquee = (props) =>{
             return e;
         });
         setElementWidth(100 / props.activeItemsCount);
-        // marqAnim.current = anime({
-        //     targets:marqEl.current,
-        //     translateX : [0,(-1 *props.itemsArray.length * elementWidth)+'%'],
-        //     duration : 3000 *props.itemsArray.length,
-        //     loop:true,
-        //     easing:'linear',
-        //     autoplay:true
-        // });
-        // // marqAnim.current.play();
-        // console.log(marqEl);
     },[props.activeItemsCount] );
 
     
+    const styles = useSpring({
+        from :{
+            x : '0%'
+        },
+        to : {
+            x: (props.itemsArray.length * -1 * elementWidth)+'%' ,
+        },
+        loop:true,
+        config:{
+            duration: 3000 * props.itemsArray.length,
+            easing: t=>t
+        },
+        pause:stopAnim
+    });
+
 
     return (
-            <div className="marquee-container container">
-                <Anime translateX={ [0,(-1 *props.itemsArray.length * elementWidth)+'%']} duration={3000*props.itemsArray.length} easing="linear" loop >
-                <div className="marquee-content" >
+            <div className="marquee-container container" onMouseEnter={()=>setStopAnim(true)} onMouseLeave={()=>setStopAnim(false)}>
+                <animated.div style={styles} className="marquee-content" >
                     {
                         props.itemsArray.map((item,index) => (
                         <div className="marquee-element" key={index} style={{width:elementWidth+'%'}} >
@@ -52,9 +51,7 @@ const Marquee = (props) =>{
                             {props.itemsArray[i]}
                         </div>
                     ))}
-
-                </div>
-                </Anime>
+                </animated.div>
             </div>
     );
 }
