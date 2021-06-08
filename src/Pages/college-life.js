@@ -14,6 +14,7 @@ import cloudsPage5 from "../assets/clouds-page5.svg";
 import cloudsPage6 from "../assets/clouds-page6.svg";
 import { Helmet } from "react-helmet";
 import "./fullpage.min.css";
+import WithAnimationLoad from "../HOC/WithAnimationLoad";
 
 import Marquee from "./../UI/marquee2";
 
@@ -132,19 +133,10 @@ const Page = () => {
   }, []);
 
   return (
-    <div id="clg-life">
+    <WithAnimationLoad className="clg-life">
       {/* page 1 start */}
 
       <div class="container-1 vertical-scrolling">
-        {/* <div class="nav-bar">
-                <a href="#" class="logo">DUCS<br/>Playbook</a>
-                <nav class="nav-links">
-                    <a class="middle" href="#">Home</a>
-                    <a class="middle" href="../explore.html">Explore</a>
-                    <a class="middle" href="../contact.html">Contact</a>
-                    <button class="sign-in-button">Sign in</button>
-                </nav>
-            </div> */}
         <h2>
           Phases of <br />
           College Life
@@ -398,7 +390,7 @@ const Page = () => {
       </div>
 
       {/* page 6 end */}
-    </div>
+    </WithAnimationLoad>
   );
 };
 

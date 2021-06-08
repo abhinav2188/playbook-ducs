@@ -2,14 +2,12 @@ import React from 'react'
 import './contact.scss'
 
 import cimg from "../assets/contactimg.svg"
-import fb from "../assets/Facebook.svg"
-import insta from "../assets/instagram.svg"
-import ln from "../assets/linkedin.svg"
-import tw from "../assets/twitter.svg"
+import {fbColor,instaColor,twitterColor, linkedinColor} from "../svgs/socialMediaIcons";
+import WithAnimationLoad from "../HOC/WithAnimationLoad";
 
 const contact = () => {
     return (
-        <div className="contact-wrapper">
+        <WithAnimationLoad className="contact-wrapper">
 
         <div className="contact-section container">
         <div className="left">
@@ -29,17 +27,17 @@ const contact = () => {
             <div className="social-media-links">
                 <h4>Follow Us</h4>
                     <div className="icons">
-                        <a href="#"><img src={fb} alt="facebook logo"/></a>
-                        <a href="#"><img src={tw} alt="twitter logo"/></a>
-                        <a href="#"><img src={ln} alt="linkedin logo"/></a>
-                        <a href="#"><img src={insta} alt="instagram logo"/></a>
+                        <a href="#">{fbColor}</a>
+                        <a href="#">{twitterColor}</a>
+                        <a href="#">{linkedinColor}</a>
+                        <a href="#">{instaColor}</a>
                 </div>
             </div>
 
         </div>
         </div>
 
-        </div>
+        </WithAnimationLoad>
     );
 }
 

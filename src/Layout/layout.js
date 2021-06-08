@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './layout.scss'
 import Header from './Header'
 import Footer from './Footer'
 
 const Layout = props => {
+
     return(
         <div className="layout">
             <Header colorScheme = {props.colorScheme}/>

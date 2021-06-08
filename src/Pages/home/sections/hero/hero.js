@@ -1,16 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./hero.scss";
 import heroSvg from "../../../../svgs/hero.svg";
-import anime from "animejs";
 import { Link } from "react-router-dom";
 
 const Hero = () => {
-  useEffect(() => {
-    anime({
-      targets: ".hero-section .hero-content",
-      scale: [0.9, 1.2],
-    });
-  }, []);
   return (
     <div id="hero-section">
       <div class="hero-content">

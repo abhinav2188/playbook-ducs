@@ -5,6 +5,8 @@ import space from "../assets/illustration.svg";
 import cardImg1 from "../assets/study.svg";
 import cardImg2 from "../assets/time.svg";
 import cardImg3 from "../assets/productivity.jpg";
+import WithAnimationLoad from "../HOC/WithAnimationLoad";
+
 
 const Card = (props) => {
   return (
@@ -19,7 +21,7 @@ const Card = (props) => {
 
 const Page = () => {
   return (
-    <>
+    <WithAnimationLoad className="main">
       <img src={space} className="explore-bg" alt="" />
       <div id="explore" className="container">
         <div className="explore-content">
@@ -58,7 +60,7 @@ const Page = () => {
           </div>
         </div>
       </div>
-    </>
+    </WithAnimationLoad>
   );
 };
 

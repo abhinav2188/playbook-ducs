@@ -5,17 +5,17 @@ import Hero from './sections/hero/hero'
 import NavBlocks from './sections/navBlocks/navBlocks'
 import NewToDucs from './sections/newDucs/newDucs'
 import MTT from './sections/meetTheTeam/meetTheTeam'
+import WithAnimationLoad from '../../HOC/WithAnimationLoad'
 
-
-const page = () => {
+const Page = () => {
     return(
-        <div className="home">
+        <WithAnimationLoad className="home">
             <Hero/>
             <NavBlocks/>
             <NewToDucs/>
             <MTT />
-        </div>
+        </WithAnimationLoad>
    );
 }
 
-export default page;
+export default Page;
