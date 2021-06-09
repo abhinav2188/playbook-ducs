@@ -9,13 +9,13 @@ const PdfRender = (props) => {
     setNumPages(numPages);
   }
 
-  const CORS_URL = 'https://cors-anywhere.herokuapp.com/';
+
 
   const { pdf } = props;
 
   return (
     <Document
-      file={CORS_URL.concat(pdf)}
+      file={pdf}
       onLoadSuccess={onDocumentLoadSuccess}
       onLoadError={console.error}
     >

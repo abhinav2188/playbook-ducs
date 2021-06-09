@@ -84,7 +84,6 @@ const NotesPage = () => {
         let fileURL = '';
       await  starsRef.getDownloadURL()
         .then((url) => {
-            console.log("url",url);
              fileURL= url;
         })
         .catch((error) => {
