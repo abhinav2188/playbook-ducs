@@ -1,8 +1,6 @@
 .hslider {
-  width: 100%;
+  width: 100vw;
   height: 100vh;
-  position: sticky;
-  top:0;
   overflow: hidden;
   .hslider-container {
     width: 100%;
@@ -24,11 +22,30 @@
     position: absolute;
     left: 0;
     top:40%;
-    .dot {
-      width: 2rem;
-      height:2rem;
-      border-radius: 50%;
-      background-color: aquamarine;
+    gap:1rem;
+    padding: 1rem;
+    .dot-container{
+      display: flex;
+      align-items: center;
+      position: relative;
+      font-size: 1rem;
+      .dot {
+        width: 0.75rem;
+        height:0.75rem;
+        border-radius: 50%;
+        background-color: aquamarine;
+        box-shadow: 1px 1px 5px rgba(0,0,0,0.4);
+        outline : none;
+        border: 0;
+      }
+      .dot-info{
+        z-index:3;
+        position: absolute;
+        top:50%;
+        transform : translateY(-50%);
+        left:30px;
+        width: 200px;
+      }
     }
   }
 }
