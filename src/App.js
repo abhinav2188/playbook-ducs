@@ -11,7 +11,6 @@ import Test from "./Pages/test"
 import Notes from "./Pages/notes"
 import UserProvider from './providers/UserProvider'
 
-
 const AnimatedRoutes = (props) => {
   
   const styles = useSpring({
@@ -33,8 +32,8 @@ const App = () => {
   return (
     <BrowserRouter>
     <UserProvider>
-      <Layout>
-        <Switch>
+    <div className="root">
+    <Switch>
         <Route path='/explore' component={Explore} />
         <Route path='/college-life' component={CollegeLife} />
         <Route path='/explore' component={Explore} />
@@ -42,8 +41,9 @@ const App = () => {
         <Route path='/test' component={Test} />
         <Route path='/notes' component={Notes} />
         <Route path='/' component={Home} />
-        </Switch>
-      </Layout>
+      </Switch>
+
+    </div>
       </UserProvider>
     </BrowserRouter>
     

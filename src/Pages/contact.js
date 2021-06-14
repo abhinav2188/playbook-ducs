@@ -4,9 +4,11 @@ import './contact.scss'
 import cimg from "../assets/contactimg.svg"
 import {fbColor,instaColor,twitterColor, linkedinColor} from "../svgs/socialMediaIcons";
 import WithAnimationLoad from "../HOC/WithAnimationLoad";
+import Layout from "../Layout/layout"
 
 const contact = () => {
     return (
+        <Layout>
         <WithAnimationLoad className="contact-wrapper">
 
         <div className="contact-section container">
@@ -37,7 +39,8 @@ const contact = () => {
         </div>
         </div>
 
-        </WithAnimationLoad>
+        </WithAnimationLoad>            
+        </Layout>
     );
 }
 

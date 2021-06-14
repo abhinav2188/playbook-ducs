@@ -7,6 +7,8 @@ import cardImg2 from "../assets/time.svg";
 import cardImg3 from "../assets/productivity.jpg";
 import WithAnimationLoad from "../HOC/WithAnimationLoad";
 
+import Layout from "../Layout/layout"
+
 
 const Card = (props) => {
   return (
@@ -21,6 +23,7 @@ const Card = (props) => {
 
 const Page = () => {
   return (
+      <Layout>
     <WithAnimationLoad className="main">
       <img src={space} className="explore-bg" alt="" />
       <div id="explore" className="container">
@@ -61,7 +64,8 @@ const Page = () => {
         </div>
       </div>
     </WithAnimationLoad>
-  );
+  </Layout> 
+ );
 };
 
 export default Page;

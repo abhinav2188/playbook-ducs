@@ -1,6 +1,7 @@
-import React ,{useState,useRef} from "react";
+import React ,{useEffect, useState} from "react";
 import "./SectionSlider.scss";
 import {useTransition,animated, useSpring} from 'react-spring'
+import Footer from "../Layout/Footer"
 
 const Dot = (props) => {
   const dotStyles = useSpring({
@@ -15,10 +16,10 @@ const Dot = (props) => {
 
   return(
     <div className="dot-container">
-        <animated.div onClick={props.onClick} className="dot" style={dotStyles} 
+        <animated.button onClick={props.onClick} className="dot" style={dotStyles} 
           onMouseEnter ={() => setDisplayInfo(true) }
           onMouseLeave = {() => setDisplayInfo(false)}
-        ></animated.div> 
+        ></animated.button> 
         {
           dotInfoTransition((styles,item) => 
           item && 
@@ -32,9 +33,10 @@ const Dot = (props) => {
 
 const SectionSlider = (props) => {
 
-  const [activeSection, setActiveSection] = useState(0); 
+  const [activeSection, setActiveSection] = useState(0);
+
   const styles = useSpring({ 
-      transform : `translateY(${-activeSection*100}%)`
+      y :activeSection!=props.sections.length?-window.innerHeight*activeSection : -window.innerHeight*(activeSection-1)-props.footerHeight
   });
   
   const [startCoordinates,setStartCoordinates] = useState([0,0]);
@@ -48,8 +50,9 @@ const SectionSlider = (props) => {
     setEndCoordinates([e.targetTouches[0].pageX,e.targetTouches[0].pageY]);
     // console.log(endCoordinates);
   }
+
   function onTouchEndHandler(e){
-    var distX = endCoordinates[0] - startCoordinates[0];
+    // var distX = endCoordinates[0] - startCoordinates[0];
     var distY = endCoordinates[1] - startCoordinates[1];
     if(distY < -200){
       nextSection();
@@ -76,11 +79,19 @@ const SectionSlider = (props) => {
   }
 
   function nextSection(){
-    setActiveSection(i => i+1<props.sections.length?i+1:i);
+    setActiveSection(i => {
+      if(i+1 == props.sections.length && props.footer){
+        return i+1;
+      }
+      else return (i+1 < props.sections.length ? (i+1) : i);
+    })
+    console.log(activeSection);
   }
+
   function prevSection(){
-    setActiveSection(i => i-1>=0?i-1:i);
+    setActiveSection(i => i-1>=0? i-1: i)
   }
+
 
   return (
     <div className="hslider">
@@ -96,19 +107,23 @@ const SectionSlider = (props) => {
             {item}
           </div>
         );
-      })
+        })
       }
+      {props.footer}
+
     </animated.div>
 
     <div className="hslider-controller">    
         {
             props.sectionNames.map((name,index) => (
-              <Dot key={index} info={name} active={index==activeSection} onClick={()=>setActiveSection(index)}/>
+              <Dot key={index} info={name} active={index===activeSection} onClick={()=>setActiveSection(index)}/>
             ))
         }
     </div>
     </div>
+
   );
 };
+
 
 export default SectionSlider;

@@ -1,12 +1,13 @@
 import React,{useState, useEffect, useContext} from 'react'
-import './layout.scss'
+import './Header.scss'
 import {Link,NavLink} from 'react-router-dom'
 import SignUpForm  from "./signUpForm"
 import { UserContext } from "../providers/UserProvider";
 import { logOut } from "../services/firebase";
 import { signInWithGoogle } from '../services/firebase';
 import SideBar from "./sideNavBar";
-import {menuIcon} from "../svgs/navBarIcons"
+import {menuIcon,logoutIcon} from "../svgs/navBarIcons"
+
 
 const Header = (props) =>{
 
@@ -20,10 +21,6 @@ const Header = (props) =>{
         setAuthState(user ? true:false);
    },[user])
 
-   const active = {
-       borderBottom : '1px black solid',
-       color:'#0f0'
-   }
    const staticLinks = [
     <NavLink exact to="/" className="nav-link" activeClassName="nav-link-active">Home</NavLink>,
     <NavLink exact to="/notes" className="nav-link" activeClassName="nav-link-active">Study-Material</NavLink>,
@@ -33,12 +30,12 @@ const Header = (props) =>{
     ];
 
     const signUpLogout = authState?
-    <div>
+    <div className="auth">
         <span>{user.displayName}</span>
         <button to="/" className="logout-button"  onClick={()=>{
             logOut();
             setAuthState(false);
-        }}>Logout</button> 
+        }}>{logoutIcon}</button> 
     </div>:
     <button className="sign-up-button"  onClick={()=>{
         signInWithGoogle();
@@ -64,7 +61,7 @@ const Header = (props) =>{
         </header>
         {/* <SignUpForm in={showForm} onClose={() => setShowForm(false)}/> */}
         <SideBar show={showSideBar} close={()=>setShowSideBar(false)} className="sidebar">
-            <div className="nav-links">
+            <div className="nav-links">     
                 {[
                     ...staticLinks,
                 ]}

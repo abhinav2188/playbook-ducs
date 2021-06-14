@@ -7,6 +7,7 @@ import {firebaseStorage} from  "../services/firebase";
 import PdfRender from "./pdfRender";
 import Modal from 'react-modal';
 import WithAnimationLoad from "../HOC/WithAnimationLoad";
+import Layout from "../Layout/layout";
 
 const NotesPage = () => {       
 
@@ -162,6 +163,7 @@ const NotesPage = () => {
 
     return(
         
+        <Layout>
         <WithAnimationLoad className="notes-page container">
             
             {/* top container */}
@@ -240,6 +242,7 @@ const NotesPage = () => {
             </div>
 
         </WithAnimationLoad>
+        </Layout>
     );
 }
 
