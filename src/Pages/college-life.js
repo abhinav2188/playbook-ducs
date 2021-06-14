@@ -12,11 +12,9 @@ import cloudsPage3 from "../assets/orangeCloud.svg";
 import cloudsPage4 from "../assets/clouds-page4.svg";
 import cloudsPage5 from "../assets/clouds-page5.svg";
 import cloudsPage6 from "../assets/clouds-page6.svg";
-import { Helmet } from "react-helmet";
-import "./fullpage.min.css";
 import WithAnimationLoad from "../HOC/WithAnimationLoad";
 
-import Marquee from "./../UI/marquee2";
+import Marquee from "../UI/marquee";
 
 const cardsP2 = [
   <div class="cards cards-page4">
@@ -193,61 +191,6 @@ const Page = () => {
         </div>
         <Marquee itemsArray={cardsP2} activeItemsCount={count} />
         <img class="man" src={page4Bg} alt="man with goals" />
-        {/*
-            <div class="slider">
-          <div class="cards cards-page4">
-            <div class="card-title">
-              <div class="dp4"></div>
-              <span class="display-name">Abraham</span>
-            </div>
-            <span class="review-text">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla
-              odit dolorem quia id. Autem laborum ipsa
-            </span>
-          </div>
-          <div class="cards cards-page4">
-            <div class="card-title">
-              <div class="dp4"></div>
-              <span class="display-name">Desmond</span>
-            </div>
-            <span class="review-text">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis
-              qui saepe nisi expedita inventore facere quae dicta?
-            </span>
-          </div>
-
-          <div class="cards cards-page4">
-            <div class="card-title">
-              <div class="dp4"></div>
-              <span class="display-name">Alan Fresco</span>
-            </div>
-            <span class="review-text">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla
-              odit dolorem quia id. Autem laborum ipsa
-            </span>
-          </div>
-          <div class="cards cards-page4">
-            <div class="card-title">
-              <div class="dp4"></div>
-              <span class="display-name">Hans Down</span>
-            </div>
-            <span class="review-text">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla
-              odit dolorem quia id. Autem laborum ipsa
-            </span>
-          </div>
-          <div class="cards cards-page4">
-            <div class="card-title">
-              <div class="dp4"></div>
-              <span class="display-name">Indigo Violet</span>
-            </div>
-            <span class="review-text">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla
-              odit dolorem quia id. Autem laborum ipsa
-            </span>
-          </div>
-        </div>
-        */}
       </div>
       {/* page 4 end */}
       {/* page 5 start */}

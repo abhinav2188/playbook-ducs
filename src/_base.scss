@@ -31,6 +31,13 @@ $tv : '1440px';
   font-size: medium;
   min-height: 100vh;
 }
+.main {
+  width: 100%;
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  padding-top:100px;
+}
 
 button{
   background-color: transparent;

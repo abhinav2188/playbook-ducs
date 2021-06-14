@@ -1,7 +1,7 @@
 import React from 'react'
 import SectionSlider from "../UI/SectionSlider";
 import Footer from "../Layout/Footer"
-import Header from "../Layout/Header"
+
 const sections = [
     <h1>section 1</h1>,
     <h1>section 2</h1>,
@@ -24,12 +24,7 @@ const sections = [
   
 const page = () => {
     return (
-      <>
-      <div style={{position:'fixed',top:0,width:'100%',zIndex:2}}>
-      <Header />
-      </div>
         <SectionSlider sections={sections} sectionNames={sectionNames} footer={<Footer/>} footerHeight={80}/>
-        </>
     );
 }
 

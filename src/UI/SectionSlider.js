@@ -5,7 +5,7 @@ import Footer from "../Layout/Footer"
 
 const Dot = (props) => {
   const dotStyles = useSpring({
-    scale: props.active ? 1.5 : 1
+    scale: props.active ? 1.25 : 0.5
   })
   const [displayInfo,setDisplayInfo] = useState(false);
   const dotInfoTransition = useTransition(displayInfo,{
