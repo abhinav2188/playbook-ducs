@@ -7,7 +7,6 @@ import cardImg2 from "../assets/time.svg";
 import cardImg3 from "../assets/productivity.jpg";
 import WithAnimationLoad from "../HOC/WithAnimationLoad";
 
-
 const Card = (props) => {
   return (
     <div className="explore-card" style={{ background: props.grad }}>

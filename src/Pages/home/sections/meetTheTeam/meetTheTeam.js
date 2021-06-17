@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import Marquee from '../../../../UI/marquee2'
+import Marquee from '../../../../UI/marquee'
 import TeamCard from "./teamCard"
 import "./mtt.scss"
 

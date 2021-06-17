@@ -1,0 +1,11 @@
+@import '../base';
+
+footer {
+    width: 100%;
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $color-orange;
+    margin-bottom: -80px;
+  }

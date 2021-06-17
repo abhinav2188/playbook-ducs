@@ -1,53 +1,64 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from "prop-types";
 import './marquee.scss';
+import {animated, useSpring} from 'react-spring'
 
 const Marquee = (props) =>{
 
     const [extras,setExtras]  = useState([]);
-    
+    const [elementWidth , setElementWidth]  = useState(0);
+    const [stopAnim , setStopAnim] = useState(false);
+
     useEffect( ()=>{
-        var r = document.querySelector(':root');
+        for(let i=0;i<props.activeItemsCount;i++)
+        setExtras(e => {
+            e.push(i);
+            return e;
+        });
+        setElementWidth(100 / props.activeItemsCount);
+    },[props.activeItemsCount] );
 
-        var displayCount = getComputedStyle(r).getPropertyValue('--elements-displayed');
-        console.log(getComputedStyle(r).getPropertyValue('--elements-width'));
+    
+    const styles = useSpring({
+        from :{
+            x : '0%'
+        },
+        to : {
+            x: (props.itemsArray.length * -1 * elementWidth)+'%' ,
+        },
+        loop:true,
+        config:{
+            duration: 3000 * props.itemsArray.length,
+            easing: t=>t
+        },
+        pause:stopAnim
+    });
 
-        r.style.setProperty('--elements-count',props.itemsArray.length);
-
-        var tmp = [];
-        for(let i=0;i<displayCount;i++){
-            console.log(i);
-            tmp.push(i);
-        }
-        console.log(tmp);
-        setExtras(tmp);
-        console.log(extras);
-
-    },[] );
 
     return (
-        <div className="marquee-container">
-            <div className="marquee-content">
-                {
-                    props.itemsArray.map((item,index) => (
-                    <div className="marquee-element" key={index} >
-                        {item}
-                    </div>
-                    ))
-                }
-                {
-                    extras.map(i => (
-                    <div className="marquee-element" key={i+props.itemsArray.length}>
-                        {props.itemsArray[i]}
-                    </div>
-                ))}
+            <div className="marquee-container container" onMouseEnter={()=>setStopAnim(true)} onMouseLeave={()=>setStopAnim(false)}>
+                <animated.div style={styles} className="marquee-content" >
+                    {
+                        props.itemsArray.map((item,index) => (
+                        <div className="marquee-element" key={index} style={{width:elementWidth+'%'}} >
+                            {item}
+                        </div>
+                        ))
+                    }
+                    {
+                        extras.map(i => (
+                        <div className="marquee-element" key={i+props.itemsArray.length} style={{width:elementWidth+'%'}}>
+                            {props.itemsArray[i]}
+                        </div>
+                    ))}
+                </animated.div>
             </div>
-        </div>
     );
 }
 
 Marquee.propTypes = {
-    itemsArray: PropTypes.array
+    itemsArray: PropTypes.array,
+    activeItemsCount : PropTypes.number
 }
 
 export default Marquee;

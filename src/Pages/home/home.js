@@ -9,7 +9,7 @@ import WithAnimationLoad from '../../HOC/WithAnimationLoad'
 
 const Page = () => {
     return(
-        <WithAnimationLoad className="home">
+        <WithAnimationLoad className="home main">
             <Hero/>
             <NavBlocks/>
             <NewToDucs/>

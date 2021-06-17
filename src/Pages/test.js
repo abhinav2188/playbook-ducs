@@ -1,5 +1,6 @@
 import React from "react";
 import SectionSlider from "../UI/SectionSlider";
+import Footer from "../Layout/Footer"
 
 const sections = [
   <h1>section 1</h1>,
@@ -22,7 +23,11 @@ const sectionNames = [
 ];
 
 const page = () => {
-  return <SectionSlider sections={sections} sectionNames={sectionNames} />;
-};
+
+    return (
+        <SectionSlider sections={sections} sectionNames={sectionNames} footer={<Footer/>} footerHeight={80}/>
+    );
+}
+
 
 export default page;

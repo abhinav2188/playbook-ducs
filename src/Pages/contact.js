@@ -7,7 +7,7 @@ import WithAnimationLoad from "../HOC/WithAnimationLoad";
 
 const contact = () => {
     return (
-        <WithAnimationLoad className="contact-wrapper">
+        <WithAnimationLoad className="contact-wrapper main">
 
         <div className="contact-section container">
         <div className="left">

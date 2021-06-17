@@ -12,14 +12,11 @@ import cloudsPage3 from "../assets/orangeCloud.svg";
 import cloudsPage4 from "../assets/clouds-page4.svg";
 import cloudsPage5 from "../assets/clouds-page5.svg";
 import cloudsPage6 from "../assets/clouds-page6.svg";
-import { Helmet } from "react-helmet";
-import "./fullpage.min.css";
 import WithAnimationLoad from "../HOC/WithAnimationLoad";
 
 //for slider
 import SectionSlider from "../UI/SectionSlider";
-
-import Marquee from "./../UI/marquee2";
+import Marquee from "../UI/marquee";
 
 const sectionNames = [
   "section1 abhin",
@@ -191,6 +188,22 @@ const Page = () => {
         </div>
         */}
 
+//       <div class="container-4 vertical-scrolling">
+//         <img src={cloudsPage4} alt="floating clouds" />
+//         <div class="main-content">
+//           <h3>Defining Point</h3>
+//           <p>
+//             Do not restrict yourself to specific path to follow your dreams,
+//             explore your domain, make new ways its the best age to experiment
+//             with your ideas. Colleg Life is all about experimenting and doing
+//             mistakes. Follow your own path, find your purpose, find your own
+//             ambition and aspiration and don't forget to live in the present.
+//           </p>
+//         </div>
+//         <Marquee itemsArray={cardsP2} activeItemsCount={count} />
+//         <img class="man" src={page4Bg} alt="man with goals" />
+//       </div>
+// >>>>>>> main
       {/* page 4 end */}
       {/* page 5 start */}
 

@@ -162,7 +162,8 @@ const NotesPage = () => {
 
     return(
         
-        <WithAnimationLoad className="notes-page container">
+        <WithAnimationLoad className="main">
+        <div className="notes-page container">
             
             {/* top container */}
             
@@ -233,12 +234,9 @@ const NotesPage = () => {
                     
                    )
                 }
-
-                
-              
-
             </div>
 
+        </div>
         </WithAnimationLoad>
     );
 }
