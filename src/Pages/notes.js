@@ -16,7 +16,7 @@ const NotesPage = () => {
    
 
     const [semester,setSemester] = useState('sem1');
-    const [subject,setSubect] = useState('');
+    const [subject,setSubject] = useState('DBMS');
 
     const [loading,setLoading] = useState(true);
 
@@ -60,25 +60,31 @@ const NotesPage = () => {
         setModal(false);
       }
 
-    async function fetchNotes(sem){
+      // fetch notes url for given semester
+    async function fetchNotes(){
 
         let notesUrl = [];  
-       await firebaseStorage.child('notes/').listAll().then(function(res) {
+       await firebaseStorage.child(`notes/${semester}`).listAll().then(function(res) {
+           console.log(res);
             res.items.forEach(function(folderRef) {
+                console.log("folderRef",folderRef);
             let gsReference = folderRef.toString();
-            let fileName = (gsReference.split(['/'])[4]);
+            console.log("gsReference",gsReference);
+            let fileName = (gsReference.split(['/'])[5]);
             notesUrl.push(fileName);
-
+            
             });
             setNotes(notesUrl);
+            console.log(notesUrl);
         }).catch(function(error) {
 
         });
     }
 
+    // fetch note pdf 
     async function fetchPdf(fileName){
        // Create a reference to the file we want to download
-        let starsRef = firebaseStorage.child(`notes/${fileName}`);
+        let starsRef = firebaseStorage.child(`notes/${semester}/${fileName}`);
 
         // Get the download URL
         let fileURL = '';
@@ -110,6 +116,7 @@ const NotesPage = () => {
         return fileURL;
     }
 
+    // dowload pdf for clicked file
   async function handleClick(fileName){
        const url = await fetchPdf(fileName);
 
@@ -123,13 +130,29 @@ const NotesPage = () => {
     }
 
 
+    // filter notes based on subject 
+    function filterNotes(){
+       const data =  notes.filter(note =>{
+            return note === subject+".pdf";
+            
+        });
+        console.log(data);
+        setNotes(data);
+    }
+
     const notesIndexContent = [
         <TreeMenu toggleHead="Semester 1" onClick={(e)=>{
             e.preventDefault();
-            setSemester('semester 1');
+            console.log("Node toggle 1")
+            setSemester('sem1');
+            fetchNotes();
         }}> 
         {[
-            <p>DBMS</p>,
+            <p  onClick={(e)=>{
+                e.preventDefault();
+                setSubject('DBMS_test1');
+                filterNotes();
+            }}>DBMS</p>,
             <p>OOPs</p>,
             <p>Java</p>,
             <p>Operating Systems</p>
@@ -137,7 +160,9 @@ const NotesPage = () => {
         </TreeMenu>,
         <TreeMenu toggleHead="Semester 2" onClick={(e)=>{
             e.preventDefault();
-            setSemester('semester 2');
+            console.log("NOde toggle00");
+            setSemester('sem2');
+            fetchNotes();
         }}>
         {[
             <p>DBMS</p>,
@@ -146,9 +171,10 @@ const NotesPage = () => {
             <p>Operating Systems</p>
         ]}
         </TreeMenu>,
-        <TreeMenu toggleHead="Semester 3" onClick={(e)=>{
+        <TreeMenu toggleHead="Semester 3" onNodeToggle={(e)=>{
             e.preventDefault();
-            setSemester('semeseter 3');
+            setSemester('sem3');
+            fetchNotes();
         }}>
         {[
             <p>DBMS</p>,
@@ -220,7 +246,9 @@ const NotesPage = () => {
                                 {note.replace(".pdf","")}
                               </div>
                           ))
+                          
                       }
+                     
                       <Modal 
                          isOpen={modal}
                          onRequestClose={closeModal}
