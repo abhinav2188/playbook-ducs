@@ -15,7 +15,7 @@ import Footer from "./Layout/Footer"
 const ConditionalFooter = (props) => {
   const location = useLocation();
   return (
-    location.pathname!="/test" ? <Footer/>:""
+    (location.pathname!="/test" && location.pathname!="/college-life") ? <Footer/>:""
   );
 } 
 
