@@ -42,8 +42,9 @@ html {
     display: flex;
     flex-direction: column;
     gap: 10rem;
-    padding: 2rem 5rem 0 5rem;
-    height: 105vh;
+    padding: 10rem 5rem 0 5rem;
+    height: 100%;
+    width: 100vw;
   }
 
   /* header nav bar */
@@ -114,6 +115,8 @@ html {
     text-align: center;
     font: 3.5rem "Homemade Apple", cursive;
     color: #fd8901;
+  }
+
   .page1-bg {
     position: absolute;
     left: 0;
@@ -122,12 +125,56 @@ html {
     z-index: 0;
   }
   /* page 1 end */
+  .container-2 {
+    position: relative;
+    display: flex;
+    width: 100vw;
+    justify-content: center;
+    flex-direction: column;
+    gap: 7rem;
+    height: 100%;
+    padding: 0rem 5rem 0 5rem;
 
-  /* page 4 start */
-  .container-2,
-  .container-3,
-  .container-4,
-  .container-5,
+    background-color: #e7e8ff;
+    color: #1b1f3b;
+  }
+  .container-3 {
+    position: relative;
+    display: flex;
+    width: 100vw;
+    justify-content: center;
+    flex-direction: column;
+    gap: 7rem;
+    height: 100%;
+    padding: 0.2rem 5rem 0 5rem;
+    background-color: #e7e8ff;
+    color: #1b1f3b;
+  }
+
+  .container-4 {
+    position: relative;
+    display: flex;
+    width: 100vw;
+    justify-content: center;
+    flex-direction: column;
+    gap: 7rem;
+    height: 100%;
+    padding: 0.2rem 5rem 0 5rem;
+    background-color: #e7e8ff;
+    color: #1b1f3b;
+  }
+  .container-5 {
+    position: relative;
+    display: flex;
+    width: 100vw;
+    justify-content: center;
+    flex-direction: column;
+    gap: 7rem;
+    background-color: #fffcd6;
+    height: 100%;
+    padding: 0rem 5rem 0 5rem;
+    color: #1b1f3b;
+  }
   .container-6 {
     position: relative;
     display: flex;
@@ -135,10 +182,12 @@ html {
     justify-content: center;
     flex-direction: column;
     gap: 7rem;
-
-    padding: 7rem;
+    height: 100%;
+    padding: 0.2rem 5rem 0 5rem;
     background-color: #e7e8ff;
     color: #1b1f3b;
+
+    background-color: #ffedf0;
   }
 
   /* styling 2 images */
@@ -175,7 +224,7 @@ html {
     display: flex;
     flex-direction: column;
     gap: 2.2rem;
-    margin-top: 5rem;
+    margin-top: 1.5rem;
   }
 
   .main-content h3 {
@@ -242,25 +291,12 @@ html {
 
   /* page 5 start */
 
-  .container-5 {
-    background-color: #fffcd6;
-    padding: 7rem 5rem;
-  }
-
   .dp5 {
     background-color: #ffda56;
   }
 
   .cards-page5 {
     box-shadow: 0 4px 16px #a89a642a;
-  }
-
-  /* page 5 end */
-
-  /* page 6 start */
-  .container-6 {
-    background-color: #ffedf0;
-    padding: 7rem 5rem 4rem 5rem;
   }
 
   .dp6 {
@@ -435,136 +471,4 @@ html {
       overflow-x: scroll;
     }
   }
-}
-
-@media (max-width: 768px) {
-  .container-1 {
-    padding: 1.5rem;
-    height: 100vh;
-    overflow: hidden;
-  }
-
-  .container-1 h2 {
-    font-size: 2.5rem;
-  }
-
-  .container-2,
-  .container-3,
-  .container-4,
-  .container-5,
-  .container-6 {
-    padding: 7rem 1.5rem;
-  }
-
-  .container-2 img:nth-child(1),
-  .container-4 img:nth-child(1),
-  .container-5 img:nth-child(1),
-  .container-6 img:nth-child(1) {
-    width: 28rem;
-  }
-
-  .container-2 .page2-bg,
-  .container-3 .page3-bg2,
-  .container-4 .man,
-  .container-5 .graduation-img,
-  .container-6 .polaroid {
-    width: 30rem;
-  }
-
-  .container-3 .page3-bg1 {
-    width: 12rem;
-  }
-
-  .container-3 .page3-bg2 {
-    width: 16.5rem;
-  }
-
-  .main-content {
-    display: block;
-  }
-
-  .main-content h3,
-  p {
-    display: block;
-    text-align: center;
-  }
-
-  .main-content h3 {
-    font-size: 2.8rem;
-  }
-
-  .main-content p {
-    width: 26rem;
-    margin: 2.2rem auto 0 auto;
-    font-size: 0.9rem;
-    letter-spacing: 0.5px;
-  }
-
-  .slider {
-    width: auto;
-    overflow: scroll;
-  }
-
-  .display-name {
-    font-size: 0.8rem;
-    letter-spacing: 0.4px;
-  }
-
-  .review-text {
-    font-size: 0.7rem;
-    line-height: 20px;
-    letter-spacing: 0.2px;
-  }
-
-  .fa-bars {
-    position: absolute;
-    right: 2rem;
-    top: 2.3rem;
-    z-index: 1;
-  }
-
-  .fa-times {
-    margin: 1rem 0 3.5rem 1.5rem;
-  }
-
-  .container-1 .fas {
-    display: block;
-    cursor: pointer;
-    font-size: 1.5rem;
-    color: #1b1f3b;
-  }
-
-  .nav-links {
-    display: block;
-    align-items: flex-start;
-    background-color: #fff8e2;
-    height: 100vh;
-    width: 14rem;
-    position: absolute;
-    top: 0;
-    right: -14rem;
-    text-align: left;
-    z-index: 2;
-    transition: all 0.4s linear;
-  }
-
-  .nav-links a {
-    display: block;
-    margin-top: 2rem;
-    margin-left: 1.5rem;
-  }
-
-  a.middle::before {
-    width: 30%;
-  }
-
-  .nav-links button {
-    margin-top: 2.2rem;
-    margin-left: 1.5rem;
-  }
-
-  .logo {
-    font-size: 1.4rem;
-  }
-}
 }

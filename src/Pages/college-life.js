@@ -15,20 +15,10 @@ import cloudsPage6 from "../assets/clouds-page6.svg";
 import WithAnimationLoad from "../HOC/WithAnimationLoad";
 import Footer from "../Layout/Footer";
 
-
 //for slider
 import SectionSlider from "../UI/SectionSlider";
 import Marquee from "../UI/marquee";
 
-const sectionNames = [
-  "section1 abhin",
-  "section2",
-  "section3",
-  "section4",
-  "section5",
-  "section6",
-  "section7",
-];
 const Page = () => {
   const [count, setCount] = useState(4);
   useEffect(() => {
@@ -37,6 +27,16 @@ const Page = () => {
     else setCount(1);
     console.log(window.innerWidth, count);
   }, []);
+
+  const sectionNames = [
+    "Phases of College Life",
+    "Baby Steps",
+    "Exploring",
+    "Defining Point",
+    "Graduation",
+    "Nostalgia",
+  ];
+
   const sections = [
     <div class="container-1 vertical-scrolling">
       <h2>
@@ -87,8 +87,8 @@ const Page = () => {
           aspiration and don't forget to live in the present.
         </p>
       </div>
-      <Marquee itemsArray={cardsP2} activeItemsCount={count} />
       <img class="man" src={page4Bg} alt="man with goals" />
+      <Marquee itemsArray={cardsP2} activeItemsCount={count} />
     </div>,
     <div class="container-5 vertical-scrolling">
       <img src={cloudsPage5} alt="clouds" />
@@ -123,7 +123,12 @@ const Page = () => {
 
   return (
     <WithAnimationLoad className="clg-life">
-      <SectionSlider sections={sections} sectionNames={sectionNames} footer={<Footer/>} footerHeight={80}/>
+      <SectionSlider
+        sections={sections}
+        sectionNames={sectionNames}
+        footer={<Footer />}
+        footerHeight={80}
+      />
     </WithAnimationLoad>
   );
 };
