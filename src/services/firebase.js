@@ -1,7 +1,8 @@
 import dotenv from 'dotenv'
 import firebase from "firebase/app";
 import "firebase/storage";
-
+import 'firebase/firestore';
+import Axios from 'axios' 
 require('firebase/auth');
 dotenv.config()
 
@@ -22,6 +23,7 @@ firebase.initializeApp({
 export const auth = firebase.auth();
 const googleProvider = new firebase.auth.GoogleAuthProvider();
 export const firebaseStorage = firebase.storage().ref();
+export const firestoreDB = firebase.firestore();
 
 // login 
 export const signInWithGoogle = () => {
