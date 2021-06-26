@@ -142,14 +142,12 @@ const NotesPage = () => {
 
     const notesIndexContent = [
         <TreeMenu toggleHead="Semester 1" onClick={(e)=>{
-            e.preventDefault();
             console.log("Node toggle 1")
             setSemester('sem1');
             fetchNotes();
         }}> 
         {[
             <p  onClick={(e)=>{
-                e.preventDefault();
                 setSubject('DBMS_test1');
                 filterNotes();
             }}>DBMS</p>,
@@ -159,7 +157,6 @@ const NotesPage = () => {
         ]}
         </TreeMenu>,
         <TreeMenu toggleHead="Semester 2" onClick={(e)=>{
-            e.preventDefault();
             console.log("NOde toggle00");
             setSemester('sem2');
             fetchNotes();
@@ -172,7 +169,6 @@ const NotesPage = () => {
         ]}
         </TreeMenu>,
         <TreeMenu toggleHead="Semester 3" onNodeToggle={(e)=>{
-            e.preventDefault();
             setSemester('sem3');
             fetchNotes();
         }}>
