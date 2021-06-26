@@ -65,19 +65,15 @@ const NotesPage = () => {
 
         let notesUrl = [];  
        await firebaseStorage.child(`notes/${semester}`).listAll().then(function(res) {
-           console.log(res);
             res.items.forEach(function(folderRef) {
-                console.log("folderRef",folderRef);
             let gsReference = folderRef.toString();
-            console.log("gsReference",gsReference);
             let fileName = (gsReference.split(['/'])[5]);
             notesUrl.push(fileName);
             
             });
             setNotes(notesUrl);
-            console.log(notesUrl);
         }).catch(function(error) {
-
+            console.error(error);
         });
     }
 
@@ -129,6 +125,40 @@ const NotesPage = () => {
         
     }
 
+    function handleDownload(){
+        //console.log("Downloading",pdfURL);
+        window.open(pdfURL,"_blank");
+        // fetch(pdfURL, {
+        //     method: 'GET',
+        //     headers: {
+        //       'Content-Type': 'application/pdf',
+        //     },
+        //   })
+        //   .then((response) => response.blob())
+        //   .then((blob) => {
+        //     // Create blob link to download
+        //     const url = window.URL.createObjectURL(
+        //       new Blob([blob]),
+        //     );
+        //     const link = document.createElement('a');
+        //     link.href = url;
+        //     link.setAttribute(
+        //       'download',
+        //       `File.pdf`,
+        //     );
+        
+        //     // Append to html link element page
+        //     document.body.appendChild(link);
+        
+        //     // Start download
+        //     link.click();
+        
+        //     // Clean up and remove the link
+        //     link.parentNode.removeChild(link);
+        //   });
+        
+    }
+
 
     // filter notes based on subject 
     function filterNotes(){
@@ -171,7 +201,7 @@ const NotesPage = () => {
             <p>Operating Systems</p>
         ]}
         </TreeMenu>,
-        <TreeMenu toggleHead="Semester 3" onNodeToggle={(e)=>{
+        <TreeMenu toggleHead="Semester 3" onClick={(e)=>{
             e.preventDefault();
             setSemester('sem3');
             fetchNotes();
@@ -255,6 +285,12 @@ const NotesPage = () => {
                          style={customStyles}
                          contentLabel="Notes Modal"
                       >
+                          <div>
+                            <button style={{float: 'right'}} onClick={handleDownload}>Download</button>
+                            <button onClick={closeModal}>x</button>
+                          </div>
+
+                          
                             <PdfRender pdf={pdfURL}></PdfRender>
                             
                     </Modal>

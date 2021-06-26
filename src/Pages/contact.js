@@ -1,11 +1,55 @@
-import React from 'react'
+import {React,useState} from 'react'
 import './contact.scss'
-
 import cimg from "../assets/contactimg.svg"
 import {fbColor,instaColor,twitterColor, linkedinColor} from "../svgs/socialMediaIcons";
 import WithAnimationLoad from "../HOC/WithAnimationLoad";
+import {firestoreDB} from "../services/firebase";
 
-const contact = () => {
+
+const Contact = () => {
+
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        phone:'',
+        message: '',
+    });
+
+    const updateInput = e => {
+        e.preventDefault();
+        setFormData({
+         ...formData,
+        [e.target.name]: e.target.value,
+        })
+    }
+    const handleSubmit = e => {
+        e.preventDefault()
+        sendData()
+        setFormData({
+            name: '',
+            email: '',
+            phone:'',
+            message: ''
+        })
+    }
+    const sendData = () => {
+       
+            firestoreDB.collection("contact-form").add({
+            name: formData.name,
+            email: formData.email,
+            phone: formData.phone,
+            message: formData.message,
+            timestamp: new Date()
+            }).then(() =>{
+                alert("Form submitted successfully");
+            }).catch((err)=>{
+                alert("Error!");
+                console.error(err);
+            })
+        }
+
+
+
     return (
         <WithAnimationLoad className="contact-wrapper main">
 
@@ -16,11 +60,11 @@ const contact = () => {
             <img src={cimg} alt=""/>
         </div>
         <div className="right">
-            <form className="contact-form" action="#" method="POST">
-                <input type="text" id="name" placeholder="Name" required/>
-                <input type="email" id="email" placeholder="Email" required/>
-                <input type="tel" id="ph-num" placeholder="Phone" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required />
-                <textarea id="message" cols="30" rows="7" placeholder="Write your message here...">
+            <form className="contact-form" onSubmit={handleSubmit}>
+                <input type="text" id="name" name="name" placeholder="Name" onChange={updateInput}  value={formData.name || ''} required/>
+                <input type="email" id="email" name="email" placeholder="Email" onChange={updateInput} value={formData.email || ''} required/>
+                <input type="tel" id="ph-num" name="phone" placeholder="Phone" pattern="[0-9]{10}" onChange={updateInput} value={formData.phone || ''}  />
+                <textarea id="message" cols="30" name="message" rows="7" placeholder="Write your message here..." onChange={updateInput} value={formData.message || ''} required>
                 </textarea>
                 <button type="submit">Send</button>
             </form>
@@ -41,4 +85,4 @@ const contact = () => {
     );
 }
 
-export default contact;
+export default Contact;
