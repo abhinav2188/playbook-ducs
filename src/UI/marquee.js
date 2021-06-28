@@ -9,6 +9,7 @@ const Marquee = (props) =>{
     const [elementWidth , setElementWidth]  = useState(0);
     const [stopAnim , setStopAnim] = useState(false);
 
+
     useEffect( ()=>{
         for(let i=0;i<props.activeItemsCount;i++)
         setExtras(e => {
@@ -31,7 +32,7 @@ const Marquee = (props) =>{
             duration: 3000 * props.itemsArray.length,
             easing: t=>t
         },
-        pause:stopAnim
+        pause:stopAnim || (props.itemsArray.length <= props.activeItemsCount)
     });
 
 

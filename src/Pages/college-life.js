@@ -56,7 +56,7 @@ const Page = () => {
         </p>
       </div>
       <img class="page2-bg" src={page2Bg} alt="bg2" />
-      <Marquee itemsArray={cardsP2} activeItemsCount={count} />
+      <Marquee itemsArray={reviewData.babySteps} activeItemsCount={count} />
     </div>,
     <div class="container-3 vertical-scrolling">
       <img src={cloudsPage3} alt="clouds" />
@@ -73,7 +73,7 @@ const Page = () => {
 
       <img class="page3-bg1" src={page3Bg1} alt="bg3" />
       <img class="page3-bg2" src={page3Bg2} alt="bg3" />
-      <Marquee itemsArray={cardsP2} activeItemsCount={count} />
+      <Marquee itemsArray={reviewData.exploration} activeItemsCount={count} />
     </div>,
     <div class="container-4 vertical-scrolling">
       <img src={cloudsPage4} alt="floating clouds" />
@@ -88,7 +88,7 @@ const Page = () => {
         </p>
       </div>
       <img class="man" src={page4Bg} alt="man with goals" />
-      <Marquee itemsArray={cardsP2} activeItemsCount={count} />
+      <Marquee itemsArray={reviewData.definingPoint} activeItemsCount={count} />
     </div>,
     <div class="container-5 vertical-scrolling">
       <img src={cloudsPage5} alt="clouds" />
@@ -103,7 +103,7 @@ const Page = () => {
         </p>
       </div>
       <img class="graduation-img" src={page5Bg} alt="bg5" />
-      <Marquee itemsArray={cardsP2} activeItemsCount={count} />
+      <Marquee itemsArray={reviewData.graduation} activeItemsCount={count} />
     </div>,
     <div class="container-6 vertical-scrolling">
       <img src={cloudsPage6} alt="clouds" />
@@ -117,7 +117,7 @@ const Page = () => {
         </p>
       </div>
       <img class="polaroid" src={page6Bg} alt="bg6" />
-      <Marquee itemsArray={cardsP2} activeItemsCount={count} />
+      <Marquee itemsArray={reviewData.nostalgia} activeItemsCount={count} />
     </div>,
   ];
 
@@ -133,109 +133,77 @@ const Page = () => {
   );
 };
 
-const cardsP2 = [
-  <div class="cards cards-page4">
-    <div class="card-title">
-      <div class="dp2"></div>
-      <span class="display-name">Abraham</span>
-    </div>
-    <span class="review-text">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla odit
-      dolorem quia id. Autem laborum ipsa
-    </span>
-  </div>,
-  <div class="cards cards-page4">
-    <div class="card-title">
-      <div class="dp2"></div>
-      <span class="display-name">Desmond</span>
-    </div>
-    <span class="review-text">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis qui
-      saepe nisi expedita inventore facere quae dicta?
-    </span>
-  </div>,
-  <div class="cards cards-page4">
-    <div class="card-title">
-      <div class="dp2"></div>
-      <span class="display-name">Alan Fresco</span>
-    </div>
-    <span class="review-text">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla odit
-      dolorem quia id. Autem laborum ipsa
-    </span>
-  </div>,
-  <div class="cards cards-page4">
-    <div class="card-title">
-      <div class="dp2"></div>
-      <span class="display-name">Hans Down</span>
-    </div>
-    <span class="review-text">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla odit
-      dolorem quia id. Autem laborum ipsa
-    </span>
-  </div>,
-  <div class="cards cards-page4">
-    <div class="card-title">
-      <div class="dp2"></div>
-      <span class="display-name">Indigo Violet</span>
-    </div>
-    <span class="review-text">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla odit
-      dolorem quia id. Autem laborum ipsa
-    </span>
-  </div>,
-];
-const cardsP3 = [
-  <div class="cards cards-page4">
-    <div class="card-title">
-      <div class="dp3"></div>
-      <span class="display-name">Abraham</span>
-    </div>
-    <span class="review-text">
-      Lorem ipsum dolor sit amet cnponsectetur adipisicing elit. Nulla odit
-      dolorem quia id. Autem laborum ipsa
-    </span>
-  </div>,
-  <div class="cards cards-page4">
-    <div class="card-title">
-      <div class="dp3"></div>
-      <span class="display-name">Desmond</span>
-    </div>
-    <span class="review-text">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis qui
-      saepe nisi expedita inventore facere quae dicta?
-    </span>
-  </div>,
-  <div class="cards cards-page4">
-    <div class="card-title">
-      <div class="dp3"></div>
-      <span class="display-name">Alan Fresco</span>
-    </div>
-    <span class="review-text">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla odit
-      dolorem quia id. Autem laborum ipsa
-    </span>
-  </div>,
-  <div class="cards cards-page4">
-    <div class="card-title">
-      <div class="dp3"></div>
-      <span class="display-name">Hans Down</span>
-    </div>
-    <span class="review-text">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla odit
-      dolorem quia id. Autem laborum ipsa
-    </span>
-  </div>,
-  <div class="cards cards-page4">
-    <div class="card-title">
-      <div class="dp3"></div>
-      <span class="display-name">Indigo Violet</span>
-    </div>
-    <span class="review-text">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla odit
-      dolorem quia id. Autem laborum ipsa
-    </span>
-  </div>,
-];
+const ReviewCard = (props) => 
+(<div class="cards cards-page4">
+  <div class="card-title">
+    <a class="dp2" href={props.linkedinId}></a>
+    <span class="display-name">{props.name}</span>
+  </div>
+  <span class="review-text">
+    {props.review}
+  </span>
+</div>);
+
+const tags = [
+  "nostalgia","baby-steps","defining-point","graduation","exploration"
+]
+
+const rawReviewData = [
+  {
+    name:"Desmond",
+    review:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis quisaepe nisi expedita inventore facere quae dicta?",
+    linkedinId:"#",
+    tags:["nostalgia","baby-steps"]
+  },
+  {
+    name:"Rohan",
+    review:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis quisaepe nisi expedita inventore facere quae dicta?",
+    linkedinId:"#",
+    tags : ["defining-point","graduation"]
+  },
+  {
+    name:"Abraham",
+    review:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis quisaepe nisi expedita inventore facere quae dicta?",
+    linkedinId:"#",
+    tags : ["graduation","exploration"]
+  },
+  {
+    name:"Jennifer",
+    review:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis quisaepe nisi expedita inventore facere quae dicta?",
+    linkedinId:"#",
+    tags:[ "nostalgia","exploration"]
+  },
+  {
+    name:"Alakazama",
+    review:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis quisaepe nisi expedita inventore facere quae dicta?",
+    linkedinId:"#",
+    tags : ["graduation","exploration"]
+  },
+  {
+    name:"Rdinge",
+    review:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis quisaepe nisi expedita inventore facere quae dicta?",
+    linkedinId:"#",
+    tags:[ "nostalgia","exploration"]
+  },
+]
+
+const reviewData = {
+  babySteps : [],
+  nostalgia : [],
+  definingPoint : [],
+  graduation: [],
+  exploration : []
+};
+
+rawReviewData.forEach( rev => {
+  const card =  <ReviewCard name={rev.name} review={rev.review} linkedinId={rev.linkedinId} />
+  rev.tags.forEach( t => {
+    if(t === "nostalgia") reviewData.nostalgia.push(card);
+    else if(t === "baby-steps") reviewData.babySteps.push(card);
+    else if(t === "exploration") reviewData.exploration.push(card);
+    else if(t === "defining-point") reviewData.definingPoint.push(card);
+    else if(t === "graduation") reviewData.graduation.push(card);
+  })
+})
 
 export default Page;
