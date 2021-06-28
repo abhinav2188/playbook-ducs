@@ -8,25 +8,26 @@ import Contact from "./Pages/contact";
 import Test from "./Pages/test";
 import Notes from "./Pages/notes";
 import UserProvider from "./providers/UserProvider";
-import Header from "./Layout/Header"
-import Footer from "./Layout/Footer"
-
+import Header from "./Layout/Header";
+import Footer from "./Layout/Footer";
 
 const ConditionalFooter = (props) => {
   const location = useLocation();
-  return (
-    (location.pathname!="/test" && location.pathname!="/college-life") ? <Footer/>:""
+  return location.pathname != "/test" &&
+    location.pathname != "/college-life" ? (
+    <Footer />
+  ) : (
+    ""
   );
-} 
+};
 
 const App = () => {
-  
   return (
     <BrowserRouter>
       <UserProvider>
         <div className="root">
-          <Header/>
-            <Switch>
+          <Header />
+          <Switch>
             <Route path="/explore" component={Explore} />
             <Route path="/college-life" component={CollegeLife} />
             <Route path="/explore" component={Explore} />
@@ -35,7 +36,7 @@ const App = () => {
             <Route path="/notes" component={Notes} />
             <Route path="/" component={Home} />
           </Switch>
-          <ConditionalFooter/>
+          <ConditionalFooter />
         </div>
       </UserProvider>
     </BrowserRouter>
