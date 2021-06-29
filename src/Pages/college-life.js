@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import {firestoreDB} from "../services/firebase";
+
 import "./college-life.scss";
 import page1Bg from "../assets/college-life-page1-bg.svg";
 import page2Bg from "../assets/space-outline-illustration.svg";
@@ -7,11 +9,6 @@ import page3Bg2 from "../assets/exploring-man.svg";
 import page4Bg from "../assets/goals-illustration.svg";
 import page5Bg from "../assets/graduation-illustration.svg";
 import page6Bg from "../assets/polaroid-illustration.svg";
-import cloudsPage2 from "../assets/clouds-page1.svg";
-import cloudsPage3 from "../assets/orangeCloud.svg";
-import cloudsPage4 from "../assets/clouds-page4.svg";
-import cloudsPage5 from "../assets/clouds-page5.svg";
-import cloudsPage6 from "../assets/clouds-page6.svg";
 import WithAnimationLoad from "../HOC/WithAnimationLoad";
 import Footer from "../Layout/Footer";
 
@@ -34,12 +31,61 @@ const Cloud = (props) => {
 
 const Page = () => {
   const [count, setCount] = useState(4);
+  const [reviewData,setReviewData] = useState({
+    babySteps : [],
+    nostalgia : [],
+    definingPoint : [],
+    graduation: [],
+    exploration : []
+  });
+
+
+
   useEffect(() => {
     if (window.innerWidth >= 1024) setCount(4);
     else if (window.innerWidth >= 768) setCount(2);
     else setCount(1);
     console.log(window.innerWidth, count);
+    fetchReviews();
   }, []);
+
+  const fetchReviews = () => {
+    firestoreDB.collection("reviews").where("approved", "==", true)
+    .onSnapshot((querySnapshot) => {
+        let reviews = [];
+        querySnapshot.forEach((doc) => {
+            reviews.push(doc.data());
+        });
+        console.log("reviews",reviews);
+      //  setReviews(reviewData);
+       // console.log("state",reviews);
+        
+        setReviewData( (prevData)=>{
+          reviews.forEach( rev => {
+            const card =  <ReviewCard name={rev.name} review={rev.review} linkedinId={rev.linkedinId} />
+            rev.tags.forEach( t => {
+              if(t === "nostalgia") prevData.nostalgia.push(card);
+              else if(t === "baby-steps") prevData.babySteps.push(card);
+              else if(t === "exploration") prevData.exploration.push(card);
+              else if(t === "defining-point") prevData.definingPoint.push(card);
+              else if(t === "graduation") prevData.graduation.push(card);
+            })
+          })
+          return prevData;
+        })
+
+        console.log(reviewData);
+        console.log("baby Steps",reviewData);
+        
+      
+
+      
+    });
+  }
+
+
+  
+  
 
   const sectionNames = [
     "Phases of College Life",
@@ -149,7 +195,7 @@ const Page = () => {
 const ReviewCard = (props) => 
 (<div class="cards cards-page4">
   <div class="card-title">
-    <a class="dp" href={props.linkedinId}></a>
+    <a class="dp2" href={`https://www.${props.linkedinId}`} target="_blank"></a>
     <span class="display-name">{props.name}</span>
   </div>
   <span class="review-text">
@@ -157,66 +203,66 @@ const ReviewCard = (props) =>
   </span>
 </div>);
 
-const tags = [
-  "nostalgia","baby-steps","defining-point","graduation","exploration"
-]
+// const tags = [
+//   "nostalgia","baby-steps","defining-point","graduation","exploration"
+// ]
 
-const rawReviewData = [
-  {
-    name:"Desmond",
-    review:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis quisaepe nisi expedita inventore facere quae dicta?",
-    linkedinId:"#",
-    tags:["nostalgia","baby-steps"]
-  },
-  {
-    name:"Rohan",
-    review:"consectetur adipisicing elit. Officiis quisaepe nisi expedita inventore facere quae dicta?",
-    linkedinId:"#",
-    tags : ["defining-point","graduation"]
-  },
-  {
-    name:"Abraham",
-    review:"Lorem ipsum dolor sit amet,",
-    linkedinId:"#",
-    tags : ["graduation","exploration"]
-  },
-  {
-    name:"Jennifer",
-    review:"g elit. Officiis quisaepe nisi expedita inventore facere quae dicta?",
-    linkedinId:"#",
-    tags:[ "nostalgia","exploration"]
-  },
-  {
-    name:"Alakazama",
-    review:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis quisaepe nisi expedita inventore facere quae dicta?",
-    linkedinId:"#",
-    tags : ["graduation","exploration"]
-  },
-  {
-    name:"Rdinge",
-    review:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis quisaepe nisi expedita inventore facere quae dicta?",
-    linkedinId:"#",
-    tags:[ "nostalgia","exploration"]
-  },
-]
+// const rawReviewData = [
+//   {
+//     name:"Desmond",
+//     review:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis quisaepe nisi expedita inventore facere quae dicta?",
+//     linkedinId:"#",
+//     tags:["nostalgia","baby-steps"]
+//   },
+//   {
+//     name:"Rohan",
+//     review:"consectetur adipisicing elit. Officiis quisaepe nisi expedita inventore facere quae dicta?",
+//     linkedinId:"#",
+//     tags : ["defining-point","graduation"]
+//   },
+//   {
+//     name:"Abraham",
+//     review:"Lorem ipsum dolor sit amet,",
+//     linkedinId:"#",
+//     tags : ["graduation","exploration"]
+//   },
+//   {
+//     name:"Jennifer",
+//     review:"g elit. Officiis quisaepe nisi expedita inventore facere quae dicta?",
+//     linkedinId:"#",
+//     tags:[ "nostalgia","exploration"]
+//   },
+//   {
+//     name:"Alakazama",
+//     review:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis quisaepe nisi expedita inventore facere quae dicta?",
+//     linkedinId:"#",
+//     tags : ["graduation","exploration"]
+//   },
+//   {
+//     name:"Rdinge",
+//     review:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis quisaepe nisi expedita inventore facere quae dicta?",
+//     linkedinId:"#",
+//     tags:[ "nostalgia","exploration"]
+//   },
+// ]
 
-const reviewData = {
-  babySteps : [],
-  nostalgia : [],
-  definingPoint : [],
-  graduation: [],
-  exploration : []
-};
+// const reviewData = {
+//   babySteps : [],
+//   nostalgia : [],
+//   definingPoint : [],
+//   graduation: [],
+//   exploration : []
+// };
 
-rawReviewData.forEach( rev => {
-  const card =  <ReviewCard name={rev.name} review={rev.review} linkedinId={rev.linkedinId} />
-  rev.tags.forEach( t => {
-    if(t === "nostalgia") reviewData.nostalgia.push(card);
-    else if(t === "baby-steps") reviewData.babySteps.push(card);
-    else if(t === "exploration") reviewData.exploration.push(card);
-    else if(t === "defining-point") reviewData.definingPoint.push(card);
-    else if(t === "graduation") reviewData.graduation.push(card);
-  })
-})
+// rawReviewData.forEach( rev => {
+//   const card =  <ReviewCard name={rev.name} review={rev.review} linkedinId={rev.linkedinId} />
+//   rev.tags.forEach( t => {
+//     if(t === "nostalgia") reviewData.nostalgia.push(card);
+//     else if(t === "baby-steps") reviewData.babySteps.push(card);
+//     else if(t === "exploration") reviewData.exploration.push(card);
+//     else if(t === "defining-point") reviewData.definingPoint.push(card);
+//     else if(t === "graduation") reviewData.graduation.push(card);
+//   })
+// })
 
 export default Page;
