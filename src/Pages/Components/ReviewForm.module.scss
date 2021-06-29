@@ -1,0 +1,30 @@
+@import '../../base';
+
+.reviewForm{
+    display:flex;
+    flex-direction: column;
+    width:600px;
+    gap: 1rem;
+    background-color: #eee;
+    padding : 1rem;
+    label{
+        display:flex;
+        flex-direction : column;
+        width:100%;
+        gap: 0.25rem;
+    }
+    .submitButton{
+        background-color : #129912;
+        padding: 0.5rem 1rem; 
+        color: white;
+        margin-top:2rem;
+        border-radius: 0.25rem;
+        text-transform: uppercase;
+    }
+}
+
+@media screen and (max-width: $mobile) {
+    .reviewForm{
+        max-width: 320px;
+    }   
+}

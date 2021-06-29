@@ -38,7 +38,11 @@ $tv : '1440px';
   justify-content: center;
   padding-top:100px;
 }
-
+input, textarea{
+  outline: none;
+  border : none;
+  padding : 0.25rem;
+}
 button{
   background-color: transparent;
   border: none;

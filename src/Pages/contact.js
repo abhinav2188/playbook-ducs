@@ -21,6 +21,7 @@ const Contact = () => {
          ...formData,
         [e.target.name]: e.target.value,
         })
+        console.log(formData);
     }
     const handleSubmit = e => {
         e.preventDefault()

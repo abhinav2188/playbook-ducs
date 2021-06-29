@@ -1,6 +1,7 @@
 import React from "react";
 import SectionSlider from "../UI/SectionSlider";
 import Footer from "../Layout/Footer"
+import ReviewForm from "./Components/ReviewForm"
 
 const sections = [
   <h1>section 1</h1>,
@@ -25,7 +26,8 @@ const sectionNames = [
 const page = () => {
 
     return (
-        <SectionSlider sections={sections} sectionNames={sectionNames} footer={<Footer/>} footerHeight={80}/>
+        // <SectionSlider sections={sections} sectionNames={sectionNames} footer={<Footer/>} footerHeight={80}/>
+        <ReviewForm/>
     );
 }
 
