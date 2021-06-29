@@ -198,7 +198,7 @@ const NotesPage = () => {
             <p>Operating Systems</p>
         ]}
         </TreeMenu>,
-        <TreeMenu toggleHead="Semester 3" onNodeToggle={(e)=>{
+        <TreeMenu toggleHead="Semester 3" onCLick={(e)=>{
             setSemester('sem3');
             fetchNotes();
         }}>
