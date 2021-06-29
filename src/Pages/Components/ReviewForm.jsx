@@ -11,7 +11,7 @@ const ReviewForm = () => {
 
     const [formData,setFormData] = useState({
         name:"",
-        comment:"",
+        review:"",
         linkedinId:"",
     });
 
@@ -33,7 +33,7 @@ const ReviewForm = () => {
         
         setFormData({
             name:"",
-            comment:"",
+            review:"",
             linkedinId:"",
         });
         
@@ -43,9 +43,9 @@ const ReviewForm = () => {
        
             firestoreDB.collection("reviews").add({
             name: formData.name,
-            comment: formData.comment,
+            review: formData.comment,
             linkedinId: formData.linkedinId,
-            tags: ["#changethistag"],
+            tags: ["changethistag"],
             approved: false
             }).then(() =>{
                 alert("Form submitted successfully");
@@ -70,7 +70,7 @@ const ReviewForm = () => {
             </label>
             <label for="reviewer-comment" className="field">
                 <span>Review</span>
-                <textarea id="reviewer-comment" name="comment" rows={4} placeholder="Enter your review" value={formData.comment || ''} onChange={updateInput} required/> 
+                <textarea id="reviewer-comment" name="comment" rows={4} placeholder="Enter your review" value={formData.review || ''} onChange={updateInput} required/> 
             </label>
             <button type="submit" className={styles.submitButton}  onClick={handleSubmit}>
                 Add Review
