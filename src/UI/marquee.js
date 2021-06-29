@@ -37,7 +37,7 @@ const Marquee = (props) =>{
 
 
     return (
-            <div className="marquee-container container" onMouseEnter={()=>setStopAnim(true)} onMouseLeave={()=>setStopAnim(false)}>
+            <div className="marquee-container" onMouseEnter={()=>setStopAnim(true)} onMouseLeave={()=>setStopAnim(false)}>
                 <animated.div style={styles} className="marquee-content" >
                     {
                         props.itemsArray.map((item,index) => (
