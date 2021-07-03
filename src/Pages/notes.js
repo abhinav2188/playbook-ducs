@@ -126,46 +126,46 @@ const NotesPage = () => {
     }
 
     function handleDownload(){
-        //console.log("Downloading",pdfURL);
-        window.open(pdfURL,"_blank");
-        // fetch(pdfURL, {
-        //     method: 'GET',
-        //     headers: {
-        //       'Content-Type': 'application/pdf',
-        //     },
-        //   })
-        //   .then((response) => response.blob())
-        //   .then((blob) => {
-        //     // Create blob link to download
-        //     const url = window.URL.createObjectURL(
-        //       new Blob([blob]),
-        //     );
-        //     const link = document.createElement('a');
-        //     link.href = url;
-        //     link.setAttribute(
-        //       'download',
-        //       `File.pdf`,
-        //     );
+        console.log("Downloading",pdfURL);
+        //window.open(pdfURL,"_blank");
+        fetch(pdfURL, {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/pdf',
+            },
+          })
+          .then((response) => response.blob())
+          .then((blob) => {
+            // Create blob link to download
+            const url = window.URL.createObjectURL(
+              new Blob([blob]),
+            );
+            const link = document.createElement('a');
+            link.href = url;
+            link.setAttribute(
+              'download',
+              `File.pdf`,
+            );
         
-        //     // Append to html link element page
-        //     document.body.appendChild(link);
+            // Append to html link element page
+            document.body.appendChild(link);
         
-        //     // Start download
-        //     link.click();
+            // Start download
+            link.click();
         
-        //     // Clean up and remove the link
-        //     link.parentNode.removeChild(link);
-        //   });
+            // Clean up and remove the link
+            link.parentNode.removeChild(link);
+          });
         
     }
 
 
     // filter notes based on subject 
     function filterNotes(){
-       const data =  notes.filter(note =>{
-            return note === subject+".pdf";
-            
-        });
+        fetchNotes();
+       const data =  notes.filter(note =>
+             note.startsWith(subject)
+            );
         console.log(data);
         setNotes(data);
     }
@@ -178,10 +178,13 @@ const NotesPage = () => {
         }}> 
         {[
             <p  onClick={(e)=>{
-                setSubject('DBMS_test1');
+                setSubject('DBMS');
                 filterNotes();
             }}>DBMS</p>,
-            <p>OOPs</p>,
+            <p onClick={(e)=>{
+                setSubject('OOPs');
+                filterNotes();
+            }}>OOPs</p>,
             <p>Java</p>,
             <p>Operating Systems</p>
         ]}
