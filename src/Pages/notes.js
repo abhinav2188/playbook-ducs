@@ -13,6 +13,7 @@ const NotesPage = () => {
     const [showIndex,setShowIndex] = useState(false);
     
     const [notes,setNotes] = useState([]);
+    const [viewData,setViewData] = useState([]);
    
     const [semester,setSemester] = useState('sem1');
     const [subject,setSubject] = useState('DBMS');
@@ -69,6 +70,7 @@ const NotesPage = () => {
             
             });
             setNotes(notesUrl);
+            setViewData(notesUrl);
         }).catch(function(error) {
             console.error(error);
         });
@@ -123,68 +125,69 @@ const NotesPage = () => {
     }
 
     function handleDownload(){
-        //console.log("Downloading",pdfURL);
-        window.open(pdfURL,"_blank");
-        // fetch(pdfURL, {
-        //     method: 'GET',
-        //     headers: {
-        //       'Content-Type': 'application/pdf',
-        //     },
-        //   })
-        //   .then((response) => response.blob())
-        //   .then((blob) => {
-        //     // Create blob link to download
-        //     const url = window.URL.createObjectURL(
-        //       new Blob([blob]),
-        //     );
-        //     const link = document.createElement('a');
-        //     link.href = url;
-        //     link.setAttribute(
-        //       'download',
-        //       `File.pdf`,
-        //     );
+        fetch(pdfURL)
+          .then((response) => response.blob())
+          .then((blob) => {
+            // Create blob link to download
+            const url = window.URL.createObjectURL(
+              new Blob([blob]),
+            );
+            const link = document.createElement('a');
+            link.href = url;
+            link.setAttribute(
+              'download',
+              `File.pdf`,
+            );
         
-        //     // Append to html link element page
-        //     document.body.appendChild(link);
+            // Append to html link element page
+            document.body.appendChild(link);
         
-        //     // Start download
-        //     link.click();
+            // Start download
+            link.click();
         
-        //     // Clean up and remove the link
-        //     link.parentNode.removeChild(link);
-        //   });
+            // Clean up and remove the link
+            link.parentNode.removeChild(link);
+          });
         
     }
 
 
     // filter notes based on subject 
     function filterNotes(){
-       const data =  notes.filter(note =>{
-            return note === subject+".pdf";
-            
-        });
-        console.log(data);
-        setNotes(data);
+       const filteredData =  notes.filter(note =>
+             note.startsWith(subject)
+            );
+        if(filteredData!= null){
+            setViewData(filteredData);
+        }
+        
     }
 
     const notesIndexContent = [
         <TreeMenu toggleHead="Semester 1" onClick={()=>{
-            console.log("Node toggle 1")
             setSemester('sem1');
             fetchNotes();
         }}> 
         {[
-            <p  onClick={(e)=>{
-                setSubject('DBMS_test1');
+            <p  onClick={()=>{
+                setSubject('DBMS');
                 filterNotes();
             }}>DBMS</p>,
-            <p>OOPs</p>,
-            <p>Java</p>,
-            <p>Operating Systems</p>
+            <p onClick={(e)=>{
+                setSubject('OOPs');
+                filterNotes();
+            }}>OOPs</p>,
+            <p onClick={(e)=>{
+                setSubject('Java');
+                filterNotes();
+            }}>Java</p>,
+            <p onClick={(e)=>{
+                setSubject('OS');
+                filterNotes();
+            }}>Operating Systems</p>
         ]}
         </TreeMenu>,
-        <TreeMenu toggleHead="Semester 2" onClick={(e)=>{
-            console.log("NOde toggle00");
+        <TreeMenu toggleHead="Semester 2" onClick={()=>{
             setSemester('sem2');
             fetchNotes();
         }}>
@@ -195,7 +198,7 @@ const NotesPage = () => {
             <p>Operating Systems</p>
         ]}
         </TreeMenu>,
-        <TreeMenu toggleHead="Semester 3" onCLick={(e)=>{
+        <TreeMenu toggleHead="Semester 3" onCLick={()=>{
             setSemester('sem3');
             fetchNotes();
         }}>
@@ -261,7 +264,7 @@ const NotesPage = () => {
 
                     <div className="notes-pdf-container">
                       {
-                          notes.map((note, index) => (
+                          viewData.map((note, index) => (
                               <div className="notes-pdf" key= {index} onClick = {(e)=>{
                                 e.preventDefault();
                                 handleClick(note);
