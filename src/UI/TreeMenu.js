@@ -20,8 +20,14 @@ const TreeMenu = (props) => {
     })
     
     return (
-        <div className="tree-menu" {...props}>
-            <div className="toggle-head" onClick={() => setShow(s=>!s)}>
+        <div className="tree-menu">
+            <div className="toggle-head" onClick={() => 
+            {
+                if(show == false){
+                    props.onClick();
+                }
+                setShow(s=>!s);
+            }}>
                 <Spring transform={show?`rotate(0deg)`:'rotate(-90deg)'}>
                 {styles => 
                 <animated.div className="caret" style={styles}>
