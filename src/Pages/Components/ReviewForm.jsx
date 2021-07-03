@@ -70,7 +70,7 @@ const ReviewForm = () => {
             </label>
             <label for="reviewer-comment" className="field">
                 <span>Review</span>
-                <textarea id="reviewer-comment" name="comment" rows={4} placeholder="Enter your review" value={formData.review || ''} onChange={updateInput} required/> 
+                <textarea id="reviewer-comment" name="review" rows={4} placeholder="Enter your review" value={formData.review || ''} onChange={updateInput} required/> 
             </label>
             <button type="submit" className={styles.submitButton}  onClick={handleSubmit}>
                 Add Review
