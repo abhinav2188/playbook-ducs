@@ -2,7 +2,6 @@ import dotenv from 'dotenv'
 import firebase from "firebase/app";
 import "firebase/storage";
 import 'firebase/firestore';
-import Axios from 'axios' 
 require('firebase/auth');
 dotenv.config()
 
