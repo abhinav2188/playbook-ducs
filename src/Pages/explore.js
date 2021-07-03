@@ -53,11 +53,30 @@ const ListItem = (props) => {
     </li>
   );
 };
-const Page = () => {
+
+const VideosDialog = (props) => {
   const [showDialog, setShowDialog] = useState(false);
   const openDialog = () => setShowDialog(true);
   const closeDialog = () => setShowDialog(false);
-  const [DialogContent, setDialogContent] = useState([]);
+  return(
+    <>
+    <button onClick={openDialog}>{props.displayCard}</button>
+    <Dialog class="dialog" open={showDialog} onClose={closeDialog}>
+    <DialogTitle>How to Manage Time?</DialogTitle>
+    <DialogContent>
+      <DialogContentText>
+      {props.children}
+      </DialogContentText>
+    </DialogContent>
+  </Dialog>
+    </>
+
+  );
+}
+
+
+const Page = () => {
+  // const [DialogContent, setDialogContent] = useState([]);
 
   return (
     <>
@@ -73,41 +92,15 @@ const Page = () => {
               </p>
             </div>
             <div className="explore-cards">
-              <Card
+            <VideosDialog displayCard = {<Card
                 key="e1"
                 title="Financial Books"
                 imgSrc={cardImg1}
                 grad="linear-gradient(
 45deg
 , #412FAF, #50C1E8)"
-                onClick={openDialog}
-              />
-              <Card
-                onClick={openDialog}
-                key="e2"
-                title="Recreation"
-                imgSrc={cardImg2}
-                grad="linear-gradient(
-45deg
-, #2FB8FF, #95E8DC)"
-              />
-              <Card
-                onClick={openDialog}
-                key="e3"
-                title="Productivity"
-                imgSrc={cardImg3}
-                grad="linear-gradient(
-45deg
-, #2587A6, #6FF7E8)"
-              />
-            </div>
-          </div>
-        </div>
-        <Dialog class="dialog" open={showDialog} onClose={closeDialog}>
-          <DialogTitle>How to Manage Time?</DialogTitle>
-          <DialogContent>
-            <DialogContentText>
-              <ul class="items">
+              />}>
+                <ul class="items">
                 <ListItem
                   link="https://www.amazon.in/Rich-Dad-Poor-Middle-Updates/dp/1612680194/ref=sr_1_3?dchild=1&keywords=Rich+Dad%2C+Poor+Dad&qid=1618073077&sr=8-3"
                   image="https://images-na.ssl-images-amazon.com/images/I/51wOOMQ+F3L._SX312_BO1,204,203,200_.jpg"
@@ -126,13 +119,96 @@ const Page = () => {
                   head="The Intelligent Investor"
                   description="The intelligent investor by Benjamin Graham, first published in 1949, is a widely acclaimed book on value investing."
                 />
+                </ul>
+
+              </VideosDialog>
+              <VideosDialog displayCard={
+              <Card
+                key="e2"
+                title="Recreation"
+                imgSrc={cardImg2}
+                grad="linear-gradient(45deg, #2FB8FF, #95E8DC)" />
+              }>
+              <ul class="items">
+              <ListItem
+                link="https://www.amazon.in/Rich-Dad-Poor-Middle-Updates/dp/1612680194/ref=sr_1_3?dchild=1&keywords=Rich+Dad%2C+Poor+Dad&qid=1618073077&sr=8-3"
+                image="https://images-na.ssl-images-amazon.com/images/I/51wOOMQ+F3L._SX312_BO1,204,203,200_.jpg"
+                head="Vasu the Casenova"
+                description="What the Rich Teaches their children that Poor and Middle Class don't!"
+              />
+              <ListItem
+                link="https://www.amazon.in/Romancing-Balance-Sheet-Manages-Business/dp/9350294311/ref=sr_1_1?dchild=1&keywords=Romancing+the+Balance+Sheet&qid=1618073144&sr=8-1"
+                image="https://images-na.ssl-images-amazon.com/images/I/41zDazXl1YL._SX311_BO1,204,203,200_.jpg"
+                head="Youtuber VASU"
+                description="For Anyone Who Owns, Runs or Manages a Business"
+              />
+              <ListItem
+                link="https://www.amazon.in/Intelligent-Investor-English-Paperback-2013/dp/0062312685/ref=sr_1_1?dchild=1&keywords=The+Intelligent+Investor&qid=1618073199&sr=8-1"
+                image="https://images-na.ssl-images-amazon.com/images/I/51DLoxAJ68L._SX324_BO1,204,203,200_.jpg"
+                head="The Intelligent Investor"
+                description="The intelligent investor by Benjamin Graham, first published in 1949, is a widely acclaimed book on value investing."
+              />
               </ul>
-            </DialogContentText>
-          </DialogContent>
-        </Dialog>
+
+              </VideosDialog>
+              <VideosDialog displayCard={
+              <Card
+                key="e3"
+                title="Productivity"
+                imgSrc={cardImg3}
+                grad="linear-gradient(
+45deg
+, #2587A6, #6FF7E8)"
+              />}>
+              <ul class="items">
+              <ListItem
+                link="https://www.amazon.in/Rich-Dad-Poor-Middle-Updates/dp/1612680194/ref=sr_1_3?dchild=1&keywords=Rich+Dad%2C+Poor+Dad&qid=1618073077&sr=8-3"
+                image="https://images-na.ssl-images-amazon.com/images/I/51wOOMQ+F3L._SX312_BO1,204,203,200_.jpg"
+                head="Vasu the Casenova"
+                description="What the Rich Teaches their children that Poor and Middle Class don't!"
+              />
+              <ListItem
+                link="https://www.amazon.in/Romancing-Balance-Sheet-Manages-Business/dp/9350294311/ref=sr_1_1?dchild=1&keywords=Romancing+the+Balance+Sheet&qid=1618073144&sr=8-1"
+                image="https://images-na.ssl-images-amazon.com/images/I/41zDazXl1YL._SX311_BO1,204,203,200_.jpg"
+                head="Youtuber VASU"
+                description="For Anyone Who Owns, Runs or Manages a Business"
+              />
+              <ListItem
+                link="https://www.amazon.in/Intelligent-Investor-English-Paperback-2013/dp/0062312685/ref=sr_1_1?dchild=1&keywords=The+Intelligent+Investor&qid=1618073199&sr=8-1"
+                image="https://images-na.ssl-images-amazon.com/images/I/51DLoxAJ68L._SX324_BO1,204,203,200_.jpg"
+                head="The Intelligent Investor"
+                description="The intelligent investor by Benjamin Graham, first published in 1949, is a widely acclaimed book on value investing."
+              />
+              </ul>
+
+              </VideosDialog>
+            </div>
+          </div>
+        </div>
       </WithAnimationLoad>
     </>
   );
 };
 
 export default Page;
+
+{/* <ul class="items">
+<ListItem
+  link="https://www.amazon.in/Rich-Dad-Poor-Middle-Updates/dp/1612680194/ref=sr_1_3?dchild=1&keywords=Rich+Dad%2C+Poor+Dad&qid=1618073077&sr=8-3"
+  image="https://images-na.ssl-images-amazon.com/images/I/51wOOMQ+F3L._SX312_BO1,204,203,200_.jpg"
+  head="Rich Dad,Poor Dad"
+  description="What the Rich Teaches their children that Poor and Middle Class don't!"
+/>
+<ListItem
+  link="https://www.amazon.in/Romancing-Balance-Sheet-Manages-Business/dp/9350294311/ref=sr_1_1?dchild=1&keywords=Romancing+the+Balance+Sheet&qid=1618073144&sr=8-1"
+  image="https://images-na.ssl-images-amazon.com/images/I/41zDazXl1YL._SX311_BO1,204,203,200_.jpg"
+  head="Romancing the Balance Sheet"
+  description="For Anyone Who Owns, Runs or Manages a Business"
+/>
+<ListItem
+  link="https://www.amazon.in/Intelligent-Investor-English-Paperback-2013/dp/0062312685/ref=sr_1_1?dchild=1&keywords=The+Intelligent+Investor&qid=1618073199&sr=8-1"
+  image="https://images-na.ssl-images-amazon.com/images/I/51DLoxAJ68L._SX324_BO1,204,203,200_.jpg"
+  head="The Intelligent Investor"
+  description="The intelligent investor by Benjamin Graham, first published in 1949, is a widely acclaimed book on value investing."
+/>
+</ul> */}

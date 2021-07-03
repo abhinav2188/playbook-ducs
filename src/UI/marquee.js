@@ -9,6 +9,7 @@ const Marquee = (props) =>{
     const [elementWidth , setElementWidth]  = useState(0);
     const [stopAnim , setStopAnim] = useState(false);
 
+
     useEffect( ()=>{
         for(let i=0;i<props.activeItemsCount;i++)
         setExtras(e => {
@@ -16,9 +17,9 @@ const Marquee = (props) =>{
             return e;
         });
         setElementWidth(100 / props.activeItemsCount);
-    },[props.activeItemsCount] );
+    },[props.activeItemsCount,props.itemsArray] );
 
-    
+   
     const styles = useSpring({
         from :{
             x : '0%'
@@ -31,12 +32,12 @@ const Marquee = (props) =>{
             duration: 3000 * props.itemsArray.length,
             easing: t=>t
         },
-        pause:stopAnim
+        pause:stopAnim || (props.itemsArray.length <= props.activeItemsCount)
     });
 
 
     return (
-            <div className="marquee-container container" onMouseEnter={()=>setStopAnim(true)} onMouseLeave={()=>setStopAnim(false)}>
+            <div className="marquee-container" onMouseEnter={()=>setStopAnim(true)} onMouseLeave={()=>setStopAnim(false)}>
                 <animated.div style={styles} className="marquee-content" >
                     {
                         props.itemsArray.map((item,index) => (
@@ -46,6 +47,7 @@ const Marquee = (props) =>{
                         ))
                     }
                     {
+                        props.itemsArray.length>props.activeItemsCount &&
                         extras.map(i => (
                         <div className="marquee-element" key={i+props.itemsArray.length} style={{width:elementWidth+'%'}}>
                             {props.itemsArray[i]}

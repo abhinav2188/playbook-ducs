@@ -24,16 +24,12 @@
   --tertiary-font: Lato-Bold;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+.bottom-right{
+  position:absolute;
+  right:0;
+  bottom:0;
 }
 
-body,
-html {
-  height: 100%;
-}
 
 .clg-life {
   /* page 1 start */
@@ -41,234 +37,108 @@ html {
     position: relative;
     display: flex;
     flex-direction: column;
-    gap: 10rem;
-    padding: 10rem 5rem 0 5rem;
     height: 100%;
-    width: 100vw;
-  }
-
-  /* header nav bar */
-  .nav-bar {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  .logo {
-    text-decoration: none;
-    color: #1b1f3b;
-    font: 1.8rem "Fredericka the Great", cursive;
-    text-indent: 15px;
-  }
-
-  .nav-links {
-    display: flex;
-    align-items: center;
-    gap: 3.5rem;
-  }
-
-  .nav-links a {
-    text-decoration: none;
-    color: #1b1f3b;
-    font: 1rem var(--secondary-font);
-  }
-
-  .middle {
-    position: relative;
-  }
-
-  a.middle::before {
-    content: "";
-    position: absolute;
     width: 100%;
-    height: 1.85px;
-    bottom: -6px;
-    left: 0;
-    background-color: #ff6542;
-    visibility: hidden;
-    transform: scaleX(0);
-    transition: all 0.3s ease-in-out;
-  }
-
-  a.middle:hover:before {
-    visibility: visible;
-    transform: scaleX(1);
-  }
-
-  .nav-links button {
-    cursor: pointer;
-    padding: 0.65rem 1.9rem;
-    color: white;
-    font: 1rem var(--secondary-font);
-    background-color: #ff6542;
-    border: none;
-    border-radius: 7px;
-    transition: box-shadow 0.3s ease-out;
-  }
-
-  .nav-links button:hover {
-    box-shadow: 0 4px 8px #ffdfd8;
-  }
-
-  /* header nav bar end */
-
-  .container-1 h2 {
-    text-align: center;
-    font: 3.5rem "Homemade Apple", cursive;
-    color: #fd8901;
-  }
-
-  .page1-bg {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    z-index: 0;
-  }
-  /* page 1 end */
-  .container-2 {
-    position: relative;
-    display: flex;
-    width: 100vw;
     justify-content: center;
-    flex-direction: column;
-    gap: 7rem;
-    height: 100%;
-    padding: 0rem 5rem 0 5rem;
+    h2{
+      align-self:center;
+      text-align: center;
+      font: 4rem "Homemade Apple", cursive;
+      color: #fd8901;
+      }
+    .page1-bg {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      z-index: 0;
+    }
+  }
 
-    background-color: #e7e8ff;
+  .section {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+
+    .main-content {
+      margin-top : calc(100px + 10vh);
+      width:80%;
+      align-self:center;
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+      z-index:1;
+      h3 {
+        font: 3rem var(--primary-font);
+        margin: 0 ;
+      }
+      p {
+        font: 1.1rem var(--secondary-font);
+        width: 50%;
+        letter-spacing: 0.27px;
+        line-height: 26px;
+        margin-bottom: 2rem;
+      }
+    }
+  }
+
+  .container-2{
+    background-color: #cee9ff;
     color: #1b1f3b;
   }
   .container-3 {
-    position: relative;
-    display: flex;
-    width: 100vw;
-    justify-content: center;
-    flex-direction: column;
-    gap: 7rem;
-    height: 100%;
-    padding: 0.2rem 5rem 0 5rem;
-    background-color: #e7e8ff;
+    background-color: #e7fff0;
     color: #1b1f3b;
   }
-
   .container-4 {
-    position: relative;
-    display: flex;
-    width: 100vw;
-    justify-content: center;
-    flex-direction: column;
-    gap: 7rem;
-    height: 100%;
-    padding: 0.2rem 5rem 0 5rem;
     background-color: #e7e8ff;
     color: #1b1f3b;
   }
   .container-5 {
-    position: relative;
-    display: flex;
-    width: 100vw;
-    justify-content: center;
-    flex-direction: column;
-    gap: 7rem;
     background-color: #fffcd6;
-    height: 100%;
-    padding: 0rem 5rem 0 5rem;
     color: #1b1f3b;
   }
   .container-6 {
-    position: relative;
-    display: flex;
-    width: 100vw;
-    justify-content: center;
-    flex-direction: column;
-    gap: 7rem;
-    height: 100%;
-    padding: 0.2rem 5rem 0 5rem;
-    background-color: #e7e8ff;
     color: #1b1f3b;
-
     background-color: #ffedf0;
   }
 
-  /* styling 2 images */
-
-  .container-2 img:nth-child(1),
-  .container-3 img:nth-child(1),
-  .container-4 img:nth-child(1),
-  .container-5 img:nth-child(1),
-  .container-6 img:nth-child(1) {
-    position: absolute;
-    top: 4rem;
-    left: 0;
-    width: 40rem;
+  .page3-bg1{
+    position:absolute;
+    left:0;
+    bottom:0;
+    max-height:65%;
+    max-width: 100%;
   }
 
-  .container-4 img:nth-child(1) {
-    left: -50px;
-  }
+  .page2-bg, .page3-bg2,.page4-bg,.page5-bg,.page6-bg{
+    position:absolute;
+    right:0;
+    bottom:0;
+    max-height:65%;
+    max-width: 100%;
 
-  .container-2 .page2-bg,
-  .container-3 .page3-bg2,
-  .container-4 .man,
-  .container-5 .graduation-img,
-  .container-6 .polaroid {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 36rem;
-    z-index: 0;
   }
-
-  /* main content */
-  .main-content {
-    display: flex;
-    flex-direction: column;
-    gap: 2.2rem;
-    margin-top: 1.5rem;
-  }
-
-  .main-content h3 {
-    font: 3.3rem var(--primary-font);
-  }
-
-  .main-content p {
-    font: 1rem var(--secondary-font);
-    width: 37rem;
-    letter-spacing: 0.27px;
-    line-height: 26px;
-  }
-
+ 
   /* cards */
-  .slider {
-    display: flex;
-    gap: 2rem;
-    z-index: 1;
-  }
-
   .cards {
-    background-color: white;
+    background-color: rgba(255,255,255,0.9);
     padding: 1.8rem 1.8rem 3.8rem 1.8rem;
+    width:100%;
     display: flex;
     flex-direction: column;
     gap: 0.8rem;
-    border-radius: 6px;
+    border-radius: 0.5rem;
   }
 
-  .cards-page4 {
-    box-shadow: 0 4px 16px #1b1f3b21;
-  }
-
-  .card-title {
+ .card-title {
     display: flex;
     align-items: center;
     gap: 0.7rem;
   }
-
-  .dp2,
-  .dp3,
-  .dp4,
-  .dp5,
-  .dp6 {
+  .dp{
     border-radius: 50%;
     background-color: #a3a3ff;
     width: 30px;
@@ -276,199 +146,92 @@ html {
   }
 
   .display-name {
-    font: 0.9rem var(--tertiary-font);
     letter-spacing: 0.7px;
     color: #1b1f3b;
   }
 
   .review-text {
-    font: 0.75rem var(--secondary-font);
-    line-height: 20px;
+    line-height: 1.25rem;
     letter-spacing: 0.3px;
   }
 
-  /* page 4 end */
-
-  /* page 5 start */
-
-  .dp5 {
-    background-color: #ffda56;
-  }
-
-  .cards-page5 {
-    box-shadow: 0 4px 16px #a89a642a;
-  }
-
-  .dp6 {
-    background-color: #ff6da2;
-  }
-
-  .cards-page6 {
-    box-shadow: 0 4px 16px #6836481e;
-  }
-  /* page 6 end */
-
-  /* page 2 start */
-  .container-2 {
-    background-color: #efffff;
-  }
-
-  .dp2 {
-    background-color: #98f3f3;
-  }
-  /* page 2 end */
-
-  /* page 3 start */
-  .container-3 {
-    background-color: #fff8ef;
-  }
-
-  .dp3 {
-    background-color: #ff9d4c;
-  }
-
-  .container-3 .page3-bg1 {
+  .clouds{
     position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 17rem;
+    top:0;
+    width:60%;
+    margin-top: 15vh;
   }
+}
 
-  .container-3 .page3-bg2 {
-    width: 17rem;
+@media screen and (max-width : $tablet){
+  .clg-life{
+    .container-1{
+      h2{
+        font-size: 3rem;
+      }
+    }
+    .section{
+      .main-content {
+        margin-top : calc(100px + 5vh);
+        gap:2rem;
+        h3 {
+          font: 2.5rem var(--primary-font);
+          margin: 0 ;
+        }
+        p {
+          font: 1rem var(--secondary-font);
+          width: 60%;
+          line-height: 1.5rem;
+        }
+      }    
+    }
+    .cards {
+      padding: 1.5rem 1.5rem 3rem 1.5rem;
+      gap: 0.8rem;
+      border-radius: 0.5rem;
+      font-size:0.9rem;
+    }
+    .clouds{
+      width:70%;
+    }
+  
   }
-  /* page 3 end */
+}
 
-  /* footer */
-  footer {
-    background-color: #ffedf0;
-    padding: 1.2rem;
-    text-align: center;
-    font: 0.9rem var(--secondary-font);
-    color: #1b1f3b80;
-    letter-spacing: 0.3px;
-  }
 
-  /* media queries */
-
-  @media (min-width: 1440px) {
-    .container-1 h2 {
-      font-size: 5rem;
+@media screen and (max-width : $mobile){
+  .clg-life{
+    .container-1{
+      h2{
+        font-size: 2rem;
+      }
     }
-
-    .container-2,
-    .container-3,
-    .container-4,
-    .container-5,
-    .container-6 {
-      min-height: 100vh;
-      padding: 14rem 5rem;
+    .section{
+      .main-content {
+        gap:1.5rem;
+        p {
+          width: 100%;
+        }
+      }    
     }
-
-    .container-2 img:nth-child(1),
-    .container-3 img:nth-child(1),
-    .container-4 img:nth-child(1),
-    .container-5 img:nth-child(1),
-    .container-6 img:nth-child(1) {
-      top: 7rem;
-      width: 42rem;
+    .page3-bg1{
+      position:absolute;
+      left:0;
+      bottom:0;
+      max-height:30%;
+      max-width: 100%;
     }
-
-    .container-2 .page2-bg,
-    .container-3 .page3-bg2,
-    .container-4 .man,
-    .container-5 .graduation-img,
-    .container-6 .polaroid {
-      width: 48rem;
+  
+    .page2-bg, .page3-bg2,.page4-bg,.page5-bg,.page6-bg{
+      position:absolute;
+      right:0;
+      bottom:0;
+      max-height:50%;
+      max-width: 80%;  
     }
-
-    .container-3 .page3-bg1,
-    .container-3 .page3-bg2 {
-      width: 28rem;
-    }
-
-    .slider {
-      height: 20rem;
-    }
-
-    .card-title {
-      gap: 1.2rem;
-    }
-
-    .display-name {
-      font-size: 1rem;
-    }
-
-    .review-text {
-      font-size: 0.8rem;
-      letter-spacing: 0.18px;
-    }
-
-    .dp2,
-    .dp3,
-    .dp4,
-    .dp5,
-    .dp6 {
-      width: 50px;
-      height: 50px;
-    }
-
-    footer {
-      font-size: 1.2rem;
-    }
-  }
-
-  //Slider CSS
-  /* SLIDENAV STYLES - fullPage.js 
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
-
-  #clg-life {
-    scroll-snap-type: y mandatory;
-  }
-  .vertical-scrolling {
-    scroll-snap-align: start;
-  }
-
-  /*making page responsive*/
-  @media (max-width: 1024px) {
-    .container-1 {
-      gap: 8rem;
-      padding: 2rem 3rem 5rem 3rem;
-      height: 100vh;
-    }
-
-    .container-1 h2 {
-      font-size: 3rem;
-    }
-    .container-2,
-    .container-3,
-    .container-4,
-    .container-5,
-    .container-6 {
-      gap: 8rem;
-      padding: 2rem 3rem 3rem 3rem;
-      height: 150vh;
-    }
-
-    .container-2 p,
-    .container-4 p,
-    .container-3 p,
-    .container-5 p,
-    .container-6 p {
-      width: 20em;
-      z-index: 1;
-    }
-
-    .container-2 h3,
-    .container-3 h3,
-    .container-4 h3,
-    .container-5 h3,
-    .container-6 h3 {
-      font-size: 3rem;
-    }
-
-    .slider {
-      overflow-x: scroll;
+    .clouds{
+      width:80%;
+      margin-top: 10vh;
     }
   }
 }

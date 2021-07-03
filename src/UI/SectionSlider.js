@@ -85,7 +85,7 @@ const SectionSlider = (props) => {
       }
       else return (i+1 < props.sections.length ? (i+1) : i);
     })
-    console.log(activeSection);
+    // console.log(activeSection);
   }
 
   function prevSection(){
