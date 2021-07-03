@@ -17,6 +17,11 @@ import SectionSlider from "../UI/SectionSlider";
 import Marquee from "../UI/marquee";
 
 
+const Loader = (props) => {
+    return (
+      <center>Loading...</center>
+    )
+};
 const Cloud = (props) => {
   return (
     <svg className="clouds" fill={props.fillColor} viewBox="0 0 1417 241" xmlns="http://www.w3.org/2000/svg">
@@ -38,48 +43,37 @@ const Page = () => {
     graduation: [],
     exploration : []
   });
-
+  const [isDataFetched,setIsDataFetched] = useState(false);
 
 
   useEffect(() => {
     if (window.innerWidth >= 1024) setCount(4);
     else if (window.innerWidth >= 768) setCount(2);
     else setCount(1);
-    console.log(window.innerWidth, count);
     fetchReviews();
   }, []);
 
-  const fetchReviews = () => {
+  async function fetchReviews() {
+    setIsDataFetched(false);
     firestoreDB.collection("reviews").where("approved", "==", true)
     .onSnapshot((querySnapshot) => {
         let reviews = [];
         querySnapshot.forEach((doc) => {
             reviews.push(doc.data());
         });
-        console.log("reviews",reviews);
-      //  setReviews(reviewData);
-       // console.log("state",reviews);
-        
-        setReviewData( (prevData)=>{
-          reviews.forEach( rev => {
-            const card =  <ReviewCard name={rev.name} review={rev.review} linkedinId={rev.linkedinId} />
-            rev.tags.forEach( t => {
-              if(t === "nostalgia") prevData.nostalgia.push(card);
-              else if(t === "baby-steps") prevData.babySteps.push(card);
-              else if(t === "exploration") prevData.exploration.push(card);
-              else if(t === "defining-point") prevData.definingPoint.push(card);
-              else if(t === "graduation") prevData.graduation.push(card);
-            })
+        // console.log("reviews",reviews);
+       
+        reviews.forEach(rev => {
+          const card =  <ReviewCard name={rev.name} review={rev.review} linkedinId={rev.linkedinId} />
+          rev.tags.forEach( t => {
+          setReviewData( (prevData) => ({
+              ...prevData,
+              [t] : [...prevData[t],card]
+          }));
           })
-          return prevData;
-        })
-
-        console.log(reviewData);
-        console.log("baby Steps",reviewData);
-        
-      
-
-      
+        });
+        // console.log("reviewData:",reviewData);
+        setIsDataFetched(true);        
     });
   }
 
@@ -113,7 +107,10 @@ const Page = () => {
           more skills, Try to use your skills to solve real life problems, Do
           Internships, Explore Campus and make new Friends.
         </p>
-        <Marquee itemsArray={reviewData.babySteps} activeItemsCount={count} />
+        {isDataFetched ? 
+        <Marquee itemsArray={reviewData.babySteps} activeItemsCount={count} />:
+        <Loader />
+        }
       </div>
       <img class="page2-bg" src={page2Bg} />
     </div>,
@@ -128,7 +125,10 @@ const Page = () => {
           individuals so that you grow in your college life and make the best
           out of it.
         </p>
-        <Marquee itemsArray={reviewData.exploration} activeItemsCount={count} />
+        {isDataFetched ? 
+          <Marquee itemsArray={reviewData.exploration} activeItemsCount={count} />:
+          <Loader />
+        }
       </div>
 
       <img class="page3-bg1" src={page3Bg1} alt="bg3" />
@@ -145,7 +145,10 @@ const Page = () => {
           Follow your own path, find your purpose, find your own ambition and
           aspiration and don't forget to live in the present.
         </p>
-        <Marquee itemsArray={reviewData.definingPoint} activeItemsCount={count} />
+        {isDataFetched ? 
+          <Marquee itemsArray={reviewData.definingPoint} activeItemsCount={count} />:
+          <Loader />
+        }
       </div>
       <img class="page4-bg" src={page4Bg} alt="man with goals" />
     </div>,
@@ -160,7 +163,10 @@ const Page = () => {
           adventures you've embarked, all the chit chats with your friends, all
           the hangouts and bunk memories will be with you FOREVER...
         </p>
-        <Marquee itemsArray={reviewData.graduation} activeItemsCount={count} />
+        {isDataFetched ? 
+          <Marquee itemsArray={reviewData.graduation} activeItemsCount={count} />:
+          <Loader />
+        }
       </div>
       <img class="page5-bg" src={page5Bg} alt="bg5" />
     </div>,
@@ -174,7 +180,10 @@ const Page = () => {
           maggi point to DCAC canteens. Lets take a trip down the memory lane
           and relive some of our most favourite moments.
         </p>
-        <Marquee itemsArray={reviewData.nostalgia} activeItemsCount={count} />
+        {isDataFetched ? 
+          <Marquee itemsArray={reviewData.nostalgia} activeItemsCount={count} />:
+          <Loader />
+        }
       </div>
       <img class="page6-bg" src={page6Bg} alt="bg6" />
     </div>,
@@ -204,65 +213,7 @@ const ReviewCard = (props) =>
 </div>);
 
 // const tags = [
-//   "nostalgia","baby-steps","defining-point","graduation","exploration"
+//   "nostalgia","babySteps","definingPoint","graduation","exploration"
 // ]
-
-// const rawReviewData = [
-//   {
-//     name:"Desmond",
-//     review:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis quisaepe nisi expedita inventore facere quae dicta?",
-//     linkedinId:"#",
-//     tags:["nostalgia","baby-steps"]
-//   },
-//   {
-//     name:"Rohan",
-//     review:"consectetur adipisicing elit. Officiis quisaepe nisi expedita inventore facere quae dicta?",
-//     linkedinId:"#",
-//     tags : ["defining-point","graduation"]
-//   },
-//   {
-//     name:"Abraham",
-//     review:"Lorem ipsum dolor sit amet,",
-//     linkedinId:"#",
-//     tags : ["graduation","exploration"]
-//   },
-//   {
-//     name:"Jennifer",
-//     review:"g elit. Officiis quisaepe nisi expedita inventore facere quae dicta?",
-//     linkedinId:"#",
-//     tags:[ "nostalgia","exploration"]
-//   },
-//   {
-//     name:"Alakazama",
-//     review:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis quisaepe nisi expedita inventore facere quae dicta?",
-//     linkedinId:"#",
-//     tags : ["graduation","exploration"]
-//   },
-//   {
-//     name:"Rdinge",
-//     review:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis quisaepe nisi expedita inventore facere quae dicta?",
-//     linkedinId:"#",
-//     tags:[ "nostalgia","exploration"]
-//   },
-// ]
-
-// const reviewData = {
-//   babySteps : [],
-//   nostalgia : [],
-//   definingPoint : [],
-//   graduation: [],
-//   exploration : []
-// };
-
-// rawReviewData.forEach( rev => {
-//   const card =  <ReviewCard name={rev.name} review={rev.review} linkedinId={rev.linkedinId} />
-//   rev.tags.forEach( t => {
-//     if(t === "nostalgia") reviewData.nostalgia.push(card);
-//     else if(t === "baby-steps") reviewData.babySteps.push(card);
-//     else if(t === "exploration") reviewData.exploration.push(card);
-//     else if(t === "defining-point") reviewData.definingPoint.push(card);
-//     else if(t === "graduation") reviewData.graduation.push(card);
-//   })
-// })
 
 export default Page;

@@ -17,9 +17,9 @@ const Marquee = (props) =>{
             return e;
         });
         setElementWidth(100 / props.activeItemsCount);
-    },[props.activeItemsCount] );
+    },[props.activeItemsCount,props.itemsArray] );
 
-    
+   
     const styles = useSpring({
         from :{
             x : '0%'
@@ -47,6 +47,7 @@ const Marquee = (props) =>{
                         ))
                     }
                     {
+                        props.itemsArray.length>props.activeItemsCount &&
                         extras.map(i => (
                         <div className="marquee-element" key={i+props.itemsArray.length} style={{width:elementWidth+'%'}}>
                             {props.itemsArray[i]}
