@@ -14,7 +14,6 @@ const NotesPage = () => {
     
     const [notes,setNotes] = useState([]);
    
-
     const [semester,setSemester] = useState('sem1');
     const [subject,setSubject] = useState('DBMS');
 
@@ -53,8 +52,6 @@ const NotesPage = () => {
     function openModal() {
         setModal(true);
       }
-    
-    
     
       function closeModal(){
         setModal(false);
@@ -171,7 +168,7 @@ const NotesPage = () => {
     }
 
     const notesIndexContent = [
-        <TreeMenu toggleHead="Semester 1" onClick={(e)=>{
+        <TreeMenu toggleHead="Semester 1" onClick={()=>{
             console.log("Node toggle 1")
             setSemester('sem1');
             fetchNotes();
