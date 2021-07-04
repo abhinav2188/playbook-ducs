@@ -204,7 +204,7 @@ const Page = () => {
 const ReviewCard = (props) => 
 (<div class="cards cards-page4">
   <div class="card-title">
-    <a class="dp2" href={`https://www.${props.linkedinId}`} target="_blank"></a>
+    <a class="dp" href={props.linkedinId} target="_blank"></a>
     <span class="display-name">{props.name}</span>
   </div>
   <span class="review-text">

@@ -11,6 +11,17 @@ import {menuIcon,logoutIcon} from "../svgs/navBarIcons"
 
 const Header = (props) =>{
 
+    const [offsetY,setOffsetY] = useState(0);
+    const handleScroll = () => {
+      // console.log("handleScroll");
+      setOffsetY(window.pageYOffset);
+    }
+    useEffect(()=>{
+      // console.log("useEffect");
+      window.addEventListener("scroll",handleScroll);
+      return () => window.removeEventListener("scroll",handleScroll);
+    },[]);
+  
     // const [showForm , setShowForm ] = useState(false);
     const [showSideBar, setShowSideBar] = useState(false);
     
@@ -20,6 +31,16 @@ const Header = (props) =>{
    useEffect( ()=>{
         setAuthState(user ? true:false);
    },[user])
+
+
+   useEffect(()=>{
+        var t = document.querySelector(':root');
+        var theme = getComputedStyle(t);
+        console.log(theme.getPropertyValue('--header-bg-color'));
+        console.log(theme.getPropertyValue('--header-txt-color'));
+        t.style.setProperty('--header-txt-color',props.theme.color);
+        t.style.setProperty('--header-bg-color',offsetY>100 ? props.theme.backgroundColor: "transparent");
+   },[props.theme,offsetY])
 
    const staticLinks = [
     <NavLink exact to="/" className="nav-link" activeClassName="nav-link-active">Home</NavLink>,
@@ -60,7 +81,7 @@ const Header = (props) =>{
             </div>
         </header>
         {/* <SignUpForm in={showForm} onClose={() => setShowForm(false)}/> */}
-        <SideBar show={showSideBar} close={()=>setShowSideBar(false)} className="sidebar">
+        <SideBar show={showSideBar} close={()=>setShowSideBar(false)}>
             <div className="nav-links">     
                 {[
                     ...staticLinks,
@@ -73,3 +94,5 @@ const Header = (props) =>{
 
 
 export default Header;
+
+//  className="sidebar" style={{color:props.theme.color , backgroundColor:props.theme.backgroundColor}}
