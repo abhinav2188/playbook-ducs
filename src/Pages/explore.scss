@@ -34,12 +34,12 @@
   display: inline-block;
   max-width: 208.333px;
   min-width: 208.333px;
-  max-height: 250px;
+  max-height: 270px;
   border-radius: 10px;
   transition: transform 0.2s ease-out;
   .card-img {
     width: 100%;
-    height: 80%;
+    height: 70%;
     img {
       width: 90%;
       height: 85%;
@@ -52,6 +52,8 @@
     color: #fff;
     font-size: 20px;
     text-align: center;
+    margin-top: -3px;
+    padding: 0 5px 0 5px;
   }
 }
 
@@ -78,6 +80,27 @@
     width: 100%;
     height: 10rem;
  }
+ .MuiDialog-paperWidthSm {
+  min-width: 26rem;
+}
+
+ // Making Dialog content responsive
+ .li1{
+    margin-left: -10rem;
+    
+ }
+ .li1 p{
+   max-width: 15rem;
+   max-height: 3rem;
+   margin-left: -1.2rem !important;
+   padding: 0 0.5rem 0 0;
+  }
+ .li1 h5{
+max-width: 15rem;
+max-height: 3rem;
+margin-left: -1.2rem !important;
+
+}
  
 }
 
@@ -107,13 +130,13 @@
   margin-bottom: 20px;
   border-radius: 10px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 11px 0px;
-
 }
 .li1 p{
   font-size: 10px;
   float: right;
   width: 15rem;
   margin-top: -20px;
+  margin-left: -0.7rem;
    text-align: left justify;
   text-justify: inter-word;
 
@@ -122,12 +145,12 @@
   width: 100%;
   display: flex;
 }
-.li1 h3{
-  margin-top: 2px !important;
+.li1 h5{
+  margin-left: -0.7rem;
+  margin-top: 0.5rem !important;
   color: #FD6E6E;
 }
 .img1{
-  width: 7rem;
   height: 6rem;
   overflow: hidden;
   float: left;
