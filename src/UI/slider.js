@@ -1,6 +1,6 @@
 import React from 'react';
 import {animated, useTransition} from 'react-spring';
-import "./sideNavBar.scss"
+import "./slider.scss"
 import Backdrop from "./Backdrop"
 
 const Sidebar = (props) => {

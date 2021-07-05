@@ -5,8 +5,11 @@
   --header-txt-color : #fff;
 }
 
-header {
-  transition: all 0.2s ease-in;
+.nav-link-active {
+  border-bottom: 2px var(--header-txt-color) solid;
+}
+.header {
+  transition: color 0.2s ease-in;
   background-color: var(--header-bg-color);
   position: fixed;
   top:0;
@@ -33,9 +36,6 @@ header {
         color: var(--header-txt-color);
         padding: 0.5rem;
         position: relative;
-      }
-      .nav-link-active {
-        border-bottom: 2px var(--header-txt-color) solid;
       }
       .nav-link::before {
         content: "";
@@ -96,13 +96,14 @@ header {
   padding: 2rem 1rem;
   width: 40%;
   height: 100%;
+  background-color: $color-content-dark;
   .nav-links {
     display: flex;
     flex-direction: column;
     gap: 1rem;
     .nav-link {
       padding: 0.5rem 1rem;
-      color: var(--header-txt-color);
+      color: $color-content-light;
       position: relative;
     }
     .nav-link::before {
@@ -112,7 +113,7 @@ header {
       height: 2px;
       left: 0;
       bottom: 0;
-      background-color: var(--header-txt-color);
+      background-color:$color-content-light;
       visibility: hidden;
       transform: scaleX(0);
       transition: all 0.3s ease-in-out;
@@ -141,7 +142,7 @@ header {
 }
 
 @media screen and (max-width: $tablet) {
-  header {
+  .header {
     .header-content {
       width: 90%;
       .nav-links {
@@ -163,7 +164,7 @@ header {
 }
 
 @media screen and (max-width: $mobile) {
-  header{
+  .header{
     height: 80px;
   }
   .sidebar {

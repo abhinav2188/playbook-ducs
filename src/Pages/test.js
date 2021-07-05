@@ -1,7 +1,7 @@
 import React from "react";
 import SectionSlider from "../UI/SectionSlider";
 import Footer from "../Layout/Footer"
-import ReviewForm from "./Components/ReviewForm"
+import ReviewForm from "../Components/ReviewForm"
 
 const sections = [
   <h1>section 1</h1>,

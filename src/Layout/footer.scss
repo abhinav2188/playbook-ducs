@@ -1,5 +1,34 @@
 @import '../base';
 
+.footer{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.bottom-nav{
+  height: 300px;
+  background-color: #eee;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  width:100%;
+  padding: 2rem;
+  box-sizing:border-box;
+  .form-buttons{
+    display:flex;
+    gap:0.5rem;
+    button{
+      background-color: $color-content-dark;
+      padding : 0.75rem 2rem;
+      color: $color-orange;
+      align-self: flex-start;
+      border-radius : 2rem;
+    }
+    button:hover{
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.4);
+    }
+  }
+}
 footer {
     width: 100%;
     min-height: 80px;
@@ -7,5 +36,14 @@ footer {
     align-items: center;
     justify-content: center;
     background-color: $color-orange;
-    margin-bottom: -80px;
   }
+
+@media screen and (max-width:$tablet){
+  .bottom-nav{
+    align-items: flex-start;
+    gap:2rem;
+    .form-buttons{
+      flex-direction: column;
+    }
+  }
+}

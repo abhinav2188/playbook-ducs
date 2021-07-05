@@ -17,7 +17,9 @@ $tv : '1440px';
 %trans{
   transition: all 0.5s ease-in-out;
 }
-
+*{
+  box-sizing: border-box;
+}
 .root{
   color: $color-content-dark;
   margin: 0;

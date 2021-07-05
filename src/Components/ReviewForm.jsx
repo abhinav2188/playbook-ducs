@@ -1,7 +1,7 @@
 import React,{useState, useContext} from 'react';
 import styles from './ReviewForm.module.scss';
-import {firestoreDB} from "../../services/firebase";
-import { UserContext } from '../../providers/UserProvider';
+import {firestoreDB} from "../services/firebase";
+import { UserContext } from '../providers/UserProvider';
 import { useHistory } from "react-router-dom";
 
 const ReviewForm = () => {

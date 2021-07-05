@@ -1,23 +1,30 @@
 import React,{useState, useEffect, useContext} from 'react'
 import './Header.scss'
 import {Link,NavLink} from 'react-router-dom'
-import SignUpForm  from "./signUpForm"
+import SignUpForm  from "../Components/signUpForm"
 import { UserContext } from "../providers/UserProvider";
 import { logOut } from "../services/firebase";
 import { signInWithGoogle } from '../services/firebase';
-import SideBar from "./sideNavBar";
-import {menuIcon,logoutIcon} from "../svgs/navBarIcons"
+import SideBar from "../UI/slider";
+import {menuIcon,logoutIcon} from "../svgs/navBarIcons";
+import {animated, useTransition} from 'react-spring';
 
 
 const Header = (props) =>{
 
     const [offsetY,setOffsetY] = useState(0);
+    const [showHeader,setShowHeader] = useState(true);
     const handleScroll = () => {
-      // console.log("handleScroll");
-      setOffsetY(window.pageYOffset);
+        setOffsetY(prev => {
+            setShowHeader(window.pageYOffset==0 || prev>window.pageYOffset);
+            // if(prev<window.pageYOffset && showHeader === true)
+            // setShowHeader(false);
+            // else if(prev>window.pageYOffset && showHeader === false)
+            // setShowHeader(true);
+            return window.pageYOffset;
+        });
     }
     useEffect(()=>{
-      // console.log("useEffect");
       window.addEventListener("scroll",handleScroll);
       return () => window.removeEventListener("scroll",handleScroll);
     },[]);
@@ -32,15 +39,20 @@ const Header = (props) =>{
         setAuthState(user ? true:false);
    },[user])
 
-
    useEffect(()=>{
         var t = document.querySelector(':root');
         var theme = getComputedStyle(t);
-        console.log(theme.getPropertyValue('--header-bg-color'));
-        console.log(theme.getPropertyValue('--header-txt-color'));
+        // console.log(theme.getPropertyValue('--header-bg-color'));
+        // console.log(theme.getPropertyValue('--header-txt-color'));
         t.style.setProperty('--header-txt-color',props.theme.color);
-        t.style.setProperty('--header-bg-color',offsetY>100 ? props.theme.backgroundColor: "transparent");
-   },[props.theme,offsetY])
+        t.style.setProperty('--header-bg-color', props.theme.backgroundColor);
+   },[props.theme])
+
+   useEffect(()=>{
+      console.log("show header:",showHeader);
+   },[showHeader])
+
+
 
    const staticLinks = [
     <NavLink exact to="/" className="nav-link" activeClassName="nav-link-active">Home</NavLink>,
@@ -64,24 +76,37 @@ const Header = (props) =>{
     }}>Sign Up</button>;
 
 
+    const headerTrans = useTransition(showHeader,{
+        from:{y:'-100%'},
+        enter:{y:'0%'},
+        leave:{y:'-100%'},
+        config:{
+            duration:200
+        } 
+    });
     return (
         <>
-        <header>
-            <div className="header-content">
-                <Link to="/">
-                    <h3 id="logo">DUCS<br/>Playbook</h3>
-                </Link>
-                <div className="nav-links">
-                    {[
-                        ...staticLinks,
-                        signUpLogout
-                    ]}
-                </div> 
-                <button onClick={()=> setShowSideBar(s=>!s)} className="menu-button">{menuIcon}</button>
-            </div>
-        </header>
+        {
+            headerTrans((styles,item) =>
+            item && 
+            <animated.div className="header" style={styles}>
+                <div className="header-content">
+                    <Link to="/">
+                        <h3 id="logo">DUCS<br/>Playbook</h3>
+                    </Link>
+                    <div className="nav-links">
+                        {[
+                            ...staticLinks,
+                            signUpLogout
+                        ]}
+                    </div> 
+                    <button onClick={()=> setShowSideBar(s=>!s)} className="menu-button">{menuIcon}</button>
+                </div>
+            </animated.div>
+            )
+        }
         {/* <SignUpForm in={showForm} onClose={() => setShowForm(false)}/> */}
-        <SideBar show={showSideBar} close={()=>setShowSideBar(false)}>
+        <SideBar show={showSideBar} close={()=>setShowSideBar(false)} className="sidebar">
             <div className="nav-links">     
                 {[
                     ...staticLinks,
@@ -94,5 +119,3 @@ const Header = (props) =>{
 
 
 export default Header;
-
-//  className="sidebar" style={{color:props.theme.color , backgroundColor:props.theme.backgroundColor}}

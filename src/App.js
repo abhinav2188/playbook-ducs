@@ -22,7 +22,8 @@ const HeaderWithTheme = () => {
   
   const [theme,setTheme] = useState({
     color:"#fff",
-    backgroundColor:"rgba(0,0,100,0.5)" 
+    backgroundColor:"rgba(0,0,100,0.5)",
+    bgOpacity:"0.3"
   });
   const location = useLocation();
   
@@ -31,14 +32,14 @@ const HeaderWithTheme = () => {
       setTheme(prev => ({
         ...prev,
         color:"#fff",
-        backgroundColor:"rgba(0,0,0,0.3)" 
+        backgroundColor:"rgba(0,0,100,0.4)"
       }));
     }
     else{
       setTheme(prev => ({
         ...prev,
         color : "#000",
-        backgroundColor: "rgba(255,255,255,0.5)"
+        backgroundColor: "rgba(255,255,255,0.4)"
       }));
     }
   },[location.pathname])

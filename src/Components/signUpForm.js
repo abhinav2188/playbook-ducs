@@ -1,6 +1,6 @@
 import React from 'react'
 import './signUpFrom.scss'
-import Backdrop from './Backdrop';
+import Backdrop from '../UI/Backdrop';
 import {useSpring,config, animated,useTransition} from 'react-spring'
 
 const Form = (props) => {

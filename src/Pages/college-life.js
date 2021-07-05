@@ -195,7 +195,7 @@ const Page = () => {
         sections={sections}
         sectionNames={sectionNames}
         footer={<Footer />}
-        footerHeight={80}
+        footerHeight={380}
       />
     </WithAnimationLoad>
   );
