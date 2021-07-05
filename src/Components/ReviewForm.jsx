@@ -4,7 +4,7 @@ import {firestoreDB} from "../services/firebase";
 import { UserContext } from '../providers/UserProvider';
 import { useHistory } from "react-router-dom";
 
-const ReviewForm = () => {
+const ReviewForm = (props) => {
 
     const user = useContext(UserContext);
     const history = useHistory();
@@ -56,24 +56,24 @@ const ReviewForm = () => {
         }
 
     return (
-        <form className={styles.reviewForm} onSubmit={(e) => {
+        <form className={`${styles.reviewForm} ${props.className}`} onSubmit={(e) => {
             e.preventDefault();
             console.log("review-added");
         }}>
             <label for="reviewer-name" className="field">
                 <span>Name</span>
-                <input id="reviewer-name" type="text" name="name" placeholder="Enter your name" value={formData.name || ''} onChange={updateInput} required/> 
+                <input id="reviewer-name" type="text" name="name" value={formData.name || ''} onChange={updateInput} required/> 
             </label>
             <label for="reviewer-linkedin-id">
                 <span>Linkedin Profile Link</span>
-                <input id="reviewer-linkedin-id" type="text" name="linkedinId" placeholder="Enter your linkedIn Id" value={formData.linkedinId || ''} onChange={updateInput} required/> 
+                <input id="reviewer-linkedin-id" type="text" name="linkedinId" value={formData.linkedinId || ''} onChange={updateInput} required/> 
             </label>
             <label for="reviewer-comment" className="field">
                 <span>Review</span>
-                <textarea id="reviewer-comment" name="review" rows={4} placeholder="Enter your review" value={formData.review || ''} onChange={updateInput} required/> 
+                <textarea id="reviewer-comment" name="review" rows={6} value={formData.review || ''} onChange={updateInput} required/> 
             </label>
             <button type="submit" className={styles.submitButton}  onClick={handleSubmit}>
-                Add Review
+                Submit
             </button>
         </form>
     );

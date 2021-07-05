@@ -38,6 +38,31 @@ footer {
     background-color: $color-orange;
   }
 
+.review-form-container{
+  background: linear-gradient(335deg, dodgerblue, #1f1a1f);  
+  width: 50%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  color: #fff;
+  gap:4rem;
+  .form{
+    margin: 2rem 0rem;
+  }
+}
+.close-button{
+  position: absolute;
+  top:0;
+  right:0;
+  align-self: flex-end;
+  margin:1rem;
+  color: #fff;
+  width: 1.5rem;
+}
+
 @media screen and (max-width:$tablet){
   .bottom-nav{
     align-items: flex-start;
@@ -45,5 +70,15 @@ footer {
     .form-buttons{
       flex-direction: column;
     }
+  }
+  .review-form-container{
+    width: 80%;
+    gap:2rem;
+  }
+}
+
+@media screen and (max-width:$mobile){
+  .review-form-container{
+    width: 100%;
   }
 }

@@ -5,24 +5,37 @@
     flex-direction: column;
     width:600px;
     gap: 1rem;
-    background-color: #eee;
+    background-color: rgba(255,255,255,0.2);
     padding : 1rem;
+    color:#fff;
+    border-radius: 0.5rem;
     label{
         display:flex;
         flex-direction : column;
         width:100%;
         gap: 0.25rem;
+        input, textarea{
+            font-family: $font-content; 
+            padding:0.25rem;
+            border-radius: 0.25rem;
+            // background-color: gainsboro;
+        }
     }
     .submitButton{
-        background-color : #129912;
+        background-color : rebeccapurple;
         padding: 0.5rem 1rem; 
         color: white;
         margin-top:2rem;
         border-radius: 0.25rem;
-        text-transform: uppercase;
+        font-weight: 800;
     }
 }
 
+@media screen and (max-width: $tablet) {
+    .reviewForm{
+        max-width: 480px;
+    }   
+}
 @media screen and (max-width: $mobile) {
     .reviewForm{
         max-width: 320px;
