@@ -63,7 +63,7 @@ const ReviewForm = (props) => {
             </label>
             <label for="reviewer-linkedin-id">
                 <span>Linkedin Profile Link</span>
-                <input id="reviewer-linkedin-id" type="text" name="linkedinId" value={formData.linkedinId || ''} onChange={updateInput} required/> 
+                <input id="reviewer-linkedin-id" type="text" name="linkedinId" pattern="((http(s?)://)*([www])*\.|[linkedin])[linkedin/~\-]+\.[a-zA-Z0-9/~\-_,&=\?\.;]+[^\.,\s<]" value={formData.linkedinId || ''} onChange={updateInput} required/> 
             </label>
             <label for="reviewer-comment" className="field">
                 <span>Review</span>
