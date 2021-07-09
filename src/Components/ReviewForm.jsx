@@ -10,7 +10,7 @@ const ReviewForm = (props) => {
     const history = useHistory();
 
     const [formData,setFormData] = useState({
-        name:"",
+        name:user?.displayName || "",
         review:"",
         linkedinId:"",
     });
@@ -43,7 +43,7 @@ const ReviewForm = (props) => {
        
             firestoreDB.collection("reviews").add({
             name: formData.name,
-            review: formData.comment,
+            review: formData.review,
             linkedinId: formData.linkedinId,
             tags: ["changethistag"],
             approved: false
@@ -56,13 +56,10 @@ const ReviewForm = (props) => {
         }
 
     return (
-        <form className={`${styles.reviewForm} ${props.className}`} onSubmit={(e) => {
-            e.preventDefault();
-            console.log("review-added");
-        }}>
+        <form className={`${styles.reviewForm} ${props.className}`} onSubmit={handleSubmit}>
             <label for="reviewer-name" className="field">
                 <span>Name</span>
-                <input id="reviewer-name" type="text" name="name" value={formData.name || ''} onChange={updateInput} required/> 
+                <input id="reviewer-name" type="text" name="name" value={formData.name || ''} onChange={updateInput} disabled={user ? true:false} required/> 
             </label>
             <label for="reviewer-linkedin-id">
                 <span>Linkedin Profile Link</span>
@@ -72,7 +69,7 @@ const ReviewForm = (props) => {
                 <span>Review</span>
                 <textarea id="reviewer-comment" name="review" rows={6} value={formData.review || ''} onChange={updateInput} required/> 
             </label>
-            <button type="submit" className={styles.submitButton}  onClick={handleSubmit}>
+            <button type="submit" className={styles.submitButton}>
                 Submit
             </button>
         </form>
