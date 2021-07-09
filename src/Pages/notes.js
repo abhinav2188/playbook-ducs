@@ -170,21 +170,25 @@ const NotesPage = () => {
         }}> 
         {[
             <p  onClick={()=>{
-                setSubject('DBMS');
+                setSubject('DM');
                 filterNotes();
-            }}>DBMS</p>,
+            }}>Discrete Maths</p>,
+            <p  onClick={()=>{
+                setSubject('MT');
+                filterNotes();
+            }}>Mathematical Techniques</p>,
+            <p  onClick={()=>{
+                setSubject('CSA');
+                filterNotes();
+            }}>Computer System Architecture</p>,
             <p onClick={(e)=>{
-                setSubject('OOPs');
+                setSubject('OOP');
                 filterNotes();
-            }}>OOPs</p>,
-            <p onClick={(e)=>{
-                setSubject('Java');
+            }}>Object Oriented Programming</p>,
+            <p  onClick={()=>{
+                setSubject('TC');
                 filterNotes();
-            }}>Java</p>,
-            <p onClick={(e)=>{
-                setSubject('OS');
-                filterNotes();
-            }}>Operating Systems</p>
+            }}>Technical Communication</p>
         ]}
         </TreeMenu>,
         <TreeMenu toggleHead="Semester 2" onClick={()=>{
@@ -192,23 +196,86 @@ const NotesPage = () => {
             fetchNotes();
         }}>
         {[
-            <p>DBMS</p>,
-            <p>OOPs</p>,
-            <p>Java</p>,
-            <p>Operating Systems</p>
+           <p  onClick={()=>{
+            setSubject('DBMS');
+            filterNotes();
+        }}>DBMS</p>,
+        <p  onClick={()=>{
+            setSubject('DS');
+            filterNotes();
+        }}>Data Structures</p>,
+        <p  onClick={()=>{
+            setSubject('SE');
+            filterNotes();
+        }}>Software Engineering</p>,
+        <p  onClick={()=>{
+            setSubject('CN');
+            filterNotes();
+        }}>Computer Networks</p>,
+        <p  onClick={()=>{
+            setSubject('JAVA');
+            filterNotes();
+        }}>JAVA</p>
         ]}
         </TreeMenu>,
-        <TreeMenu toggleHead="Semester 3" onCLick={()=>{
+        <TreeMenu toggleHead="Semester 3" onClick={()=>{
             setSemester('sem3');
             fetchNotes();
         }}>
         {[
-            <p>DBMS</p>,
-            <p>OOPs</p>,
-            <p>Java</p>,
-            <p>Operating Systems</p>
+            <p  onClick={()=>{
+            setSubject('DAA');
+            filterNotes();
+            }}>Algorithms</p>,
+            <p  onClick={()=>{
+                setSubject('IS');
+                filterNotes();
+            }}>Information Security</p>,
+            <p  onClick={()=>{
+                setSubject('AT');
+                filterNotes();
+            }}>Automata Theory</p>,
+            <p  onClick={()=>{
+                setSubject('OS');
+                filterNotes();
+            }}>Operating System</p>,
+            <p  onClick={()=>{
+                setSubject('WT');
+                filterNotes();
+            }}>Web Technology</p>,
+            <p  onClick={()=>{
+                setSubject('DTM');
+                filterNotes();
+            }}>Data Mining</p>,
         ]}
         </TreeMenu>,
+        <TreeMenu toggleHead="Semester 4" onClick={()=>{
+            setSemester('sem4');
+            fetchNotes();
+        }}>
+        {[
+            <p  onClick={()=>{
+            setSubject('CD');
+            filterNotes();
+            }}>Compiler Design</p>,
+            <p  onClick={()=>{
+                setSubject('PDC');
+                filterNotes();
+            }}>Parallel and Distributed Computing</p>,
+            <p  onClick={()=>{
+                setSubject('AOS');
+                filterNotes();
+            }}>Advanced Operating System</p>,
+            <p  onClick={()=>{
+                setSubject('DIP');
+                filterNotes();
+            }}>Digital Image Processing</p>,
+            <p  onClick={()=>{
+                setSubject('DBA');
+                filterNotes();
+            }}>Database Applications</p>
+        ]}
+        </TreeMenu>
     
     ];
 
