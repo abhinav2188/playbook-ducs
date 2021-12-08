@@ -92,7 +92,7 @@ const Header = (props) =>{
             <animated.div className="header" style={styles}>
                 <div className="header-content">
                     <Link to="/">
-                        <h3 id="logo">DUCS<br/>Playbook</h3>
+                        <h3 id="logo">DUCS Playbook</h3>
                     </Link>
                     <div className="nav-links">
                         {[
