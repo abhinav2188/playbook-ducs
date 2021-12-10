@@ -8,15 +8,37 @@ import PdfRender from "./pdfRender";
 import Modal from 'react-modal';
 import WithAnimationLoad from "../HOC/WithAnimationLoad";
 
+
+const materialTypes = [
+    "Notes","PYPs","Ebooks"
+];
+const subjects = [
+    "All",
+    "Database Concepts",
+    "Operating Systems",
+    "Algorithms",
+    "Compiler Design",
+    "Theory of Computation",
+    "Discrete Mathematics",
+];
+const courses = ["All","MCA","MSc"];
+const semesters = ["All","1st","2nd","3rd","4th","5th","6th"];
+
+
+
 const NotesPage = () => {       
+
+    const [semester,setSemester] = useState(semesters[0]);
+    const [subject,setSubject] = useState(subjects[0]);
+    const [course,setCourse] = useState(courses[0]);
+    const [materialType, setMaterialType] = useState(materialTypes[0]);
+
 
     const [showIndex,setShowIndex] = useState(false);
     
     const [notes,setNotes] = useState([]);
     const [viewData,setViewData] = useState([]);
    
-    const [semester,setSemester] = useState('sem1');
-    const [subject,setSubject] = useState('DBMS');
 
     const [loading,setLoading] = useState(true);
 
@@ -27,6 +49,23 @@ const NotesPage = () => {
 
     const user = useContext(UserContext);
 
+    function fetchData(type,sub,course,sem){
+        return new Promise((resolve,reject) => {
+            setTimeout(()=>{
+                const data = [type,sub,course,sem];
+                resolve(data);
+            },1000);
+        });
+    }
+
+
+    useEffect(async ()=>{
+        setLoading(true);
+        const data = await fetchData(materialType,subject,course,semester);
+        setViewData(data);
+        setLoading(false);
+    },[materialType,subject,course,semester])
+    
 
     const customStyles = {
         content : {
@@ -282,87 +321,65 @@ const NotesPage = () => {
     return(
         
         <WithAnimationLoad className="main">
-        <div className="notes-page container">
+        <div className="notes-page">
+            
+
+            <div className="top-nav">
+                <form>
+                    <select name="materialType" id="material-type" value={materialType} 
+                    onChange={(e)=>{setMaterialType(e.target.value)}}>
+                        {
+                            materialTypes.map(
+                                mt => (
+                                    <option value={mt}>{mt}</option>
+                                )
+                            )
+                        }
+                    </select>
+                    <select name="subject" id="subject" value={subject} 
+                    onChange={(e)=>{setSubject(e.target.value)}}>
+                        {
+                            subjects.map(
+                                sub => (
+                                    <option value={sub}>{sub}</option>
+                                )
+                            )
+                        }
+                    </select>
+                    <select name = "course" id = "course" value = {course}
+                    onChange={(e) => {setCourse(e.target.value)}}>
+                        {
+                            courses.map( co => <option value={co}>{co}</option>)
+                        }
+                    </select>
+                    <select name = "semester" id = "semester" value={semester}
+                    onChange = {(e) => {setSemester(e.target.value)}}>
+                        {
+                            semesters.map( sem => <option value={sem}>{sem}</option>)
+                        }
+                    </select>
+                </form>
+            </div>
             
             {/* top container */}
-            
-            <div className="notes-hero">
-                <div className="notes-ft-img">
-                    <img src={notesImg} alt=""/>
-                </div>
-                <div className="notes-headline">
-                    <h2>Find exclusive notes, latest book editions or refer to projects</h2>
-                </div>
-            </div>
-            
-            {/* main content */}
-            {
-                window.innerWidth>768 ? 
-                <h3>Notes</h3> :
-                <div style={{position:'sticky',top:0}}>
-                <TreeMenu toggleHead={<h3>Notes</h3>} isOverlay={true}>
-                    <div className="notes-index">
-                        {notesIndexContent}
-                    </div>
-                </TreeMenu>
-                </div>
- 
-            }
-            <div className="notes-content">
 
-                {/* notes index */}
-                {
-                window.innerWidth>768 &&
-                <div className="notes-index">
-                {notesIndexContent}
-                </div>
+            { loading ? <div>Loading</div>:
+                (viewData == null ? 
+                <div className="notes-hero">
+                    <div className="notes-ft-img">
+                        <img src={notesImg} alt=""/>
+                    </div>
+                    <div className="notes-headline">
+                        <h3>Find exclusive notes, latest book editions or refer to projects</h3>
+                    </div>
+                </div> : 
+                <div>
+                    {viewData}
+                </div>)
                 }
-                {/* PDF Container */}
 
-                {
-                   loading? (
-                    <div className="notes-pdf-container">
-                        <div className="notes-pdf"></div>
-                        <div className="notes-pdf"></div>
-                        <div className="notes-pdf"></div>
-                    </div>
 
-                   ) :(
-
-                    <div className="notes-pdf-container">
-                      {
-                          viewData.map((note, index) => (
-                              <div className="notes-pdf" key= {index} onClick = {(e)=>{
-                                e.preventDefault();
-                                handleClick(note);
-                              }} >
-                                {note.replace(".pdf","")}
-                              </div>
-                          ))
-                          
-                      }
-                     
-                      <Modal 
-                         isOpen={modal}
-                         onRequestClose={closeModal}
-                         style={customStyles}
-                         contentLabel="Notes Modal"
-                      >
-                          <div>
-                            <button style={{float: 'right'}} onClick={handleDownload}>Download</button>
-                            <button onClick={closeModal}>x</button>
-                          </div>
-
-                          
-                            <PdfRender pdf={pdfURL}></PdfRender>
-                            
-                    </Modal>
-                    </div>
-                    
-                   )
-                }
-            </div>
-
+            
         </div>
         </WithAnimationLoad>
     );
