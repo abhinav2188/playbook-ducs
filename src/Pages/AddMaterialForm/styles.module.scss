@@ -1,0 +1,28 @@
+.container{
+    overflow:hidden;
+    border-top: solid rgb(5, 117, 97) 5px;
+    .submitButton{
+        background-color:rgb(5, 117, 97);
+        color: white;
+        width: 100%;
+        padding: 1.5rem;
+        text-transform: uppercase;
+    }
+}
+.uploadForm{
+    padding:2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 420px;
+    .div1{
+        display: grid;
+        grid-template-columns: auto auto;
+        gap: 0.5rem;
+    }
+    .div2{
+        display: grid;
+        grid-template-columns: auto auto 33.33%;
+        gap: 0.5rem;
+    }
+}

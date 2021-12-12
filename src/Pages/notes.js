@@ -7,6 +7,7 @@ import {firebaseStorage} from  "../services/firebase";
 import PdfRender from "./pdfRender";
 import Modal from 'react-modal';
 import WithAnimationLoad from "../HOC/WithAnimationLoad";
+import {FormControl,InputLabel,Select,MenuItem,FormGroup} from "@mui/material"
 
 
 const materialTypes = [
@@ -324,45 +325,60 @@ const NotesPage = () => {
         <div className="notes-page">
             
 
-            <div className="top-nav">
-                <form>
-                    <select name="materialType" id="material-type" value={materialType} 
+            <div className="controls-section">
+                <FormGroup className="form-controls">
+                <FormControl>
+                    <InputLabel htmlFor="material-type">Type</InputLabel>
+                    <Select name="materialType" id="material-type" value={materialType} label="Type" size="small"
                     onChange={(e)=>{setMaterialType(e.target.value)}}>
                         {
                             materialTypes.map(
                                 mt => (
-                                    <option value={mt}>{mt}</option>
+                                    <MenuItem value={mt}>{mt}</MenuItem>
                                 )
                             )
                         }
-                    </select>
-                    <select name="subject" id="subject" value={subject} 
+                    </Select>
+                </FormControl>
+                <FormControl  sx={{minWidth:"100px"}}>
+                <InputLabel htmlFor="subject">Subject</InputLabel>
+                    <Select name="subject" id="subject" value={subject} label="Subject" size="small"
                     onChange={(e)=>{setSubject(e.target.value)}}>
                         {
                             subjects.map(
                                 sub => (
-                                    <option value={sub}>{sub}</option>
+                                    <MenuItem value={sub}>{sub}</MenuItem>
                                 )
                             )
                         }
-                    </select>
-                    <select name = "course" id = "course" value = {course}
+                    </Select>
+                </FormControl>
+                <div style={{display:"flex",gap:"0.5rem"}}>
+                <FormControl>
+                    <InputLabel id="course-label">Course</InputLabel>
+                    <Select name="course" id="course" value={course} label="course" labelId="course-label"
+                    size="small"
                     onChange={(e) => {setCourse(e.target.value)}}>
                         {
-                            courses.map( co => <option value={co}>{co}</option>)
+                            courses.map( co => <MenuItem value={co}>{co}</MenuItem>)
                         }
-                    </select>
-                    <select name = "semester" id = "semester" value={semester}
+                    </Select>
+                    </FormControl>
+                    <FormControl >
+                    <InputLabel htmlFor="semester">Semester</InputLabel>
+                    <Select name = "semester" id = "semester" value={semester} label = "semester" size="small"
                     onChange = {(e) => {setSemester(e.target.value)}}>
                         {
-                            semesters.map( sem => <option value={sem}>{sem}</option>)
+                            semesters.map( sem => <MenuItem value={sem}>{sem}</MenuItem>)
                         }
-                    </select>
-                </form>
+                    </Select>
+                </FormControl>
+                </div>
+            </FormGroup>
             </div>
             
-            {/* top container */}
-
+            
+            <div className="display-section">
             { loading ? <div>Loading</div>:
                 (viewData == null ? 
                 <div className="notes-hero">
@@ -377,6 +393,8 @@ const NotesPage = () => {
                     {viewData}
                 </div>)
                 }
+            
+            </div> 
 
 
             
