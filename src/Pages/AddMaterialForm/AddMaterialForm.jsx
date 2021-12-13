@@ -1,6 +1,6 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 
-import { FormGroup, Input, MenuItem, TextField,Select, InputLabel,Button ,Paper} from "@mui/material";
+import { FormGroup, MenuItem, TextField, InputLabel,Button ,Paper} from "@mui/material";
 import materialData from "../MaterialMetaData"
 import styles from "./styles.module.scss";
 import {uploadMaterial} from "../../services/StudyMaterial";
@@ -14,8 +14,23 @@ const AddMaterialForm = (props) => {
         semester: materialData.semesters[0],
         yearOfStudy : new Date().getFullYear(),
         topicsCovered : "",
-        file: {},
+        file: null,
     });
+
+    const resetForm = () => {
+        setFormData({
+            type : materialData.materialTypes[0],
+            subject: materialData.subjects[0],
+            course: materialData.courses[0],
+            semester: materialData.semesters[0],
+            yearOfStudy : new Date().getFullYear(),
+            topicsCovered : "",
+            file:null,  
+        });
+        setError("");
+    }
+
+    const [error,setError] = useState("");
 
     const [isLoading, setIsLoading] = useState(false);
 
@@ -32,8 +47,23 @@ const AddMaterialForm = (props) => {
         }))
     }
 
+    useEffect( () => {
+        console.log("validating fields");
+        console.log(formData);
+        if(!formData.topicsCovered || !formData.file || !formData.yearOfStudy){
+            setError("all fields are required*");            
+        }
+        else
+        setError("");
+    },[formData])
+
+
     const handleSubmit = async () => {
         console.log("handle form submit");
+        if(error !== "") {
+            console.log("validation errors");
+            return ;
+        }
         setIsLoading(true);
         try{
             const id = await uploadMaterial(formData);
@@ -42,6 +72,7 @@ const AddMaterialForm = (props) => {
             console.log("error adding doc ",error.message);
         }
         setIsLoading(false);
+        resetForm();
     }
 
   return (
@@ -77,8 +108,8 @@ const AddMaterialForm = (props) => {
         </div>
         <TextField label="Topics Covered" multiline maxRows={4}   name="topicsCovered" onChange={handleFormChange} value={formData.topicsCovered}/>
         <InputLabel htmlFor="contained-button-file">
-            <input accept="image/*" id="contained-button-file" type="file" hidden name="file" onChange={handleFormChange}/>
-            <Button variant="outlined" component="span">
+            <input accept="application/pdf" id="contained-button-file" type="file" hidden name="file" onChange={handleFormChange} />
+            <Button variant="outlined" component="span" >
                 Add File
             </Button>
             {formData.file &&
@@ -86,8 +117,8 @@ const AddMaterialForm = (props) => {
             }
         </InputLabel>
     </FormGroup>
-    <button className={styles.submitButton} onClick={handleSubmit}>{isLoading?"saving..":"Upload"}</button>
-
+    {error &&   <span className={styles.error}>{error}</span>}
+    <button className={styles.submitButton} disabled={error!==""} onClick={handleSubmit}>{isLoading?"saving..":"Upload"}</button>
     </Paper>
   );
 }
