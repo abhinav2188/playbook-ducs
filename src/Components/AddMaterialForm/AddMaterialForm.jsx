@@ -1,12 +1,17 @@
-import React, {useEffect, useState} from 'react'
-
+import React, {useEffect, useState, useContext} from 'react'
 import { FormGroup, MenuItem, TextField, InputLabel,Button ,Paper} from "@mui/material";
-import materialData from "../MaterialMetaData"
+import materialData from "../../Pages/MaterialMetaData"
 import styles from "./styles.module.scss";
 import {uploadMaterial} from "../../services/StudyMaterial";
+import { UserContext } from '../../providers/UserProvider';
 
 const AddMaterialForm = (props) => {
 
+    const user = useContext(UserContext);
+
+    useEffect(()=>{
+        console.log("user context",user);
+    },[])
     const [formData,setFormData] = useState({
         type : materialData.materialTypes[0],
         subject: materialData.subjects[0],
@@ -66,7 +71,7 @@ const AddMaterialForm = (props) => {
         }
         setIsLoading(true);
         try{
-            const id = await uploadMaterial(formData);
+            const id = await uploadMaterial({...formData,contributorId:user.uid});
             console.log("document added, id: ", id);        
         }catch(error){
             console.log("error adding doc ",error.message);
@@ -77,7 +82,6 @@ const AddMaterialForm = (props) => {
 
   return (
     <Paper elevation={2} className={styles.container}>
-
     <FormGroup className={styles.uploadForm}>
         <div className={styles.div1}>
             <TextField label="Type" select size="small" name="type" onChange={handleFormChange} value={formData.type}>

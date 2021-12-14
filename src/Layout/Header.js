@@ -64,6 +64,7 @@ const Header = (props) =>{
 
     const signUpLogout = authState?
     <div className="auth">
+        {/* <img src={user.photoURL} alt=""/> */}
         <span>{user.displayName}</span>
         <button to="/" className="logout-button"  onClick={()=>{
             logOut();
