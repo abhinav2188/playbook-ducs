@@ -3,6 +3,7 @@ import './footer.scss'
 import ReviewForm from "../Components/ReviewForm"
 import Slider from "../UI/slider"
 import {closeIcon} from "../svgs/navBarIcons"
+import { Link } from 'react-router-dom'
 
 const Footer = () => {
 
@@ -16,7 +17,7 @@ const Footer = () => {
             <h3>Help your juniors and colleagues with your contribution to our playbook.</h3>
             <div className="form-buttons">
                 <button onClick={()=>setShowReviewForm(true)}>Share your moments of DUCS</button>
-                <button>Upload your Notes</button>
+                <Link exact to="/add-material" ><button>Upload your Notes</button></Link>
             </div> 
         </div>
 

@@ -9,9 +9,6 @@ const AddMaterialForm = (props) => {
 
     const user = useContext(UserContext);
 
-    useEffect(()=>{
-        console.log("user context",user);
-    },[])
     const [formData,setFormData] = useState({
         type : materialData.materialTypes[0],
         subject: materialData.subjects[0],

@@ -10,6 +10,7 @@ import Notes from "./Pages/notes";
 import UserProvider from "./providers/UserProvider";
 import Header from "./Layout/Header";
 import Footer from "./Layout/Footer";
+import AddMaterial from "./Pages/addMaterial/addMaterial"
 
 const ConditionalFooter = (props) => {
   const location = useLocation();
@@ -66,6 +67,7 @@ const App = () => {
             <Route path="/contact" component={Contact} />
             <Route path="/test" component={Test} />
             <Route path="/notes" component={Notes} />
+            <Route path="/add-material" component={AddMaterial} />
             <Route path="/" component={Home} />
           </Switch>
           <ConditionalFooter />
