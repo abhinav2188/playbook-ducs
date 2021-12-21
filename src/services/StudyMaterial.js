@@ -12,10 +12,10 @@ function uploadFile(fileData){
 async function uploadMaterial(formData){
     const fpath = await uploadFile(formData.file);
     console.log("uploaded file path ",fpath);
+    const subject = formData.subject;
+    const type = formData.type;
     const data = {
         contributorId: formData.contributorId,
-        type: formData.type,
-        subject: formData.subject,
         course: formData.course,
         semester: formData.semester,
         yearOfStudy : formData.yearOfStudy,
@@ -23,13 +23,12 @@ async function uploadMaterial(formData){
         filePath : fpath          
     };
     return new Promise((resolve,reject) => {
-        firestoreDB.collection("study-material").add(data)
+        const docRef = firestoreDB.collection("study-material").doc(type).collection(subject);
+        docRef.add(data)
         .then(docRef => resolve(docRef.id))
         .catch(error => reject("error adding document ",error));
     })
 }
-
-
 
 export {uploadFile,uploadMaterial};
 
