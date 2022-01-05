@@ -1,20 +1,21 @@
 import React, { useState,useEffect, useContext } from 'react'
 import TreeMenu from "../UI/TreeMenu"
 import notesImg from "../svgs/notes-img.svg"
-import "./notes.scss"
+import styles from "./notes.module.scss"
 import {UserContext} from "../providers/UserProvider";
 import {firebaseStorage} from  "../services/firebase";
 import PdfRender from "./pdfRender";
 import Modal from 'react-modal';
 import WithAnimationLoad from "../HOC/WithAnimationLoad";
-import {FormControl,InputLabel,Select,MenuItem,FormGroup} from "@mui/material"
-
+import {FormControl,InputLabel,Select,MenuItem,FormGroup,CircularProgress,List,ListItemAvatar,ListItem,Divider,ListItemText,Chip, ButtonUnstyled} from "@mui/material"
+import { getStudyMaterial, getFileUrl } from '../services/StudyMaterial';
+import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
+import {Paper} from "@material-ui/core"
 
 const materialTypes = [
     "Notes","PYPs","Ebooks"
 ];
 const subjects = [
-    "All",
     "Database Concepts",
     "Operating Systems",
     "Algorithms",
@@ -34,41 +35,42 @@ const NotesPage = () => {
     const [course,setCourse] = useState(courses[0]);
     const [materialType, setMaterialType] = useState(materialTypes[0]);
 
+    const [viewData,setViewData] = useState([]);
+    const [loading,setLoading] = useState(true);
 
+    const [currentFilePath, setCurrentFilePath] = useState("");
+    const [pdfURL,setpdfURL] = useState('');
+
+    const [notes,setNotes] = useState([]);
     const [showIndex,setShowIndex] = useState(false);
     
-    const [notes,setNotes] = useState([]);
-    const [viewData,setViewData] = useState([]);
    
 
-    const [loading,setLoading] = useState(true);
+
+
 
     const [modal,setModal] = useState(false);
     Modal.setAppElement('#root');
 
-    const [pdfURL,setpdfURL] = useState('');
+
+
 
     const user = useContext(UserContext);
 
-    function fetchData(type,sub,course,sem){
-        return new Promise((resolve,reject) => {
-            setTimeout(()=>{
-                const data = [type,sub,course,sem];
-                resolve(data);
-            },1000);
-        });
-    }
-
-
     useEffect(async ()=>{
         setLoading(true);
-        const data = await fetchData(materialType,subject,course,semester);
-        setViewData(data);
+        getStudyMaterial(materialType,subject).then(data =>  setViewData(data)).catch(error => {
+            console.log(error);
+        });
         setLoading(false);
-    },[materialType,subject,course,semester])
+    },[materialType,subject]);
     
+    useEffect( async ()=> {
+        getFileUrl(currentFilePath).then(url => setpdfURL(url))
+        .catch(error => console.log(error));
+    },[currentFilePath])
 
-    const customStyles = {
+    const customStyles = {  
         content : {
           top                   : '50%',
           left                  : '50%',
@@ -106,8 +108,7 @@ const NotesPage = () => {
             res.items.forEach(function(folderRef) {
             let gsReference = folderRef.toString();
             let fileName = (gsReference.split(['/'])[5]);
-            notesUrl.push(fileName);
-            
+            notesUrl.push(fileName);            
             });
             setNotes(notesUrl);
             setViewData(notesUrl);
@@ -321,12 +322,12 @@ const NotesPage = () => {
 
     return(
         
-        <WithAnimationLoad className="main">
-        <div className="notes-page">
+        <WithAnimationLoad className={styles.main}>
+        <div className={styles.notesPage}>
             
 
-            <div className="controls-section">
-                <FormGroup className="form-controls">
+            <div className={styles.controlSection}>
+                <FormGroup className={styles.formControls}>
                 <FormControl>
                     <InputLabel htmlFor="material-type">Type</InputLabel>
                     <Select name="materialType" id="material-type" value={materialType} label="Type" size="small"
@@ -354,7 +355,7 @@ const NotesPage = () => {
                     </Select>
                 </FormControl>
                 <div style={{display:"flex",gap:"0.5rem"}}>
-                <FormControl>
+                    <FormControl>
                     <InputLabel id="course-label">Course</InputLabel>
                     <Select name="course" id="course" value={course} label="course" labelId="course-label"
                     size="small"
@@ -372,26 +373,46 @@ const NotesPage = () => {
                             semesters.map( sem => <MenuItem value={sem}>{sem}</MenuItem>)
                         }
                     </Select>
-                </FormControl>
+                    </FormControl>
                 </div>
-            </FormGroup>
+                </FormGroup>
+
+                {
+                loading? <CircularProgress/> : 
+                viewData.length == 0 ? <div>No files to Display</div> :
+                <div className={styles.filesViewContainer}>
+                    {viewData.map(data => (
+                        <button onClick={()=> setCurrentFilePath(data.filePath)} className={styles.file} className={styles.file}>
+                            <div className={styles.topics}>
+                                <PictureAsPdfIcon />
+                                <p>{data.topicsCovered}</p>
+                            </div>
+                            <div className={styles.chips}>
+                                <span>{data.yearOfStudy}</span>
+                                <span>{data.course} </span>
+                                <span>{`${data.semester} sem`}</span>
+                            </div>
+                        </button>
+                    ))}
+                </div>
+                }
             </div>
             
             
-            <div className="display-section">
+            <div className={styles.displaySection}>
             { loading ? <div>Loading</div>:
-                (viewData == null ? 
-                <div className="notes-hero">
-                    <div className="notes-ft-img">
+                (viewData.length == 0 ? 
+                <div className={styles.noPdf}>
+                    <div className={styles.noPdfImg}>
                         <img src={notesImg} alt=""/>
                     </div>
-                    <div className="notes-headline">
+                    <div className={styles.noPdfHeadline}>
                         <h3>Find exclusive notes, latest book editions or refer to projects</h3>
                     </div>
                 </div> : 
-                <div>
-                    {viewData}
-                </div>)
+                    pdfURL!=="" &&
+                        <PdfRender pdf={pdfURL} />
+                )    
                 }
             
             </div> 
@@ -399,6 +420,8 @@ const NotesPage = () => {
 
             
         </div>
+
+
         </WithAnimationLoad>
     );
 }
